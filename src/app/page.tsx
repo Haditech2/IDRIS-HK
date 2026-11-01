@@ -322,25 +322,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3 SIMPLE STEPS SECTION */}
+      {/* 3 SIMPLE STEPS SECTION WITH "JOIN THE WINNING TEAM" CANDIDATE BACKGROUND */}
       <section className="py-20 bg-gray-50 border-t border-gray-200">
-        <div className="relative overflow-hidden bg-[#006C43] py-14 text-white">
-          {/* Subtle Candidate Background in Steps Header */}
-          <div className="absolute inset-0 opacity-15">
+        <div className="relative overflow-hidden bg-[#006C43] py-16 md:py-20 text-white shadow-xl">
+          {/* Candidate Background Image (Prince Gowon Enenche Standing) */}
+          <div className="absolute inset-0 z-0">
             <Image
               src="/gone_standing.jpg"
-              alt="G-ONE"
+              alt="Prince Gowon Enenche - Join the Winning Team"
               fill
-              className="object-cover object-top"
+              priority
+              className="object-cover object-[center_20%] opacity-40 mix-blend-luminosity scale-105 transition-transform duration-700"
             />
           </div>
-          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
-              Claim Your Campaign Poster
+          {/* Green brand gradient overlay for high contrast and readability */}
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#006C43]/92 via-[#006C43]/75 to-[#006C43]/92" />
+          <div className="absolute inset-0 z-10 bg-radial-gradient from-transparent via-[#006C43]/30 to-[#006C43]/80" />
+
+          <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-4xl font-black tracking-tight sm:text-6xl md:text-7xl drop-shadow-md">
+              Join the Winning Team
             </h2>
-            <p className="mt-3 text-emerald-100 text-sm sm:text-base font-medium max-w-xl mx-auto">
-              Customized with your photo, local government, and ward in under 60
-              seconds.
+            <p className="mt-4 text-emerald-100 text-sm sm:text-lg md:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+              Show your unreserved support for <strong className="text-white font-black">G-ONE</strong> with a personalized
+              digital campaign poster in under 60 seconds.
             </p>
           </div>
         </div>
@@ -441,36 +446,39 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FULL-WIDTH BANNER WITH THUMBS-UP CANDIDATE BACKGROUND */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-primary to-emerald-900 py-24 md:py-32 text-white text-center">
-        {/* Subtle Candidate Background Image */}
+      {/* FULL-WIDTH BANNER: IN GOD WE TRUST WITH CANDIDATE BACKGROUND */}
+      <section className="relative w-full overflow-hidden bg-[#0A6FB8] py-24 md:py-32 text-white text-center shadow-xl">
+        {/* Candidate Background Image (Prince Gowon Enenche Thumbs-up / Progress) */}
         <div className="absolute inset-0 z-0">
           <Image
             src="/gone_thumbs.jpg"
-            alt="Prince Gowon Enenche Thumbs Up"
+            alt="Prince Gowon Enenche - In God We Trust"
             fill
-            className="object-cover object-[center_30%] opacity-20 mix-blend-luminosity"
+            priority
+            className="object-cover object-[center_30%] opacity-40 mix-blend-luminosity scale-105 transition-transform duration-700"
           />
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/90 via-primary/80 to-emerald-950/90" />
+        {/* Blue brand gradient overlay matching screenshot styling with enhanced contrast */}
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#074775]/92 via-[#0A6FB8]/75 to-[#074775]/92" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,rgba(10,111,184,0.4),rgba(7,71,117,0.85))]" />
 
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="inline-block rounded-full bg-white/10 px-5 py-1.5 text-xs font-black uppercase tracking-widest text-emerald-200 mb-6 backdrop-blur-md border border-white/20">
-            The G-1 Movement · Progress For All
+          <div className="inline-block rounded-full bg-white/10 px-5 py-1.5 text-xs font-black uppercase tracking-widest text-blue-100 mb-6 backdrop-blur-md border border-white/20">
+            Progress · Unity · Integrity
           </div>
-          <h2 className="text-4xl font-black uppercase tracking-wider sm:text-6xl lg:text-7xl">
-            I RESERVED FOR HIM MY VOTE
+          <h2 className="text-5xl font-black uppercase tracking-wider sm:text-7xl lg:text-8xl drop-shadow-md">
+            IN GOD WE TRUST
           </h2>
-          <p className="mt-4 text-base md:text-xl text-emerald-100 max-w-2xl mx-auto font-bold">
-            Progress · In God We Trust · Social Democratic Party (SDP)
+          <p className="mt-4 text-base md:text-xl lg:text-2xl text-blue-100 max-w-2xl mx-auto font-medium leading-relaxed">
+            Dedicated to the peace, progress, and prosperity of our people.
           </p>
           <div className="mt-8 flex justify-center">
             <Link
               href="/generate"
-              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-black text-primary shadow-xl hover:bg-emerald-50 active:scale-95 transition-all"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-4 text-sm font-black text-[#0A6FB8] shadow-xl hover:bg-blue-50 active:scale-95 transition-all"
             >
               <Sparkles className="h-4 w-4" />
-              <span>Create Your Supporter DP</span>
+              <span>Generate Support Poster</span>
             </Link>
           </div>
         </div>
