@@ -12,7 +12,7 @@ An official digital grassroots mobilization platform for **Prince Gowon Enenche 
 - **Party:** Social Democratic Party (SDP)
 - **Slogan:** Progress · In God We Trust · I Reserved For Him My Vote
 - **Movement:** The G-1 Movement
-- **Official Portal:** [https://g-1.com.ng](https://g-1.com.ng)
+- **Official Portal:** [https://g-one-chi.vercel.app](https://g-one-chi.vercel.app)
 - **Origin:** Imane, Olamaboro Local Government Area, Kogi State
 - **Education:** B.Sc. Political Science, Kogi State University
 - **Enterprise:** Chairman & CEO, G1 Group of Companies & G-One Luxury Homes

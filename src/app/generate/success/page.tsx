@@ -146,7 +146,7 @@ function SuccessContent() {
                   {/* Facebook */}
                   <a
                     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                      window?.location?.origin || "https://g-1.com.ng"
+                      window?.location?.origin || "https://g-one-chi.vercel.app"
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"

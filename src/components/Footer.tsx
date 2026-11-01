@@ -45,7 +45,7 @@ export function Footer() {
                 className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-bold text-gray-700 hover:bg-gray-100 transition"
               >
                 <Globe className="h-3.5 w-3.5 text-primary" />
-                <span>Visit g-1.com.ng</span>
+                <span>Visit g-one-chi.vercel.app</span>
                 <ExternalLink className="h-3 w-3 text-gray-400" />
               </a>
             </div>

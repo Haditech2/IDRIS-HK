@@ -34,7 +34,7 @@ export const G_ONE_CANDIDATE: CandidateInfo = {
   education: "B.Sc. Political Science, Kogi State University",
   business: "Chairman & CEO, G1 Group of Companies & G-One Luxury Homes",
   movementName: "The G-1 Movement",
-  website: "https://g-1.com.ng",
+  website: "https://g-one-chi.vercel.app",
   pillars: [
     {
       title: "Economic Empowerment & Tech Hubs",
