@@ -4,9 +4,9 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "G-ONE 2027 | Campaign Poster Generator",
+  title: "G-ONE 2027 | Prince Gowon Enenche Campaign Poster Generator",
   description:
-    "Generate your personalized campaign support poster for Prince Gowon Enenche (G-ONE) for House of Representatives and Sen. Ahmed Aliyu Wadada.",
+    "Official campaign poster studio for Prince Gowon Enenche (G-ONE) for House of Representatives, Ankpa, Omala, and Olamaboro Federal Constituency (Social Democratic Party - SDP).",
   icons: {
     icon: "/favicon.ico",
   },

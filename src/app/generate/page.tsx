@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useCallback, Suspense } from "react";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import Cropper from "react-easy-crop";
 import confetti from "canvas-confetti";
 import {
@@ -12,11 +12,16 @@ import {
   ZoomIn,
   ZoomOut,
   RefreshCw,
-  CheckCircle2,
   AlertCircle,
-  ArrowRight,
+  MapPin,
+  CheckCircle2,
 } from "lucide-react";
-import { CAMPAIGNS, CampaignConfig, Supporter } from "@/lib/data";
+import {
+  G_ONE_CANDIDATE,
+  FRAME_CONFIG,
+  CONSTITUENCY_LGAS,
+  Supporter,
+} from "@/lib/data";
 import { generatePosterCanvas } from "@/lib/generatePoster";
 
 interface CropArea {
@@ -28,16 +33,6 @@ interface CropArea {
 
 function GenerateContent() {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const initialCampaign =
-    (searchParams.get("campaign") as "gone" | "wadada") || "gone";
-  const [selectedCampaignId, setSelectedCampaignId] = useState<"gone" | "wadada">(
-    initialCampaign
-  );
-
-  const campaign: CampaignConfig =
-    CAMPAIGNS[selectedCampaignId] || CAMPAIGNS.gone;
 
   // Image & Crop state
   const [rawImage, setRawImage] = useState<string | null>(null);
@@ -54,6 +49,9 @@ function GenerateContent() {
   const [formError, setFormError] = useState("");
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  // Get available wards for the selected LGA
+  const currentLgaData = CONSTITUENCY_LGAS.find((l) => l.name === selectedLga);
 
   // Handle file selection
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -131,7 +129,7 @@ function GenerateContent() {
     }
 
     if (!selectedLga) {
-      setFormError("Please select your Local Government Area.");
+      setFormError("Please select your Local Government Area (Ankpa, Omala, or Olamaboro).");
       return;
     }
 
@@ -139,14 +137,13 @@ function GenerateContent() {
     setIsGenerating(true);
 
     try {
-      // Generate full resolution composited poster
+      // Generate full resolution composited poster (1024x1024)
       const { blob, dataUrl } = await generatePosterCanvas({
         croppedImageSrc: croppedImageResult,
-        campaignId: selectedCampaignId,
       });
 
       // Trigger instant browser download
-      const fileName = `${selectedCampaignId}-support-${Date.now()}.png`;
+      const fileName = `g-one-poster-${Date.now()}.png`;
       const url = URL.createObjectURL(blob);
       const link = document.createElement("a");
       link.href = url;
@@ -158,16 +155,15 @@ function GenerateContent() {
 
       // Trigger Confetti celebration!
       confetti({
-        particleCount: 100,
-        spread: 70,
+        particleCount: 120,
+        spread: 80,
         origin: { y: 0.6 },
       });
 
       // Save supporter record in localStorage
       const newSupporter: Supporter = {
-        id: `sup-${Date.now()}`,
-        campaignId: selectedCampaignId,
-        name: supporterName || "Supporter",
+        id: `g1-sup-${Date.now()}`,
+        name: supporterName || "Constituent Supporter",
         lga: selectedLga,
         ward: ward || undefined,
         imageUrl: dataUrl,
@@ -183,7 +179,6 @@ function GenerateContent() {
           "g_one_supporters",
           JSON.stringify([newSupporter, ...existing])
         );
-        // Also save latest generation for success page
         sessionStorage.setItem("latest_poster", dataUrl);
         sessionStorage.setItem("latest_supporter", JSON.stringify(newSupporter));
       } catch (storageErr) {
@@ -192,9 +187,11 @@ function GenerateContent() {
 
       // Navigate to success page
       router.push(
-        `/generate/success?id=${newSupporter.id}&campaign=${selectedCampaignId}&name=${encodeURIComponent(
+        `/generate/success?id=${newSupporter.id}&name=${encodeURIComponent(
           newSupporter.name
-        )}&lga=${encodeURIComponent(newSupporter.lga)}`
+        )}&lga=${encodeURIComponent(newSupporter.lga)}${
+          ward ? `&ward=${encodeURIComponent(ward)}` : ""
+        }`
       );
     } catch (err) {
       console.error("Poster generation failed:", err);
@@ -205,52 +202,29 @@ function GenerateContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/60 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50/70 py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         {/* Page Header */}
         <div className="mb-10 text-center max-w-2xl mx-auto">
           <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
             <Sparkles className="h-3.5 w-3.5" />
-            Official Campaign Studio
+            Official Campaign Poster Studio
           </span>
           <h1 className="mt-3 text-3xl font-black tracking-tight text-gray-900 sm:text-5xl">
-            Design Your Campaign Poster
+            Design Your G-ONE Poster
           </h1>
           <p className="mt-3 text-sm sm:text-base text-gray-600">
-            Upload your photo, adjust positioning, select your constituency, and
-            download a publication-ready poster.
+            Upload your picture, adjust framing, select your constituency ward, and
+            download a high-resolution campaign poster instantly.
           </p>
 
-          {/* Campaign Selection Tabs */}
-          <div className="mt-6 inline-flex rounded-2xl bg-white p-1.5 shadow-sm border border-gray-200">
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedCampaignId("gone");
-                setSelectedLga("");
-              }}
-              className={`rounded-xl px-5 py-2.5 text-xs sm:text-sm font-bold transition-all ${
-                selectedCampaignId === "gone"
-                  ? "bg-primary text-white shadow"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Prince Gowon Enenche (G-ONE)
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                setSelectedCampaignId("wadada");
-                setSelectedLga("");
-              }}
-              className={`rounded-xl px-5 py-2.5 text-xs sm:text-sm font-bold transition-all ${
-                selectedCampaignId === "wadada"
-                  ? "bg-royal text-white shadow"
-                  : "text-gray-600 hover:text-gray-900"
-              }`}
-            >
-              Sen. Ahmed Wadada 2027
-            </button>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 border border-gray-200 shadow-sm text-xs font-bold text-gray-700">
+            <span className="h-2 w-2 rounded-full bg-primary" />
+            <span>{G_ONE_CANDIDATE.name}</span>
+            <span className="text-gray-400">·</span>
+            <span>{G_ONE_CANDIDATE.constituency}</span>
+            <span className="text-gray-400">·</span>
+            <span className="text-primary font-black">SDP</span>
           </div>
         </div>
 
@@ -262,11 +236,11 @@ function GenerateContent() {
             <div className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
               <div className="flex items-center justify-between pb-4 border-b border-gray-100">
                 <div>
-                  <h2 className="text-xl font-bold text-gray-900">
+                  <h2 className="text-xl font-black text-gray-900">
                     Step 1: Your Photo
                   </h2>
                   <p className="text-xs text-muted-foreground">
-                    Upload a high-quality portrait for best clarity
+                    Upload a clear front-facing portrait for the best result
                   </p>
                 </div>
                 {rawImage && (
@@ -305,10 +279,10 @@ function GenerateContent() {
                       Click to upload your photo
                     </p>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      PNG, JPG, or WEBP up to 15MB
+                      JPG, PNG, or WEBP from your phone or PC
                     </p>
-                    <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-primary px-4 py-2 text-xs font-bold text-white shadow-sm transition hover:bg-emerald-700">
-                      Choose from Device
+                    <span className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-primary px-5 py-2.5 text-xs font-bold text-white shadow-sm transition hover:bg-emerald-700">
+                      Choose From Device
                     </span>
                   </div>
                 ) : (
@@ -355,7 +329,7 @@ function GenerateContent() {
                       </button>
                     </div>
                     <p className="text-center text-xs text-muted-foreground">
-                      Drag photo to reposition · Use slider to zoom
+                      Drag photo to position · Use slider to zoom in/out
                     </p>
                   </div>
                 )}
@@ -368,11 +342,11 @@ function GenerateContent() {
               className="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm space-y-6"
             >
               <div className="pb-4 border-b border-gray-100">
-                <h2 className="text-xl font-bold text-gray-900">
-                  Step 2: Supporter Details
+                <h2 className="text-xl font-black text-gray-900">
+                  Step 2: Supporter Constituency Info
                 </h2>
                 <p className="text-xs text-muted-foreground">
-                  Select your constituency details for campaign attribution
+                  Attach your name and local government to show grassroots solidarity
                 </p>
               </div>
 
@@ -382,12 +356,12 @@ function GenerateContent() {
                   htmlFor="supporter-name"
                   className="block text-sm font-semibold text-gray-800"
                 >
-                  Your Name (Optional)
+                  Your Name / Title (Optional)
                 </label>
                 <input
                   id="supporter-name"
                   type="text"
-                  placeholder="e.g. Comrade Ibrahim Usman"
+                  placeholder="e.g. Comrade David Oche"
                   value={supporterName}
                   onChange={(e) => setSupporterName(e.target.value)}
                   className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
@@ -407,35 +381,52 @@ function GenerateContent() {
                   value={selectedLga}
                   onChange={(e) => {
                     setSelectedLga(e.target.value);
+                    setWard("");
                     if (formError) setFormError("");
                   }}
                   className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
                 >
-                  <option value="">-- Select Local Government Area --</option>
-                  {campaign.defaultLgas.map((lga) => (
-                    <option key={lga} value={lga}>
-                      {lga}
+                  <option value="">-- Select LGA in Constituency --</option>
+                  {CONSTITUENCY_LGAS.map((lga) => (
+                    <option key={lga.name} value={lga.name}>
+                      {lga.name} Local Government Area
                     </option>
                   ))}
                 </select>
               </div>
 
-              {/* Ward Input */}
+              {/* Ward Dropdown / Input */}
               <div className="space-y-2">
                 <label
                   htmlFor="ward-input"
                   className="block text-sm font-semibold text-gray-800"
                 >
-                  Ward / Polling Unit (Optional)
+                  Ward (Optional)
                 </label>
-                <input
-                  id="ward-input"
-                  type="text"
-                  placeholder="e.g. Township Ward, Unit 004"
-                  value={ward}
-                  onChange={(e) => setWard(e.target.value)}
-                  className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
-                />
+                {currentLgaData ? (
+                  <select
+                    id="ward-select"
+                    value={ward}
+                    onChange={(e) => setWard(e.target.value)}
+                    className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20 cursor-pointer"
+                  >
+                    <option value="">-- Select Ward in {selectedLga} --</option>
+                    {currentLgaData.wards.map((w) => (
+                      <option key={w} value={w}>
+                        {w}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <input
+                    id="ward-input"
+                    type="text"
+                    placeholder="Select your LGA first or type ward"
+                    value={ward}
+                    onChange={(e) => setWard(e.target.value)}
+                    className="w-full rounded-xl border border-gray-300 bg-white px-4 py-3 text-sm text-gray-900 placeholder:text-gray-400 focus:border-primary focus:outline-none focus:ring-2 focus:ring-primary/20"
+                  />
+                )}
               </div>
 
               {/* Error Message */}
@@ -450,16 +441,16 @@ function GenerateContent() {
               <button
                 type="submit"
                 disabled={isGenerating || !rawImage}
-                className={`w-full rounded-2xl py-4 text-base font-bold text-white shadow-lg transition-all flex items-center justify-center gap-2 ${
+                className={`w-full rounded-2xl py-4 text-base font-black text-white shadow-lg transition-all flex items-center justify-center gap-2 ${
                   isGenerating || !rawImage
                     ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-primary hover:bg-emerald-700 active:scale-95 hover:shadow-emerald-900/30"
+                    : "bg-primary hover:bg-emerald-700 active:scale-95 shadow-emerald-950/20"
                 }`}
               >
                 {isGenerating ? (
                   <>
                     <RefreshCw className="h-5 w-5 animate-spin" />
-                    <span>Compositing High-Res Poster...</span>
+                    <span>Rendering High-Res G-ONE Poster...</span>
                   </>
                 ) : (
                   <>
@@ -479,7 +470,7 @@ function GenerateContent() {
                   Live Poster Preview
                 </span>
                 <span className="rounded-full bg-emerald-50 px-2.5 py-0.5 text-[11px] font-bold text-emerald-700">
-                  Real-time
+                  100% Matching Frame
                 </span>
               </div>
 
@@ -490,11 +481,11 @@ function GenerateContent() {
                   <div
                     className="absolute overflow-hidden"
                     style={{
-                      top: campaign.cutout.top,
-                      left: campaign.cutout.left,
-                      right: campaign.cutout.right,
-                      bottom: campaign.cutout.bottom,
-                      borderRadius: campaign.cutout.borderRadius,
+                      top: FRAME_CONFIG.cutout.top,
+                      left: FRAME_CONFIG.cutout.left,
+                      right: FRAME_CONFIG.cutout.right,
+                      bottom: FRAME_CONFIG.cutout.bottom,
+                      borderRadius: FRAME_CONFIG.cutout.borderRadius,
                     }}
                   >
                     <Image
@@ -508,15 +499,15 @@ function GenerateContent() {
                   <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center text-gray-400">
                     <ImageIcon className="h-12 w-12 text-gray-300 mb-2" />
                     <p className="text-xs font-medium">
-                      Your photo will appear here inside the official campaign frame
+                      Your photo will appear here inside the official G-ONE campaign frame
                     </p>
                   </div>
                 )}
 
-                {/* 2. Official Frame Overlay */}
+                {/* 2. Official Transparent Frame Overlay */}
                 <Image
-                  src={campaign.frameSrc}
-                  alt="Official Campaign Frame"
+                  src={FRAME_CONFIG.frameSrc}
+                  alt="Official G-ONE Campaign Frame"
                   fill
                   priority
                   className="pointer-events-none absolute inset-0 object-contain z-10"
@@ -524,12 +515,15 @@ function GenerateContent() {
               </div>
 
               {/* Candidate Metadata Summary */}
-              <div className="mt-4 rounded-xl bg-gray-50 p-3 text-center border border-gray-100">
-                <p className="text-xs font-bold text-gray-900">
-                  {campaign.candidateName}
+              <div className="mt-4 rounded-xl bg-gray-50 p-3.5 text-center border border-gray-100 space-y-1">
+                <p className="text-xs font-black text-gray-900">
+                  {G_ONE_CANDIDATE.name} ({G_ONE_CANDIDATE.moniker})
                 </p>
                 <p className="text-[11px] text-muted-foreground">
-                  {campaign.office} · {campaign.constituency}
+                  {G_ONE_CANDIDATE.office} · {G_ONE_CANDIDATE.constituency}
+                </p>
+                <p className="text-[10px] font-bold text-primary">
+                  {G_ONE_CANDIDATE.slogan} · {G_ONE_CANDIDATE.party}
                 </p>
               </div>
             </div>

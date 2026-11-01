@@ -1,8 +1,7 @@
-import { CAMPAIGNS, CampaignConfig } from "./data";
+import { FRAME_CONFIG } from "./data";
 
 export interface PosterOptions {
   croppedImageSrc: string;
-  campaignId: "gone" | "wadada";
 }
 
 function loadImage(src: string): Promise<HTMLImageElement> {
@@ -17,18 +16,15 @@ function loadImage(src: string): Promise<HTMLImageElement> {
 
 export async function generatePosterCanvas({
   croppedImageSrc,
-  campaignId,
 }: PosterOptions): Promise<{ blob: Blob; dataUrl: string }> {
-  const campaign: CampaignConfig = CAMPAIGNS[campaignId] || CAMPAIGNS.gone;
-
   const [userImg, frameImg] = await Promise.all([
     loadImage(croppedImageSrc),
-    loadImage(campaign.frameSrc),
+    loadImage(FRAME_CONFIG.frameSrc),
   ]);
 
   const canvas = document.createElement("canvas");
-  const width = frameImg.naturalWidth || campaign.dimensions.width;
-  const height = frameImg.naturalHeight || campaign.dimensions.height;
+  const width = frameImg.naturalWidth || FRAME_CONFIG.dimensions.width;
+  const height = frameImg.naturalHeight || FRAME_CONFIG.dimensions.height;
 
   canvas.width = width;
   canvas.height = height;
@@ -46,16 +42,16 @@ export async function generatePosterCanvas({
   const parsePercent = (val: string, total: number) =>
     (parseFloat(val) / 100) * total;
 
-  const top = parsePercent(campaign.cutout.top, height);
-  const left = parsePercent(campaign.cutout.left, width);
-  const right = parsePercent(campaign.cutout.right, width);
-  const bottom = parsePercent(campaign.cutout.bottom, height);
+  const top = parsePercent(FRAME_CONFIG.cutout.top, height);
+  const left = parsePercent(FRAME_CONFIG.cutout.left, width);
+  const right = parsePercent(FRAME_CONFIG.cutout.right, width);
+  const bottom = parsePercent(FRAME_CONFIG.cutout.bottom, height);
 
   const drawWidth = width - left - right;
   const drawHeight = height - top - bottom;
 
   // Clip user image to rounded rectangle matching frame cutout
-  const radius = campaignId === "gone" ? 28 : 24;
+  const radius = 28;
   ctx.save();
   ctx.beginPath();
   if (ctx.roundRect) {

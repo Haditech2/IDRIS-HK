@@ -1,90 +1,150 @@
-export interface CampaignConfig {
-  id: "gone" | "wadada";
+export interface CandidateInfo {
   name: string;
-  candidateName: string;
-  title: string;
+  moniker: string;
   office: string;
   constituency: string;
-  slogan: string;
+  state: string;
   party: string;
-  frameSrc: string;
-  dimensions: { width: number; height: number };
-  cutout: {
-    top: string;
-    left: string;
-    right: string;
-    bottom: string;
-    widthPercent: number;
-    heightPercent: number;
-    borderRadius: string;
-  };
-  defaultLgas: string[];
+  partyFullName: string;
+  slogan: string;
+  subSlogan: string;
+  origin: string;
+  education: string;
+  business: string;
+  movementName: string;
+  website: string;
+  pillars: {
+    title: string;
+    description: string;
+    icon: string;
+  }[];
 }
 
-export const CAMPAIGNS: Record<string, CampaignConfig> = {
-  gone: {
-    id: "gone",
-    name: "G-ONE 2027",
-    candidateName: "Prince Gowon Enenche (G-ONE)",
-    title: "A Voice of Representation For The People",
-    office: "House of Representatives",
-    constituency: "Ankpa, Omala, Olamaboro Federal Constituency",
-    slogan: "Progress - In God We Trust",
-    party: "Social Democratic Party (SDP)",
-    frameSrc: "/gone_frame.png",
-    dimensions: { width: 1024, height: 1024 },
-    cutout: {
-      top: "26.07%",
-      left: "50.88%",
-      right: "6.64%",
-      bottom: "31.93%",
-      widthPercent: 42.48,
-      heightPercent: 42.0,
-      borderRadius: "1.75rem",
+export const G_ONE_CANDIDATE: CandidateInfo = {
+  name: "Prince Gowon Enenche",
+  moniker: "G-ONE (G1)",
+  office: "House of Representatives",
+  constituency: "Ankpa, Omala, and Olamaboro Federal Constituency",
+  state: "Kogi State",
+  party: "SDP",
+  partyFullName: "Social Democratic Party",
+  slogan: "Progress · In God We Trust",
+  subSlogan: "I Reserved For Him My Vote",
+  origin: "Imane, Olamaboro Local Government Area, Kogi State",
+  education: "B.Sc. Political Science, Kogi State University",
+  business: "Chairman & CEO, G1 Group of Companies & G-One Luxury Homes",
+  movementName: "The G-1 Movement",
+  website: "https://g-1.com.ng",
+  pillars: [
+    {
+      title: "Economic Empowerment & Tech Hubs",
+      description:
+        "Micro-grant schemes for SMEs, artisan tools empowerment, and establishing digital innovation bootcamps for youths across Ankpa, Omala, and Olamaboro.",
+      icon: "Cpu",
     },
-    defaultLgas: ["Ankpa", "Omala", "Olamaboro"],
-  },
-  wadada: {
-    id: "wadada",
-    name: "Wadada 2027",
-    candidateName: "Sen. Ahmed Aliyu Wadada",
-    title: "Join the Winning Team",
-    office: "Nasarawa State 2027",
-    constituency: "Nasarawa State",
-    slogan: "In God We Trust",
-    party: "All Progressives Congress (APC) / Coalition",
-    frameSrc: "/design_frame.png",
-    dimensions: { width: 1080, height: 1080 },
-    cutout: {
-      top: "27%",
-      left: "49%",
-      right: "5%",
-      bottom: "26%",
-      widthPercent: 46.0,
-      heightPercent: 47.0,
-      borderRadius: "1.5rem",
+    {
+      title: "Agrarian Revolution & Rural Roads",
+      description:
+        "Direct investment in connecting farming communities to commercial markets, providing subsidized inputs, and rehabilitating feeder roads to curb post-harvest losses.",
+      icon: "Tractor",
     },
-    defaultLgas: [
-      "Akwanga",
-      "Awe",
-      "Doma",
-      "Karu",
-      "Keana",
-      "Keffi",
-      "Kokona",
-      "Lafia",
-      "Nasarawa",
-      "Nasarawa Eggon",
-      "Obi",
-      "Toto",
-      "Wamba",
-    ],
+    {
+      title: "Quality Education & Youth Capital",
+      description:
+        "Comprehensive scholarship schemes for tertiary students, renovation of primary and secondary schools, and vocational training centers.",
+      icon: "GraduationCap",
+    },
+    {
+      title: "Accessible Healthcare & Social Safety Nets",
+      description:
+        "Equipping primary healthcare centers, routine medical outreach programs, and welfare support for elderly, widows, and vulnerable households.",
+      icon: "HeartPulse",
+    },
+  ],
+};
+
+export const FRAME_CONFIG = {
+  frameSrc: "/gone_frame.png",
+  dimensions: { width: 1024, height: 1024 },
+  cutout: {
+    top: "26.07%",
+    left: "50.88%",
+    right: "6.64%",
+    bottom: "31.93%",
+    widthPercent: 42.48,
+    heightPercent: 42.0,
+    borderRadius: "1.75rem",
   },
 };
 
+export interface LgaInfo {
+  name: string;
+  constituency: string;
+  state: string;
+  count: number;
+  wards: string[];
+}
+
+export const CONSTITUENCY_LGAS: LgaInfo[] = [
+  {
+    name: "Ankpa",
+    constituency: "Ankpa/Omala/Olamaboro",
+    state: "Kogi",
+    count: 7420,
+    wards: [
+      "Ankpa Township",
+      "Ankpa Suburb I",
+      "Ankpa Suburb II",
+      "Enjema I",
+      "Enjema II",
+      "Ojoku I",
+      "Ojoku II",
+      "Ojoku III",
+      "Biraidu (Awo)",
+      "Biraidu (Okaba)",
+      "Biraidu (Inye)",
+    ],
+  },
+  {
+    name: "Omala",
+    constituency: "Ankpa/Omala/Olamaboro",
+    state: "Kogi",
+    count: 5180,
+    wards: [
+      "Abejukolo I",
+      "Abejukolo II",
+      "Bagana",
+      "Bagaji",
+      "Akpacha",
+      "Ogodu",
+      "Icheke",
+      "Oji-Aji",
+      "Olla",
+      "Ife",
+    ],
+  },
+  {
+    name: "Olamaboro",
+    constituency: "Ankpa/Omala/Olamaboro",
+    state: "Kogi",
+    count: 6890,
+    wards: [
+      "Imane I",
+      "Imane II",
+      "Okpo",
+      "Ogugu I",
+      "Ogugu II",
+      "Ogugu III",
+      "Adeh",
+      "Inele",
+      "Ugo",
+      "Ochadamu",
+    ],
+  },
+];
+
 export interface Supporter {
   id: string;
-  campaignId: "gone" | "wadada";
   name: string;
   lga: string;
   ward?: string;
@@ -95,87 +155,67 @@ export interface Supporter {
 
 export const INITIAL_SUPPORTERS: Supporter[] = [
   {
-    id: "sup-1",
-    campaignId: "gone",
-    name: "Ibrahim Usman",
-    lga: "Ankpa",
-    ward: "Ankpa Township",
+    id: "g1-sup-1",
+    name: "Comrade Yusuf Ogwu",
+    lga: "Olamaboro",
+    ward: "Imane I",
     imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T12:30:00Z",
   },
   {
-    id: "sup-2",
-    campaignId: "gone",
-    name: "Faith Ochanya",
-    lga: "Olamaboro",
-    ward: "Okpo Central",
+    id: "g1-sup-2",
+    name: "Hon. Faith Ochanya",
+    lga: "Ankpa",
+    ward: "Ankpa Township",
     imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T11:45:00Z",
   },
   {
-    id: "sup-3",
-    campaignId: "gone",
+    id: "g1-sup-3",
     name: "Salifu Mohammed",
     lga: "Omala",
-    ward: "Abejukolo Ward",
+    ward: "Abejukolo I",
     imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T10:15:00Z",
   },
   {
-    id: "sup-4",
-    campaignId: "wadada",
-    name: "Musa Al-Hassan",
-    lga: "Lafia",
-    ward: "Lafia Central",
-    imageUrl: "/poster_sample.png",
+    id: "g1-sup-4",
+    name: "David Oche",
+    lga: "Ankpa",
+    ward: "Ojoku I",
+    imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T09:20:00Z",
   },
   {
-    id: "sup-5",
-    campaignId: "wadada",
-    name: "Amina Yusuf",
-    lga: "Keffi",
-    ward: "Keffi Town",
-    imageUrl: "/poster_sample.png",
+    id: "g1-sup-5",
+    name: "Grace Enenche",
+    lga: "Olamaboro",
+    ward: "Okpo",
+    imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T08:50:00Z",
   },
   {
-    id: "sup-6",
-    campaignId: "gone",
-    name: "David Oche",
-    lga: "Ankpa",
-    ward: "Ojoku Ward",
+    id: "g1-sup-6",
+    name: "Ahmed Haruna",
+    lga: "Omala",
+    ward: "Bagana",
     imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T08:10:00Z",
   },
   {
-    id: "sup-7",
-    campaignId: "wadada",
-    name: "Chukwudi Eze",
-    lga: "Karu",
-    ward: "Mararaba",
-    imageUrl: "/poster_sample.png",
+    id: "g1-sup-7",
+    name: "Blessing Ameh",
+    lga: "Ankpa",
+    ward: "Enjema I",
+    imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T07:30:00Z",
   },
   {
-    id: "sup-8",
-    campaignId: "gone",
-    name: "Grace Enenche",
+    id: "g1-sup-8",
+    name: "Engr. Paul Attah",
     lga: "Olamaboro",
-    ward: "Imane Ward",
+    ward: "Ogugu I",
     imageUrl: "/poster_sample_gone.png",
     createdAt: "2026-11-01T06:15:00Z",
   },
-];
-
-export const LGA_STATS = [
-  { name: "Ankpa", count: 3420, constituency: "Ankpa/Omala/Olamaboro", state: "Kogi" },
-  { name: "Omala", count: 2180, constituency: "Ankpa/Omala/Olamaboro", state: "Kogi" },
-  { name: "Olamaboro", count: 2890, constituency: "Ankpa/Omala/Olamaboro", state: "Kogi" },
-  { name: "Lafia", count: 5210, constituency: "Nasarawa South", state: "Nasarawa" },
-  { name: "Keffi", count: 4120, constituency: "Nasarawa West", state: "Nasarawa" },
-  { name: "Karu", count: 4890, constituency: "Nasarawa West", state: "Nasarawa" },
-  { name: "Akwanga", count: 3150, constituency: "Nasarawa North", state: "Nasarawa" },
-  { name: "Nasarawa", count: 3670, constituency: "Nasarawa West", state: "Nasarawa" },
-  { name: "Doma", count: 2340, constituency: "Nasarawa South", state: "Nasarawa" },
 ];

@@ -5,6 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, Sparkles } from "lucide-react";
+import { G_ONE_CANDIDATE } from "@/lib/data";
 
 export function Navbar() {
   const pathname = usePathname();
@@ -12,38 +13,33 @@ export function Navbar() {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/generate", label: "Generate" },
-    { href: "/supporters", label: "Supporters" },
-    { href: "/statistics", label: "Statistics" },
+    { href: "/generate", label: "Generate Poster" },
+    { href: "/supporters", label: "Supporters Wall" },
+    { href: "/statistics", label: "Constituency Stats" },
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border bg-white/85 backdrop-blur-md transition-all">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-md transition-all shadow-sm">
       <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-20 items-center justify-between">
-          {/* Brand Logo & Title */}
+          {/* Brand Logo & Candidate Details */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-white shadow-sm ring-1 ring-black/5 transition-transform group-hover:scale-105">
-              <Image
-                src="/logo.png"
-                alt="G-ONE & Wadada Support"
-                width={48}
-                height={48}
-                priority
-                className="object-contain p-1"
-              />
+            <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-emerald-50 border border-emerald-200 shadow-sm transition-transform group-hover:scale-105 flex items-center justify-center">
+              <span className="font-black text-xl text-primary tracking-tighter">
+                G-1
+              </span>
             </div>
             <div className="leading-tight">
-              <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-xl tracking-tight text-gray-900">
-                  G-ONE 2027
+              <div className="flex items-center gap-2">
+                <span className="font-black text-lg sm:text-xl tracking-tight text-gray-900">
+                  {G_ONE_CANDIDATE.name}
                 </span>
-                <span className="hidden sm:inline-block rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-bold text-primary">
+                <span className="rounded bg-primary/10 px-1.5 py-0.5 text-[10px] font-black text-primary border border-primary/20">
                   SDP
                 </span>
               </div>
-              <p className="text-xs font-medium text-muted-foreground">
-                Progress · In God We Trust
+              <p className="text-xs font-semibold text-muted-foreground truncate max-w-[250px] sm:max-w-none">
+                House of Reps · Ankpa, Omala, Olamaboro Constituency
               </p>
             </div>
           </Link>
@@ -56,9 +52,9 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-2 py-1 text-sm font-semibold transition-colors duration-200 ${
+                  className={`relative px-2 py-1 text-sm font-bold transition-colors duration-200 ${
                     isActive
-                      ? "text-primary font-bold"
+                      ? "text-primary"
                       : "text-gray-600 hover:text-primary"
                   }`}
                 >
@@ -75,7 +71,7 @@ export function Navbar() {
           <div className="flex items-center gap-3">
             <Link
               href="/generate"
-              className="hidden md:inline-flex items-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-semibold text-white shadow-sm transition-all hover:bg-primary-light active:scale-95"
+              className="hidden md:inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-emerald-900/10 transition-all hover:bg-emerald-700 active:scale-95"
             >
               <Sparkles className="h-4 w-4" />
               <span>Generate Poster</span>
@@ -85,7 +81,7 @@ export function Navbar() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="inline-flex md:hidden items-center justify-center rounded-lg p-2 text-gray-700 hover:bg-gray-100 transition-colors"
+              className="inline-flex md:hidden items-center justify-center rounded-xl p-2 text-gray-700 hover:bg-gray-100 transition-colors"
               aria-label="Toggle Navigation Menu"
             >
               {mobileMenuOpen ? (
@@ -109,7 +105,7 @@ export function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setMobileMenuOpen(false)}
-                  className={`block rounded-lg px-3 py-2.5 text-base font-semibold transition-colors ${
+                  className={`block rounded-xl px-4 py-3 text-base font-bold transition-colors ${
                     isActive
                       ? "bg-primary/10 text-primary"
                       : "text-gray-700 hover:bg-gray-50 hover:text-primary"
@@ -123,7 +119,7 @@ export function Navbar() {
               <Link
                 href="/generate"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-primary py-3 text-center text-sm font-bold text-white shadow hover:bg-primary-light"
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-center text-sm font-bold text-white shadow hover:bg-emerald-700"
               >
                 <Sparkles className="h-4 w-4" />
                 <span>Generate Poster Now</span>

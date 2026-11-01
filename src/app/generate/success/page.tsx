@@ -6,46 +6,38 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import {
   Download,
-  Share2,
   CheckCircle2,
   ArrowLeft,
   Sparkles,
   Copy,
   Check,
+  Share2,
 } from "lucide-react";
-import { CAMPAIGNS, CampaignConfig } from "@/lib/data";
+import { G_ONE_CANDIDATE } from "@/lib/data";
 
 function SuccessContent() {
   const searchParams = useSearchParams();
-  const campaignId = (searchParams.get("campaign") as "gone" | "wadada") || "gone";
   const supporterName = searchParams.get("name") || "Supporter";
   const lga = searchParams.get("lga") || "Constituency";
-
-  const campaign: CampaignConfig = CAMPAIGNS[campaignId] || CAMPAIGNS.gone;
+  const ward = searchParams.get("ward");
 
   const [posterUrl, setPosterUrl] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    // Load poster image from sessionStorage
+    // Load poster image from sessionStorage or fallback to sample
     const savedPoster = sessionStorage.getItem("latest_poster");
     if (savedPoster) {
       setPosterUrl(savedPoster);
     } else {
-      setPosterUrl(
-        campaignId === "gone"
-          ? "/poster_sample_gone.png"
-          : "/poster_sample.png"
-      );
+      setPosterUrl("/poster_sample_gone.png");
     }
-  }, [campaignId]);
+  }, []);
 
-  const shareText = `I just generated my official campaign support poster for ${campaign.candidateName} (${campaign.office})! Generate yours today at https://wadada-support.vercel.app/`;
+  const shareText = `I just generated my official campaign support poster for ${G_ONE_CANDIDATE.name} (${G_ONE_CANDIDATE.moniker}) for House of Representatives (Ankpa, Omala, Olamaboro Federal Constituency - SDP)! Generate yours now and stand for progress!`;
 
   const handleCopyLink = () => {
-    navigator.clipboard.writeText(
-      window.location.origin || "https://wadada-support.vercel.app/"
-    );
+    navigator.clipboard.writeText(window.location.origin);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };
@@ -54,7 +46,7 @@ function SuccessContent() {
     if (!posterUrl) return;
     const link = document.createElement("a");
     link.href = posterUrl;
-    link.download = `${campaignId}-support-poster.png`;
+    link.download = `g-one-support-poster.png`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -69,12 +61,12 @@ function SuccessContent() {
             <CheckCircle2 className="h-10 w-10" />
           </div>
           <h1 className="text-3xl font-black tracking-tight text-gray-900 sm:text-4xl">
-            Poster Successfully Generated!
+            G-ONE Poster Successfully Generated!
           </h1>
           <p className="text-sm sm:text-base text-gray-600 max-w-lg mx-auto">
             Thank you, <strong className="text-gray-900">{supporterName}</strong>{" "}
-            from <strong className="text-gray-900">{lga}</strong>, for standing
-            with {campaign.candidateName}.
+            from <strong className="text-gray-900">{lga} Local Government</strong>
+            {ward && <span> ({ward})</span>}, for standing with {G_ONE_CANDIDATE.name}.
           </p>
         </div>
 
@@ -87,7 +79,7 @@ function SuccessContent() {
                 {posterUrl ? (
                   <Image
                     src={posterUrl}
-                    alt="Generated Campaign Poster"
+                    alt="Generated G-ONE Campaign Poster"
                     fill
                     priority
                     className="object-cover"
@@ -104,15 +96,15 @@ function SuccessContent() {
             <div className="lg:col-span-6 space-y-6">
               <div>
                 <span className="text-xs font-bold uppercase tracking-wider text-primary">
-                  Official Poster Ready
+                  Official Campaign DP Ready
                 </span>
                 <h2 className="mt-1 text-2xl font-black text-gray-900">
                   Share Your Voice Everywhere
                 </h2>
                 <p className="mt-2 text-xs sm:text-sm text-gray-600 leading-relaxed">
-                  Your poster has been saved to your downloads. Post it as your
-                  WhatsApp DP, Instagram story, and Facebook cover to mobilize
-                  our constituency!
+                  Your official campaign poster is saved to your device. Set it
+                  as your WhatsApp DP, Facebook profile, and status to spread the
+                  G-ONE movement across our constituency!
                 </p>
               </div>
 
@@ -121,10 +113,10 @@ function SuccessContent() {
                 <button
                   type="button"
                   onClick={handleDownloadAgain}
-                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-bold text-white shadow transition-all hover:bg-emerald-700 active:scale-95"
+                  className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 text-sm font-black text-white shadow-md shadow-emerald-900/20 transition-all hover:bg-emerald-700 active:scale-95"
                 >
                   <Download className="h-4 w-4" />
-                  <span>Download Again</span>
+                  <span>Download Poster Again</span>
                 </button>
 
                 {/* Direct Share Options */}
@@ -144,7 +136,7 @@ function SuccessContent() {
                   {/* Facebook */}
                   <a
                     href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
-                      "https://wadada-support.vercel.app/"
+                      window?.location?.origin || "https://g-1.com.ng"
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
