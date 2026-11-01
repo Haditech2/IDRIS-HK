@@ -8,7 +8,12 @@ export const metadata: Metadata = {
   description:
     "Official campaign poster studio for Prince Gowon Enenche (G-ONE) for House of Representatives, Ankpa, Omala, and Olamaboro Federal Constituency (Social Democratic Party - SDP).",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/logo.png",
   },
 };
 

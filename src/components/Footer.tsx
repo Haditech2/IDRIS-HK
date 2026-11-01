@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { G_ONE_CANDIDATE } from "@/lib/data";
 import { ShieldCheck, Globe, ExternalLink } from "lucide-react";
 
@@ -10,13 +11,23 @@ export function Footer() {
         <div className="grid gap-10 md:grid-cols-12 lg:gap-16">
           {/* Brand & Campaign Info */}
           <div className="md:col-span-6 space-y-4">
-            <div className="flex items-center gap-2">
-              <span className="font-black text-2xl tracking-tight text-gray-900">
-                G-ONE 2027
-              </span>
-              <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-black text-primary border border-primary/20">
-                SDP OFFICIAL
-              </span>
+            <div className="flex items-center gap-3">
+              <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+                <Image
+                  src="/logo.png"
+                  alt="Prince Gowon Enenche Official Logo"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="font-black text-2xl tracking-tight text-gray-900">
+                  G-ONE 2027
+                </span>
+                <span className="rounded-md bg-primary/10 px-2 py-0.5 text-xs font-black text-primary border border-primary/20">
+                  SDP OFFICIAL
+                </span>
+              </div>
             </div>
             <p className="text-sm font-semibold text-gray-700">
               {G_ONE_CANDIDATE.name} ({G_ONE_CANDIDATE.moniker})

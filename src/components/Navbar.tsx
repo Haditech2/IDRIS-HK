@@ -24,10 +24,14 @@ export function Navbar() {
         <div className="flex h-20 items-center justify-between">
           {/* Brand Logo & Candidate Details */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-12 overflow-hidden rounded-xl bg-emerald-50 border border-emerald-200 shadow-sm transition-transform group-hover:scale-105 flex items-center justify-center">
-              <span className="font-black text-xl text-primary tracking-tighter">
-                G-1
-              </span>
+            <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm ring-1 ring-black/5 transition-transform group-hover:scale-105">
+              <Image
+                src="/logo.png"
+                alt="Prince Gowon Enenche Official Logo"
+                fill
+                priority
+                className="object-cover"
+              />
             </div>
             <div className="leading-tight">
               <div className="flex items-center gap-2">
