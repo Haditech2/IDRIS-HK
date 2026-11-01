@@ -15,6 +15,7 @@ import {
   AlertCircle,
   MapPin,
   CheckCircle2,
+  ShieldCheck,
 } from "lucide-react";
 import {
   G_ONE_CANDIDATE,
@@ -202,20 +203,38 @@ function GenerateContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/70 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen bg-gray-50/70 py-12 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Background Watermark of Candidate Standing (Right) and Native (Left) */}
+      <div className="pointer-events-none absolute -right-20 top-40 h-[700px] w-[500px] opacity-[0.03] lg:opacity-[0.05] -z-10">
+        <Image
+          src="/gone_standing.jpg"
+          alt="G-ONE Background Right"
+          fill
+          className="object-cover object-top"
+        />
+      </div>
+      <div className="pointer-events-none absolute -left-20 bottom-20 h-[700px] w-[500px] opacity-[0.03] lg:opacity-[0.05] -z-10">
+        <Image
+          src="/gone_native.jpg"
+          alt="G-ONE Background Left"
+          fill
+          className="object-cover object-top"
+        />
+      </div>
+
       <div className="mx-auto max-w-7xl">
-        {/* Page Header */}
+        {/* Page Header with Candidate Context */}
         <div className="mb-10 text-center max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-primary">
             <Sparkles className="h-3.5 w-3.5" />
-            Official Campaign Poster Studio
+            Official Campaign Studio
           </span>
           <h1 className="mt-3 text-3xl font-black tracking-tight text-gray-900 sm:text-5xl">
             Design Your G-ONE Poster
           </h1>
           <p className="mt-3 text-sm sm:text-base text-gray-600">
             Upload your picture, adjust framing, select your constituency ward, and
-            download a high-resolution campaign poster instantly.
+            download a publication-ready poster.
           </p>
 
           <div className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2 border border-gray-200 shadow-sm text-xs font-bold text-gray-700">

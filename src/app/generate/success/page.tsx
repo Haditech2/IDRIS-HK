@@ -53,7 +53,17 @@ function SuccessContent() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/70 py-16 px-4 sm:px-6 lg:px-8">
+    <div className="relative min-h-screen bg-gray-50/70 py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+      {/* Subtle Background of Candidate Thumbs Up celebrating success */}
+      <div className="pointer-events-none absolute right-0 top-0 h-[600px] w-[500px] opacity-[0.04] lg:opacity-[0.07] -z-10">
+        <Image
+          src="/gone_thumbs.jpg"
+          alt="G-ONE Success Background"
+          fill
+          className="object-cover object-top"
+        />
+      </div>
+
       <div className="mx-auto max-w-4xl">
         {/* Success Header */}
         <div className="text-center space-y-4">

@@ -16,17 +16,54 @@ import {
   HeartPulse,
   Globe,
   Award,
+  ChevronLeft,
+  ChevronRight,
+  Camera,
 } from "lucide-react";
 import { G_ONE_CANDIDATE, CONSTITUENCY_LGAS } from "@/lib/data";
 
+const CANDIDATE_GALLERY = [
+  {
+    src: "/gone_hero.jpg",
+    title: "Grassroots Mobilizer",
+    subtitle: "G-ONE 2027 Official Campaign",
+    badge: "Campaign Trail",
+  },
+  {
+    src: "/gone_thumbs.jpg",
+    title: "The People's Choice",
+    subtitle: "Double Thumbs Up for Progress",
+    badge: "SDP Official",
+  },
+  {
+    src: "/gone_native.jpg",
+    title: "Cultural Heritage & Leadership",
+    subtitle: "Rooted in Imane, Olamaboro",
+    badge: "Community Leader",
+  },
+  {
+    src: "/gone_corporate.jpg",
+    title: "Visionary Business Leader",
+    subtitle: "CEO, G-One Luxury Homes & G1 Group",
+    badge: "Private Sector",
+  },
+  {
+    src: "/gone_standing.jpg",
+    title: "Ready to Serve",
+    subtitle: "House of Representatives 2027",
+    badge: "Legislative Mission",
+  },
+];
+
 export default function HomePage() {
   const [currentLgaIndex, setCurrentLgaIndex] = useState(0);
+  const [activePhotoIndex, setActivePhotoIndex] = useState(0);
 
   // Cycle through constituency LGAs for spotlight
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentLgaIndex((prev) => (prev + 1) % CONSTITUENCY_LGAS.length);
-    }, 3000);
+    }, 3200);
     return () => clearInterval(timer);
   }, []);
 
@@ -34,31 +71,31 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* HERO SECTION */}
-      <section className="relative min-h-[92vh] flex items-center overflow-hidden bg-gray-950 text-white">
-        {/* Candidate Background Image */}
+      {/* HERO SECTION WITH CANDIDATE BACKGROUND */}
+      <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-gray-950 text-white">
+        {/* Candidate Background Image (High-Res Orange Cap Photo) */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="/candidate_gone.png"
+            src="/gone_hero.jpg"
             alt={G_ONE_CANDIDATE.name}
             fill
             priority
-            className="object-cover object-top opacity-45"
+            className="object-cover object-[center_20%] opacity-40 scale-105 transition-transform duration-1000"
           />
         </div>
 
         {/* Cinematic Backdrop Overlays */}
-        <div className="absolute inset-0 z-0 bg-black/60 backdrop-blur-[2px]" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/95 via-emerald-900/65 to-black/40" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-950 via-transparent to-black/50" />
-        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.4),transparent_50%)]" />
+        <div className="absolute inset-0 z-0 bg-black/55 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/95 via-emerald-900/75 to-black/50" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-950 via-transparent to-black/60" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.45),transparent_55%)]" />
 
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-6">
               {/* Campaign Tag Badge */}
-              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-900/40 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-emerald-300 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-900/50 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/30">
                 <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
                 <span>Ankpa, Omala, Olamaboro Federal Constituency · SDP</span>
               </div>
@@ -76,14 +113,14 @@ export default function HomePage() {
                 <strong className="text-white">
                   {G_ONE_CANDIDATE.name} ({G_ONE_CANDIDATE.moniker})
                 </strong>{" "}
-                for House of Representatives. Generate your customized campaign
-                poster and declare your vote for true progress and representation!
+                for House of Representatives. Upload your photo, personalize your
+                constituency details, and show your vote for progress!
               </p>
 
               {/* Key Slogan Pill */}
-              <div className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2 border border-white/15 backdrop-blur-md">
+              <div className="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2.5 border border-white/20 backdrop-blur-md">
                 <span className="text-xs uppercase font-extrabold text-emerald-400 tracking-wider">
-                  Slogan:
+                  Motto:
                 </span>
                 <span className="text-xs sm:text-sm font-black text-white">
                   {G_ONE_CANDIDATE.slogan} — {G_ONE_CANDIDATE.subSlogan}
@@ -137,7 +174,7 @@ export default function HomePage() {
                 </div>
 
                 {/* Main Prominent Card */}
-                <div className="relative z-20 aspect-square w-full overflow-hidden rounded-3xl border-2 border-white/20 bg-gray-900 shadow-2xl shadow-emerald-950/80 transition-all hover:scale-[1.02]">
+                <div className="relative z-20 aspect-square w-full overflow-hidden rounded-3xl border-2 border-white/25 bg-gray-900 shadow-2xl shadow-emerald-950/80 transition-all hover:scale-[1.02]">
                   <Image
                     src="/poster_sample_gone.png"
                     alt="Official G-ONE Campaign Poster"
@@ -145,7 +182,7 @@ export default function HomePage() {
                     priority
                     className="object-cover"
                   />
-                  <div className="absolute bottom-3 left-3 right-3 rounded-2xl bg-black/80 p-3 backdrop-blur-md border border-white/15 text-center">
+                  <div className="absolute bottom-3 left-3 right-3 rounded-2xl bg-black/85 p-3.5 backdrop-blur-md border border-white/15 text-center">
                     <p className="text-[11px] font-black text-emerald-400 uppercase tracking-wider">
                       {G_ONE_CANDIDATE.constituency}
                     </p>
@@ -234,8 +271,18 @@ export default function HomePage() {
       </section>
 
       {/* 4 CORE LEGISLATIVE PILLARS */}
-      <section className="py-24 bg-white">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <section className="relative overflow-hidden py-24 bg-white">
+        {/* Subtle Ambient Candidate Watermark */}
+        <div className="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 h-[600px] w-[450px] opacity-[0.03] lg:opacity-[0.04] -z-0">
+          <Image
+            src="/gone_corporate.jpg"
+            alt="G-ONE Agenda Background"
+            fill
+            className="object-cover object-top"
+          />
+        </div>
+
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <span className="text-xs font-extrabold uppercase tracking-[0.2em] text-primary">
               Legislative Agenda
@@ -277,8 +324,17 @@ export default function HomePage() {
 
       {/* 3 SIMPLE STEPS SECTION */}
       <section className="py-20 bg-gray-50 border-t border-gray-200">
-        <div className="bg-[#006C43] py-12 text-white">
-          <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+        <div className="relative overflow-hidden bg-[#006C43] py-14 text-white">
+          {/* Subtle Candidate Background in Steps Header */}
+          <div className="absolute inset-0 opacity-15">
+            <Image
+              src="/gone_standing.jpg"
+              alt="G-ONE"
+              fill
+              className="object-cover object-top"
+            />
+          </div>
+          <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
               Claim Your Campaign Poster
             </h2>
@@ -385,40 +441,94 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FULL-WIDTH BANNER */}
-      <section className="w-full bg-[#006C43] py-20 md:py-28 text-white text-center">
-        <div className="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="inline-block rounded-full bg-white/10 px-4 py-1 text-xs font-bold uppercase tracking-widest text-emerald-200 mb-4 backdrop-blur-md">
+      {/* FULL-WIDTH BANNER WITH THUMBS-UP CANDIDATE BACKGROUND */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-primary to-emerald-900 py-24 md:py-32 text-white text-center">
+        {/* Subtle Candidate Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/gone_thumbs.jpg"
+            alt="Prince Gowon Enenche Thumbs Up"
+            fill
+            className="object-cover object-[center_30%] opacity-20 mix-blend-luminosity"
+          />
+        </div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/90 via-primary/80 to-emerald-950/90" />
+
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="inline-block rounded-full bg-white/10 px-5 py-1.5 text-xs font-black uppercase tracking-widest text-emerald-200 mb-6 backdrop-blur-md border border-white/20">
             The G-1 Movement · Progress For All
           </div>
-          <h2 className="text-4xl font-black uppercase tracking-wider md:text-6xl lg:text-7xl">
+          <h2 className="text-4xl font-black uppercase tracking-wider sm:text-6xl lg:text-7xl">
             I RESERVED FOR HIM MY VOTE
           </h2>
-          <p className="mt-4 text-base md:text-lg text-emerald-100 max-w-2xl mx-auto font-medium">
+          <p className="mt-4 text-base md:text-xl text-emerald-100 max-w-2xl mx-auto font-bold">
             Progress · In God We Trust · Social Democratic Party (SDP)
           </p>
+          <div className="mt-8 flex justify-center">
+            <Link
+              href="/generate"
+              className="inline-flex items-center gap-2 rounded-full bg-white px-8 py-3.5 text-sm font-black text-primary shadow-xl hover:bg-emerald-50 active:scale-95 transition-all"
+            >
+              <Sparkles className="h-4 w-4" />
+              <span>Create Your Supporter DP</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* MEET THE CANDIDATE SECTION */}
+      {/* MEET THE CANDIDATE & GALLERY SECTION */}
       <section className="py-24 bg-white">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-3xl border border-gray-200 bg-gray-50/50 p-8 shadow-sm md:p-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Main Profile Card */}
+          <div className="overflow-hidden rounded-3xl border border-gray-200 bg-gray-50/60 p-8 shadow-sm md:p-14">
             <div className="flex flex-col gap-10 lg:flex-row lg:items-center">
-              <div className="mx-auto w-full max-w-[320px] shrink-0">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-emerald-500/20 shadow-xl">
+              {/* Interactive Candidate Photo Display */}
+              <div className="mx-auto w-full max-w-[340px] shrink-0 space-y-3">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-3xl border-2 border-emerald-500/30 shadow-2xl bg-gray-900">
                   <Image
-                    src="/candidate_gone.png"
-                    alt={G_ONE_CANDIDATE.name}
+                    src={CANDIDATE_GALLERY[activePhotoIndex].src}
+                    alt={CANDIDATE_GALLERY[activePhotoIndex].title}
                     fill
-                    className="object-cover object-top"
+                    className="object-cover object-top transition-all duration-500"
                   />
                   <div className="absolute top-3 right-3 rounded-full bg-primary px-3 py-1 text-xs font-black text-white shadow">
-                    SDP
+                    {CANDIDATE_GALLERY[activePhotoIndex].badge}
                   </div>
+                  <div className="absolute bottom-3 left-3 right-3 rounded-2xl bg-black/75 p-3 backdrop-blur-md text-white text-center border border-white/10">
+                    <p className="text-xs font-black">
+                      {CANDIDATE_GALLERY[activePhotoIndex].title}
+                    </p>
+                    <p className="text-[10px] text-gray-300">
+                      {CANDIDATE_GALLERY[activePhotoIndex].subtitle}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Thumbnails to Switch Candidate Photos */}
+                <div className="flex items-center justify-center gap-2 pt-1">
+                  {CANDIDATE_GALLERY.map((photo, i) => (
+                    <button
+                      key={photo.src}
+                      type="button"
+                      onClick={() => setActivePhotoIndex(i)}
+                      className={`relative h-12 w-12 overflow-hidden rounded-xl border-2 transition-all ${
+                        activePhotoIndex === i
+                          ? "border-primary scale-105 shadow-md ring-2 ring-primary/30"
+                          : "border-gray-200 opacity-60 hover:opacity-100"
+                      }`}
+                    >
+                      <Image
+                        src={photo.src}
+                        alt={photo.title}
+                        fill
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
                 </div>
               </div>
 
+              {/* Biography Details */}
               <div className="flex-1 text-left space-y-4">
                 <div className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-primary">
                   <ShieldCheck className="h-4 w-4" />
@@ -471,6 +581,51 @@ export default function HomePage() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* GRASSROOTS EMPOWERMENT & CALL TO ACTION WITH NATIVE ATTIRE BACKGROUND */}
+      <section className="relative overflow-hidden bg-emerald-950 py-20 text-white">
+        {/* Subtle Candidate Native Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/gone_native.jpg"
+            alt="Prince Gowon Enenche Grassroots Representation"
+            fill
+            className="object-cover object-[center_20%] opacity-20 mix-blend-luminosity"
+          />
+        </div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-emerald-950 via-emerald-950/85 to-emerald-950/90" />
+
+        <div className="relative z-20 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 space-y-6">
+          <span className="inline-flex items-center gap-2 rounded-full bg-emerald-800/60 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-300 border border-emerald-700/50 backdrop-blur-md">
+            <Award className="h-4 w-4" />
+            A New Era of Representation
+          </span>
+          <h2 className="text-3xl font-black sm:text-5xl tracking-tight">
+            Stand for Progress. Stand with G-ONE.
+          </h2>
+          <p className="text-sm sm:text-base text-emerald-100 max-w-2xl mx-auto leading-relaxed">
+            Every voice counts. Join tens of thousands of citizens across Ankpa,
+            Omala, and Olamaboro Federal Constituency rallying behind Prince Gowon
+            Enenche for House of Representatives in 2027.
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <Link
+              href="/generate"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-8 py-4 text-sm font-black text-white shadow-xl hover:bg-emerald-600 active:scale-95 transition-all"
+            >
+              <Sparkles className="h-4 w-4" />
+              <span>Generate Your Free Poster</span>
+            </Link>
+            <Link
+              href="/supporters"
+              className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-8 py-4 text-sm font-bold text-white hover:bg-white hover:text-gray-900 transition-all backdrop-blur-md"
+            >
+              <span>View Supporters Wall</span>
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </div>
         </div>
       </section>

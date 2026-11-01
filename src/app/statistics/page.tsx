@@ -2,6 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { TrendingUp, BarChart3, MapPin, Sparkles, Award, ShieldCheck } from "lucide-react";
 import { CONSTITUENCY_LGAS, G_ONE_CANDIDATE } from "@/lib/data";
 
@@ -11,32 +12,59 @@ export default function StatisticsPage() {
   const totalWards = CONSTITUENCY_LGAS.reduce((sum, item) => sum + item.wards.length, 0);
 
   return (
-    <div className="min-h-screen bg-gray-50/70 py-14 px-4 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
-        {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-10 border-b border-gray-200">
-          <div>
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-primary">
-              <TrendingUp className="h-3.5 w-3.5" />
-              Constituency Grassroots Data
-            </span>
-            <h1 className="mt-3 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">
-              Campaign Mobilization Statistics
-            </h1>
-            <p className="mt-2 text-sm sm:text-base text-gray-600 max-w-xl">
-              Real-time grassroots engagement metrics for Prince Gowon Enenche (G-ONE)
-              across Ankpa, Omala, and Olamaboro Federal Constituency.
-            </p>
-          </div>
+    <div className="relative min-h-screen bg-gray-50/70 overflow-hidden">
+      {/* Background Ambient Watermark */}
+      <div className="pointer-events-none absolute -left-20 top-80 h-[800px] w-[500px] opacity-[0.03] lg:opacity-[0.05] -z-10">
+        <Image
+          src="/gone_native.jpg"
+          alt="G-ONE Ambient Background"
+          fill
+          className="object-cover object-top"
+        />
+      </div>
 
-          <Link
-            href="/generate"
-            className="inline-flex items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-md transition hover:bg-emerald-700 active:scale-95 self-start md:self-auto"
-          >
-            <Sparkles className="h-4 w-4" />
-            <span>Generate Poster</span>
-          </Link>
+      {/* Hero Header with Corporate Candidate Background */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-primary to-emerald-900 py-16 text-white shadow-lg">
+        {/* Candidate Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/gone_corporate.jpg"
+            alt="Prince Gowon Enenche Corporate Background"
+            fill
+            priority
+            className="object-cover object-[center_25%] opacity-20 mix-blend-luminosity"
+          />
         </div>
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/90 via-primary/80 to-emerald-950/90" />
+
+        <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="space-y-3">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3.5 py-1 text-xs font-black uppercase tracking-wider text-emerald-200 border border-white/20 backdrop-blur-md">
+                <TrendingUp className="h-3.5 w-3.5" />
+                Constituency Grassroots Data
+              </span>
+              <h1 className="text-3xl font-black tracking-tight sm:text-5xl">
+                Campaign Mobilization Statistics
+              </h1>
+              <p className="text-sm sm:text-base text-emerald-100 max-w-xl leading-relaxed">
+                Real-time grassroots engagement metrics for Prince Gowon Enenche (G-ONE)
+                across Ankpa, Omala, and Olamaboro Federal Constituency.
+              </p>
+            </div>
+
+            <Link
+              href="/generate"
+              className="inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-3.5 text-sm font-black text-primary shadow-xl transition hover:bg-emerald-50 active:scale-95 self-start md:self-auto"
+            >
+              <Sparkles className="h-4 w-4" />
+              <span>Generate Poster</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-10">
 
         {/* Highlight KPI Cards */}
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
