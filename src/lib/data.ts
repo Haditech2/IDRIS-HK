@@ -90,7 +90,7 @@ export const CONSTITUENCY_LGAS: LgaInfo[] = [
     name: "Ankpa",
     constituency: "Ankpa/Omala/Olamaboro",
     state: "Kogi",
-    count: 7420,
+    count: 0,
     wards: [
       "Ankpa Township",
       "Ankpa Suburb I",
@@ -109,7 +109,7 @@ export const CONSTITUENCY_LGAS: LgaInfo[] = [
     name: "Omala",
     constituency: "Ankpa/Omala/Olamaboro",
     state: "Kogi",
-    count: 5180,
+    count: 0,
     wards: [
       "Abejukolo I",
       "Abejukolo II",
@@ -127,7 +127,7 @@ export const CONSTITUENCY_LGAS: LgaInfo[] = [
     name: "Olamaboro",
     constituency: "Ankpa/Omala/Olamaboro",
     state: "Kogi",
-    count: 6890,
+    count: 0,
     wards: [
       "Imane I",
       "Imane II",
@@ -153,69 +153,4 @@ export interface Supporter {
   createdAt: string;
 }
 
-export const INITIAL_SUPPORTERS: Supporter[] = [
-  {
-    id: "g1-sup-1",
-    name: "Comrade Yusuf Ogwu",
-    lga: "Olamaboro",
-    ward: "Imane I",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T12:30:00Z",
-  },
-  {
-    id: "g1-sup-2",
-    name: "Hon. Faith Ochanya",
-    lga: "Ankpa",
-    ward: "Ankpa Township",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T11:45:00Z",
-  },
-  {
-    id: "g1-sup-3",
-    name: "Salifu Mohammed",
-    lga: "Omala",
-    ward: "Abejukolo I",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T10:15:00Z",
-  },
-  {
-    id: "g1-sup-4",
-    name: "David Oche",
-    lga: "Ankpa",
-    ward: "Ojoku I",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T09:20:00Z",
-  },
-  {
-    id: "g1-sup-5",
-    name: "Grace Enenche",
-    lga: "Olamaboro",
-    ward: "Okpo",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T08:50:00Z",
-  },
-  {
-    id: "g1-sup-6",
-    name: "Ahmed Haruna",
-    lga: "Omala",
-    ward: "Bagana",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T08:10:00Z",
-  },
-  {
-    id: "g1-sup-7",
-    name: "Blessing Ameh",
-    lga: "Ankpa",
-    ward: "Enjema I",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T07:30:00Z",
-  },
-  {
-    id: "g1-sup-8",
-    name: "Engr. Paul Attah",
-    lga: "Olamaboro",
-    ward: "Ogugu I",
-    imageUrl: "/poster_sample_gone.png",
-    createdAt: "2026-11-01T06:15:00Z",
-  },
-];
+export const INITIAL_SUPPORTERS: Supporter[] = [];

@@ -1,15 +1,38 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { TrendingUp, BarChart3, MapPin, Sparkles, Award, ShieldCheck } from "lucide-react";
-import { CONSTITUENCY_LGAS, G_ONE_CANDIDATE } from "@/lib/data";
+import { CONSTITUENCY_LGAS, G_ONE_CANDIDATE, Supporter } from "@/lib/data";
 
 export default function StatisticsPage() {
-  const totalPosters = CONSTITUENCY_LGAS.reduce((sum, item) => sum + item.count, 0);
-  const maxCount = Math.max(...CONSTITUENCY_LGAS.map((item) => item.count));
+  const [supporters, setSupporters] = useState<Supporter[]>([]);
+
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem("g_one_supporters");
+      if (stored) {
+        const parsed: Supporter[] = JSON.parse(stored);
+        if (Array.isArray(parsed)) {
+          setSupporters(parsed);
+        }
+      }
+    } catch (e) {
+      console.warn("Could not load supporters from storage:", e);
+    }
+  }, []);
+
+  const totalPosters = supporters.length;
   const totalWards = CONSTITUENCY_LGAS.reduce((sum, item) => sum + item.wards.length, 0);
+
+  // Dynamic live count per LGA from actual supporters
+  const lgaData = CONSTITUENCY_LGAS.map((lga) => {
+    const lgaCount = supporters.filter((s) => s.lga === lga.name).length;
+    return { ...lga, count: lgaCount };
+  });
+
+  const maxCount = Math.max(...lgaData.map((item) => item.count), 1);
 
   return (
     <div className="relative min-h-screen bg-gray-50/70 overflow-hidden">
@@ -136,8 +159,8 @@ export default function StatisticsPage() {
           </div>
 
           <div className="space-y-6">
-            {CONSTITUENCY_LGAS.map((item) => {
-              const percentage = Math.round((item.count / maxCount) * 100);
+            {lgaData.map((item) => {
+              const percentage = totalPosters > 0 ? Math.round((item.count / maxCount) * 100) : 0;
 
               return (
                 <div key={item.name} className="space-y-2">

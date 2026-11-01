@@ -4,10 +4,10 @@ import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Sparkles, Users, Filter, Clock, MapPin } from "lucide-react";
-import { INITIAL_SUPPORTERS, Supporter, CONSTITUENCY_LGAS, G_ONE_CANDIDATE } from "@/lib/data";
+import { Supporter, CONSTITUENCY_LGAS, G_ONE_CANDIDATE } from "@/lib/data";
 
 export default function SupportersPage() {
-  const [supporters, setSupporters] = useState<Supporter[]>(INITIAL_SUPPORTERS);
+  const [supporters, setSupporters] = useState<Supporter[]>([]);
   const [selectedLga, setSelectedLga] = useState<string>("all");
 
   useEffect(() => {
@@ -15,11 +15,9 @@ export default function SupportersPage() {
       const stored = localStorage.getItem("g_one_supporters");
       if (stored) {
         const parsed: Supporter[] = JSON.parse(stored);
-        const combined = [...parsed, ...INITIAL_SUPPORTERS];
-        const unique = Array.from(
-          new Map(combined.map((item) => [item.id, item])).values()
-        );
-        setSupporters(unique);
+        if (Array.isArray(parsed)) {
+          setSupporters(parsed);
+        }
       }
     } catch (e) {
       console.warn("Could not load supporters from storage:", e);
