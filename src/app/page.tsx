@@ -53,6 +53,12 @@ const CANDIDATE_GALLERY = [
     subtitle: "House of Representatives 2027",
     badge: "Legislative Mission",
   },
+  {
+    src: "/gone_rally.jpg",
+    title: "Massive Constituency Rally",
+    subtitle: "Uniting Ankpa, Omala & Olamaboro for G-ONE",
+    badge: "People's Movement",
+  },
 ];
 
 export default function HomePage() {
@@ -71,24 +77,24 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* HERO SECTION WITH CANDIDATE BACKGROUND */}
+      {/* HERO SECTION WITH REAL CAMPAIGN RALLY CROWD BACKGROUND */}
       <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-gray-950 text-white">
-        {/* Candidate Background Image (High-Res Orange Cap Photo - Head NEVER Cut) */}
+        {/* Real Grassroots Campaign Rally Background Image */}
         <div className="absolute inset-0 -z-20">
           <Image
-            src="/gone_hero.jpg"
-            alt={G_ONE_CANDIDATE.name}
+            src="/gone_rally.jpg"
+            alt="Prince Gowon Enenche Grassroots Campaign Rally"
             fill
             priority
-            className="object-cover object-top opacity-40 transition-transform duration-1000"
+            className="object-cover object-[center_35%] opacity-50 transition-transform duration-1000"
           />
         </div>
 
-        {/* Cinematic Backdrop Overlays */}
-        <div className="absolute inset-0 z-0 bg-black/55 backdrop-blur-[1px]" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/95 via-emerald-900/75 to-black/50" />
+        {/* Cinematic Backdrop Overlays for crisp text readability & SDP green ambiance */}
+        <div className="absolute inset-0 z-0 bg-black/50 backdrop-blur-[1px]" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-gray-950/95 via-emerald-950/85 to-emerald-950/30" />
         <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-950 via-transparent to-black/60" />
-        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.45),transparent_55%)]" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.5),transparent_60%)]" />
 
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
