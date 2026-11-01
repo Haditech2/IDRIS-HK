@@ -73,14 +73,14 @@ export default function HomePage() {
     <div className="flex flex-col min-h-screen">
       {/* HERO SECTION WITH CANDIDATE BACKGROUND */}
       <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-gray-950 text-white">
-        {/* Candidate Background Image (High-Res Orange Cap Photo) */}
+        {/* Candidate Background Image (High-Res Orange Cap Photo - Head NEVER Cut) */}
         <div className="absolute inset-0 -z-20">
           <Image
             src="/gone_hero.jpg"
             alt={G_ONE_CANDIDATE.name}
             fill
             priority
-            className="object-cover object-[center_20%] opacity-40 scale-105 transition-transform duration-1000"
+            className="object-cover object-top opacity-40 transition-transform duration-1000"
           />
         </div>
 
@@ -324,20 +324,37 @@ export default function HomePage() {
 
       {/* 3 SIMPLE STEPS SECTION WITH "JOIN THE WINNING TEAM" CANDIDATE BACKGROUND */}
       <section className="py-20 bg-gray-50 border-t border-gray-200">
-        <div className="relative overflow-hidden bg-[#006C43] py-16 md:py-20 text-white shadow-xl">
-          {/* Candidate Background Image (Prince Gowon Enenche Standing) */}
-          <div className="absolute inset-0 z-0">
-            <Image
-              src="/gone_standing.jpg"
-              alt="Prince Gowon Enenche - Join the Winning Team"
-              fill
-              priority
-              className="object-cover object-[center_20%] opacity-40 mix-blend-luminosity scale-105 transition-transform duration-700"
-            />
+        <div className="relative overflow-hidden bg-[#006C43] min-h-[300px] sm:min-h-[340px] flex items-center py-16 text-white shadow-xl">
+          {/* Candidate Background Image on the right side - Preserving full height & head */}
+          <div className="absolute right-0 sm:right-6 md:right-16 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
+            <div className="relative h-full w-full">
+              <Image
+                src="/gone_standing.jpg"
+                alt="Prince Gowon Enenche - Join the Winning Team"
+                fill
+                priority
+                className="object-contain object-top opacity-40 mix-blend-luminosity"
+              />
+              {/* Fade gradients so edges seamlessly blend into #006C43 green */}
+              <div className="absolute inset-0 bg-gradient-to-r from-[#006C43] via-[#006C43]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#006C43] via-transparent to-transparent" />
+            </div>
           </div>
-          {/* Green brand gradient overlay for high contrast and readability */}
-          <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#006C43]/92 via-[#006C43]/75 to-[#006C43]/92" />
-          <div className="absolute inset-0 z-10 bg-radial-gradient from-transparent via-[#006C43]/30 to-[#006C43]/80" />
+
+          {/* Candidate Background Image on the left side (subtle symmetry) */}
+          <div className="absolute left-0 sm:left-6 md:left-16 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0 hidden lg:block">
+            <div className="relative h-full w-full">
+              <Image
+                src="/gone_hero.jpg"
+                alt="Prince Gowon Enenche - G-ONE"
+                fill
+                priority
+                className="object-contain object-top opacity-25 mix-blend-luminosity scale-x-[-1]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-l from-[#006C43] via-[#006C43]/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#006C43] via-transparent to-transparent" />
+            </div>
+          </div>
 
           <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl font-black tracking-tight sm:text-6xl md:text-7xl drop-shadow-md">
@@ -447,20 +464,37 @@ export default function HomePage() {
       </section>
 
       {/* FULL-WIDTH BANNER: IN GOD WE TRUST WITH CANDIDATE BACKGROUND */}
-      <section className="relative w-full overflow-hidden bg-[#0A6FB8] py-24 md:py-32 text-white text-center shadow-xl">
-        {/* Candidate Background Image (Prince Gowon Enenche Thumbs-up / Progress) */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/gone_thumbs.jpg"
-            alt="Prince Gowon Enenche - In God We Trust"
-            fill
-            priority
-            className="object-cover object-[center_30%] opacity-40 mix-blend-luminosity scale-105 transition-transform duration-700"
-          />
+      <section className="relative w-full overflow-hidden bg-[#0A6FB8] min-h-[380px] sm:min-h-[440px] flex items-center py-20 md:py-28 text-white text-center shadow-xl">
+        {/* Candidate Background Image on right - Full Head & Double Thumbs Visible */}
+        <div className="absolute right-0 sm:right-8 md:right-20 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
+          <div className="relative h-full w-full">
+            <Image
+              src="/gone_thumbs.jpg"
+              alt="Prince Gowon Enenche - In God We Trust"
+              fill
+              priority
+              className="object-contain object-top opacity-45 mix-blend-luminosity"
+            />
+            {/* Blend edges seamlessly into royal blue #0A6FB8 */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0A6FB8] via-[#0A6FB8]/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A6FB8] via-transparent to-transparent" />
+          </div>
         </div>
-        {/* Blue brand gradient overlay matching screenshot styling with enhanced contrast */}
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-[#074775]/92 via-[#0A6FB8]/75 to-[#074775]/92" />
-        <div className="absolute inset-0 z-10 bg-[radial-gradient(ellipse_at_center,rgba(10,111,184,0.4),rgba(7,71,117,0.85))]" />
+
+        {/* Candidate Background Image on left (subtle native attire portrait) */}
+        <div className="absolute left-0 sm:left-8 md:left-20 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0 hidden lg:block">
+          <div className="relative h-full w-full">
+            <Image
+              src="/gone_native.jpg"
+              alt="Prince Gowon Enenche - Representation"
+              fill
+              priority
+              className="object-contain object-top opacity-25 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-l from-[#0A6FB8] via-[#0A6FB8]/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0A6FB8] via-transparent to-transparent" />
+          </div>
+        </div>
 
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="inline-block rounded-full bg-white/10 px-5 py-1.5 text-xs font-black uppercase tracking-widest text-blue-100 mb-6 backdrop-blur-md border border-white/20">
@@ -594,17 +628,21 @@ export default function HomePage() {
       </section>
 
       {/* GRASSROOTS EMPOWERMENT & CALL TO ACTION WITH NATIVE ATTIRE BACKGROUND */}
-      <section className="relative overflow-hidden bg-emerald-950 py-20 text-white">
-        {/* Subtle Candidate Native Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/gone_native.jpg"
-            alt="Prince Gowon Enenche Grassroots Representation"
-            fill
-            className="object-cover object-[center_20%] opacity-20 mix-blend-luminosity"
-          />
+      <section className="relative overflow-hidden bg-emerald-950 min-h-[320px] flex items-center py-20 text-white">
+        {/* Candidate Background Image on right - Full Head Intact */}
+        <div className="absolute right-0 sm:right-10 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
+          <div className="relative h-full w-full">
+            <Image
+              src="/gone_native.jpg"
+              alt="Prince Gowon Enenche Grassroots Representation"
+              fill
+              className="object-contain object-top opacity-30 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent" />
+          </div>
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-emerald-950 via-emerald-950/85 to-emerald-950/90" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-emerald-950/90 via-emerald-950/70 to-emerald-950/90" />
 
         <div className="relative z-20 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8 space-y-6">
           <span className="inline-flex items-center gap-2 rounded-full bg-emerald-800/60 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-300 border border-emerald-700/50 backdrop-blur-md">

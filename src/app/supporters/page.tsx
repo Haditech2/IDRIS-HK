@@ -45,19 +45,23 @@ export default function SupportersPage() {
         />
       </div>
 
-      {/* Hero Header with Thumbs-up Candidate Background */}
-      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-primary to-emerald-900 py-16 text-white shadow-lg">
-        {/* Candidate Background Image */}
-        <div className="absolute inset-0 z-0">
-          <Image
-            src="/gone_thumbs.jpg"
-            alt="Prince Gowon Enenche Thumbs Up"
-            fill
-            priority
-            className="object-cover object-[center_35%] opacity-25 mix-blend-luminosity"
-          />
+      {/* Hero Header with Thumbs-up Candidate Background - Head Never Cut */}
+      <section className="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-primary to-emerald-900 min-h-[260px] flex items-center py-16 text-white shadow-lg">
+        {/* Candidate Background Image on right - Full Head Intact */}
+        <div className="absolute right-0 sm:right-8 md:right-16 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
+          <div className="relative h-full w-full">
+            <Image
+              src="/gone_thumbs.jpg"
+              alt="Prince Gowon Enenche Thumbs Up"
+              fill
+              priority
+              className="object-contain object-top opacity-35 mix-blend-luminosity"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/20 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent" />
+          </div>
         </div>
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/90 via-primary/80 to-emerald-950/90" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-emerald-950/90 via-primary/70 to-emerald-950/80" />
 
         <div className="relative z-20 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
