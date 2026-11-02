@@ -30,6 +30,12 @@ const CANDIDATE_GALLERY = [
     badge: "Campaign Trail",
   },
   {
+    src: "/gone_leader.jpg",
+    title: "The Leader of Our Dream",
+    subtitle: "Official SDP Campaign Flyer · House of Reps",
+    badge: "Official Flyer",
+  },
+  {
     src: "/gone_thumbs.jpg",
     title: "The People's Choice",
     subtitle: "Double Thumbs Up for Progress",
@@ -92,24 +98,34 @@ export default function HomePage() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      {/* HERO SECTION WITH REAL CAMPAIGN RALLY CROWD BACKGROUND */}
+      {/* HERO SECTION WITH OFFICIAL CAMPAIGN FLYER BACKGROUND */}
       <section className="relative min-h-[94vh] flex items-center overflow-hidden bg-gray-950 text-white">
-        {/* Real Grassroots Campaign Rally Background Image */}
-        <div className="absolute inset-0 -z-20">
+        {/* Mobile/Vertical: Crisp vertical campaign flyer */}
+        <div className="absolute inset-0 -z-20 sm:hidden">
           <Image
-            src="/gone_rally.jpg"
-            alt="Prince Gowon Enenche Grassroots Campaign Rally"
+            src="/gone_leader.jpg"
+            alt="Prince Gowon Enenche - The Leader of Our Dream"
             fill
             priority
-            className="object-cover object-[center_35%] opacity-50 transition-transform duration-1000"
+            className="object-cover object-top opacity-60"
+          />
+        </div>
+        {/* Desktop/Tablet: Widescreen 16:9 HD Composite with Zero Head Cut-Off */}
+        <div className="absolute inset-0 -z-20 hidden sm:block">
+          <Image
+            src="/gone_hero_bg.jpg"
+            alt="Prince Gowon Enenche - The Leader of Our Dream"
+            fill
+            priority
+            className="object-cover object-center opacity-90 transition-transform duration-1000"
           />
         </div>
 
         {/* Cinematic Backdrop Overlays for crisp text readability & SDP green ambiance */}
-        <div className="absolute inset-0 z-0 bg-black/50 backdrop-blur-[1px]" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-r from-gray-950/95 via-emerald-950/85 to-emerald-950/30" />
-        <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-950 via-transparent to-black/60" />
-        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.5),transparent_60%)]" />
+        <div className="absolute inset-0 z-0 bg-black/30 backdrop-blur-[0.5px]" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-r from-gray-950/95 via-emerald-950/75 to-transparent" />
+        <div className="absolute inset-0 z-10 bg-gradient-to-t from-gray-950/90 via-transparent to-black/50" />
+        <div className="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.4),transparent_60%)]" />
 
         <div className="relative z-20 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
