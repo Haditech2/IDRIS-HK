@@ -64,6 +64,30 @@
     }
     .animate-float { animation: float 6s ease-in-out infinite; }
     .animate-float-reverse { animation: float-reverse 7s ease-in-out infinite; }
+
+    /* Marquee for supporter poster showcase */
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes marquee-reverse {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+      display: flex;
+      gap: 1.25rem;
+    }
+    .animate-marquee-reverse {
+      animation: marquee-reverse 30s linear infinite;
+      display: flex;
+      gap: 1.25rem;
+    }
+    .animate-marquee:hover,
+    .animate-marquee-reverse:hover {
+      animation-play-state: paused;
+    }
   </style>
 
   {% block extra_head %}{% endblock %}

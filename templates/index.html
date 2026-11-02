@@ -113,111 +113,142 @@
   </div>
 </section>
 
-<!-- SECTION 2: CURVED SUPPORTERS POSTER ORBIT ARC (Exact Wadada Interactive Arc Wall) -->
-<section class="overflow-hidden bg-gray-50/60 py-16">
-  <div class="relative h-[550px] overflow-hidden">
-    <div id="orbit-center" class="absolute left-1/2 top-1/2 transition-transform duration-700" style="transform:translate(-50%, -50%)">
-      {% set sample_posters = supporters[:14] if supporters and supporters|length >= 6 else [] %}
-      {% if not sample_posters %}
-        {# Placeholder cards placed mathematically along the ellipse matching Wadada's exact coords #}
-        {% set coords = [
-          (0, 61.2), (138.3, 55.9), (252.7, 40.9), (323.4, 18.9),
-          (338.1, -6.4), (294.4, -30.6), (199.8, -49.5), (70.7, -59.9),
-          (-70.7, -59.9), (-199.8, -49.5), (-294.4, -30.6), (-338.1, -6.4),
-          (-323.4, 18.9), (-252.7, 40.9)
-        ] %}
-        {% for x, y in coords %}
-        <div class="absolute" style="transform:translate({{ x * 1.35 }}px, {{ y * 1.35 }}px) translate(-50%, -50%)">
-          <div class="aspect-square w-36 sm:w-44 rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white transition-transform hover:scale-110">
-            <img src="/static/poster_sample_gone.png" alt="Supporter" class="h-full w-full object-cover">
-          </div>
+<!-- SECTION 2: SUPPORTER POSTER SHOWCASE (Auto-scrolling marquee) -->
+<section class="overflow-hidden bg-gray-50 py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10 text-center">
+    <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#006C43]">Our Supporters</p>
+    <h2 class="mt-2 text-3xl font-black text-gray-900 md:text-4xl">Voices Across the Constituency</h2>
+    <p class="mt-3 text-gray-500">Join thousands of proud supporters of Prince Gowon Enenche (G-ONE)</p>
+  </div>
+
+  <!-- Row 1 — scrolls left -->
+  <div class="relative flex overflow-x-hidden">
+    <div class="animate-marquee flex gap-5 py-3 whitespace-nowrap">
+      {% for i in range(8) %}
+      <div class="inline-block w-44 shrink-0">
+        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
         </div>
-        {% endfor %}
-      {% else %}
-        {% set coords = [
-          (0, 61.2), (138.3, 55.9), (252.7, 40.9), (323.4, 18.9),
-          (338.1, -6.4), (294.4, -30.6), (199.8, -49.5), (70.7, -59.9),
-          (-70.7, -59.9), (-199.8, -49.5), (-294.4, -30.6), (-338.1, -6.4),
-          (-323.4, 18.9), (-252.7, 40.9)
-        ] %}
-        {% for s in sample_posters %}
-        {% set idx = loop.index0 % coords|length %}
-        {% set x, y = coords[idx] %}
-        <div class="absolute" style="transform:translate({{ x * 1.35 }}px, {{ y * 1.35 }}px) translate(-50%, -50%)">
-          <div class="aspect-square w-36 sm:w-44 rounded-3xl overflow-hidden shadow-xl border border-gray-100 bg-white transition-transform hover:scale-110">
-            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover" onerror="this.src='/static/poster_sample_gone.png'">
-          </div>
-        </div>
-        {% endfor %}
-      {% endif %}
+      </div>
+      {% endfor %}
     </div>
+    <!-- Duplicate for seamless loop -->
+    <div class="animate-marquee flex gap-5 py-3 whitespace-nowrap" aria-hidden="true">
+      {% for i in range(8) %}
+      <div class="inline-block w-44 shrink-0">
+        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- Row 2 — scrolls right -->
+  <div class="relative mt-5 flex overflow-x-hidden">
+    <div class="animate-marquee-reverse flex gap-5 py-3 whitespace-nowrap">
+      {% for i in range(8) %}
+      <div class="inline-block w-44 shrink-0">
+        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="animate-marquee-reverse flex gap-5 py-3 whitespace-nowrap" aria-hidden="true">
+      {% for i in range(8) %}
+      <div class="inline-block w-44 shrink-0">
+        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="mt-10 text-center">
+    <a href="/supporters" class="inline-flex items-center gap-2 rounded-full border border-[#006C43] px-6 py-2.5 text-sm font-semibold text-[#006C43] hover:bg-[#006C43] hover:text-white transition-all">
+      View All Supporters →
+    </a>
   </div>
 </section>
 
-<!-- SECTION 3: JOIN THE WINNING TEAM & 3 SIMPLE STEPS (Exact Wadada Section) -->
-<section class="py-12 bg-white">
-  <!-- Top SDP Green Full Width Banner -->
-  <div class="bg-[#006C43] py-10">
-    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-      <h2 class="text-center text-3xl font-black tracking-tight text-white md:text-5xl">
-        Join the Winning Team
-      </h2>
-    </div>
+<!-- SECTION 3: JOIN THE WINNING TEAM & 3 SIMPLE STEPS -->
+<!-- Green banner: full-width, outside any padded wrapper -->
+<div class="w-full bg-[#006C43] py-10">
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <h2 class="text-center text-3xl font-black tracking-tight text-white md:text-5xl">
+      Join the Winning Team
+    </h2>
   </div>
+</div>
 
-  <!-- 3 Steps Content Grid -->
-  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 pt-16">
-    <div class="grid items-center gap-16 lg:grid-cols-5">
+<section class="bg-white py-16">
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-5">
+
       <!-- Left Steps Column -->
       <div class="lg:col-span-3">
-        <h3 class="mt-3 text-4xl font-black text-gray-900">Generate Yours</h3>
-        <p class="text-sm font-semibold uppercase tracking-[0.2em] text-[#006C43]">In 3 Simple Steps</p>
+        <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#006C43]">In 3 Simple Steps</p>
+        <h3 class="mt-2 text-4xl font-black text-gray-900">Generate Yours</h3>
 
-        <div class="mt-10 space-y-6">
+        <div class="mt-10 space-y-8">
           <!-- Step 1 -->
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check h-5 w-5 text-[#006C43]"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-              <h4 class="text-lg font-bold text-gray-900">Add your image &amp; pointers</h4>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+              <span class="text-sm font-black text-[#006C43]">1</span>
             </div>
-            <p class="mt-2 text-gray-500">Upload your photo and enter the campaign information required for your personalized poster.</p>
+            <div>
+              <h4 class="text-lg font-bold text-gray-900">Add your image &amp; details</h4>
+              <p class="mt-1 text-gray-500">Upload your photo and enter the campaign information required for your personalized poster.</p>
+            </div>
           </div>
 
           <!-- Step 2 -->
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check h-5 w-5 text-[#006C43]"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-              <h4 class="text-lg font-bold text-gray-900">Preview</h4>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+              <span class="text-sm font-black text-[#006C43]">2</span>
             </div>
-            <p class="mt-2 text-gray-500">Review your campaign poster before generating the final version.</p>
+            <div>
+              <h4 class="text-lg font-bold text-gray-900">Preview Your Poster</h4>
+              <p class="mt-1 text-gray-500">Review your campaign poster before generating the final version.</p>
+            </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="flex-1">
-            <div class="flex items-center gap-2">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-check h-5 w-5 text-[#006C43]"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg>
-              <h4 class="text-lg font-bold text-gray-900">Generate &amp; Save</h4>
+          <div class="flex gap-4">
+            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+              <span class="text-sm font-black text-[#006C43]">3</span>
             </div>
-            <p class="mt-2 text-gray-500">Generate a high-quality campaign poster and save it to your device instantly.</p>
+            <div>
+              <h4 class="text-lg font-bold text-gray-900">Generate &amp; Share</h4>
+              <p class="mt-1 text-gray-500">Generate a high-quality campaign poster, save it to your device, and share your support.</p>
+            </div>
           </div>
+        </div>
+
+        <div class="mt-10">
+          <a href="/generate" class="inline-flex items-center justify-center rounded-lg bg-[#006C43] px-8 py-3 text-base font-semibold text-white hover:bg-emerald-700 transition shadow-md">
+            Generate My Poster
+          </a>
         </div>
       </div>
 
-      <!-- Right Card Column -->
-      <div class="lg:col-span-2 flex justify-center">
-        <div class="w-full max-w-md">
-          <a class="group block" href="/generate">
-            <div class="relative aspect-square overflow-hidden rounded-3xl border border-gray-200 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-[1.02]">
-              <img alt="Generate Campaign Poster" class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105" src="/static/poster_sample_gone.png">
-            </div>
-          </a>
-          <a class="block" href="/generate">
-            <button type="button" class="mt-6 h-12 w-full text-base font-semibold rounded-lg bg-primary text-white hover:bg-emerald-700 transition-all shadow-md">
-              Generate My Poster
-            </button>
-          </a>
-        </div>
+      <!-- Right Poster Preview Column -->
+      <div class="lg:col-span-2 flex justify-center items-center">
+        <a class="group block w-full max-w-xs" href="/generate">
+          <div class="overflow-hidden rounded-3xl border border-gray-200 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:scale-[1.02]">
+            <img
+              alt="Generate Campaign Poster"
+              class="w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+              src="/static/poster_sample_gone.png"
+              style="max-height: 420px;"
+            >
+          </div>
+          <p class="mt-4 text-center text-sm text-gray-500">Click to create your own →</p>
+        </a>
       </div>
+
     </div>
   </div>
 </section>
@@ -268,15 +299,4 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script>
-  // Subtle automatic arc rotation for Section 2
-  let angle = 0;
-  const orbit = document.getElementById('orbit-center');
-  if (orbit) {
-    setInterval(() => {
-      angle = (angle + 0.15) % 360;
-      orbit.style.transform = `translate(-50%, -50%) rotate(${Math.sin(angle * Math.PI / 180) * 4}deg)`;
-    }, 50);
-  }
-</script>
 {% endblock %}
