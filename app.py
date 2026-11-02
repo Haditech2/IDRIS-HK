@@ -94,6 +94,11 @@ def statistics():
         supporters=all_supporters,
     )
 
+# Static file delivery for serverless
+@app.route("/static/<path:filename>")
+def serve_static(filename):
+    return send_from_directory(STATIC_DIR, filename)
+
 # Static uploaded poster delivery (works for both local static/uploads and Vercel /tmp/posters)
 @app.route("/static/uploads/posters/<filename>")
 def serve_uploaded_poster(filename):
