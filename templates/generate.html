@@ -1,51 +1,30 @@
 {% extends "base.html" %}
 
-{% block title %}Campaign Poster Generator Studio — Prince Gowon Enenche (G-ONE){% endblock %}
+{% block title %}Generate Campaign Poster — G-ONE 2027{% endblock %}
 
 {% block content %}
-<div class="min-h-screen bg-gray-50/50 py-12 sm:py-16">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <!-- Header -->
-    <div class="text-center max-w-3xl mx-auto space-y-3 mb-10">
-      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-primary">
-        <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
-        Official Campaign Studio
-      </span>
-      <h1 class="text-3xl font-black text-gray-900 sm:text-4xl md:text-5xl">
-        Generate Your Official <br>
-        <span class="text-primary">G-ONE Support Poster</span>
-      </h1>
-      <p class="text-sm sm:text-base text-gray-600 leading-relaxed">
-        Upload your photo, adjust the crop to fit the frame, select your constituency details, and download your high-resolution campaign DP in seconds.
-      </p>
-    </div>
-
-    <!-- Generator Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-      <!-- Left Column: Controls & Photo Editor -->
-      <div class="lg:col-span-7 space-y-8">
-        <!-- 1. Photo Upload & Cropper Box -->
-        <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm">
-          <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-black text-gray-900 flex items-center gap-2">
-              <span class="flex h-7 w-7 items-center justify-center rounded-xl bg-primary text-white text-xs font-black">1</span>
-              <span>Upload &amp; Position Photo</span>
-            </h2>
-            <span class="text-xs text-gray-400 font-medium">1:1 Square Framing</span>
+<main class="flex-1 bg-white">
+  <section class="py-12 px-4 sm:px-6 lg:px-12 max-w-7xl mx-auto">
+    <div class="grid gap-12 lg:grid-cols-2 items-start">
+      
+      <!-- Left Column: Controls & Photo Upload (on mobile order-2, on desktop order-1) -->
+      <div class="order-2 lg:order-1 space-y-8">
+        
+        <!-- Big Photo Upload Dropzone -->
+        <div class="space-y-4">
+          <!-- Dropzone before image upload -->
+          <div id="dropzone">
+            <input id="photo-input" type="file" accept="image/*" class="hidden">
+            <label for="photo-input" class="flex aspect-square w-full cursor-pointer flex-col items-center justify-center rounded-3xl border-2 border-dashed border-gray-300 bg-gray-50/50 px-6 text-center transition-all hover:border-primary hover:bg-emerald-50/30 group">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-image-plus mb-5 h-14 w-14 text-primary group-hover:scale-110 transition-transform"><path d="M16 5h6"></path><path d="M19 2v6"></path><path d="M21 11.5V19a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7.5"></path><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"></path><circle cx="9" cy="9" r="2"></circle></svg>
+              <h3 class="text-xl font-semibold text-gray-900">Upload Your Image</h3>
+              <p class="mt-2 text-sm text-gray-500">Click to browse your gallery</p>
+              <p class="mt-1 text-xs text-gray-400">JPG or PNG · Max 10 MB</p>
+            </label>
           </div>
 
-          <!-- Dropzone when no image loaded -->
-          <div id="dropzone" class="relative flex flex-col items-center justify-center rounded-2xl border-2 border-dashed border-gray-300 bg-gray-50/60 p-8 text-center hover:bg-gray-100/60 hover:border-primary transition cursor-pointer">
-            <input type="file" id="photo-input" accept="image/*" class="absolute inset-0 opacity-0 cursor-pointer">
-            <div class="flex h-16 w-16 items-center justify-center rounded-2xl bg-white shadow-sm ring-1 ring-black/5 text-primary mb-3">
-              <i data-lucide="camera" class="h-8 w-8"></i>
-            </div>
-            <p class="text-sm font-bold text-gray-800">Click to upload your portrait photo</p>
-            <p class="text-xs text-gray-500 mt-1">PNG, JPG, or WEBP (Max 15MB)</p>
-          </div>
-
-          <!-- Cropper Workspace (Hidden until image selected) -->
-          <div id="cropper-wrapper" class="hidden space-y-4">
+          <!-- Cropper Workspace (Shown once photo is selected) -->
+          <div id="cropper-wrapper" class="hidden space-y-4 rounded-3xl border border-gray-200 bg-gray-50/50 p-6 shadow-sm">
             <div class="relative aspect-square max-h-[380px] w-full overflow-hidden rounded-2xl bg-black">
               <img id="cropper-img" src="" alt="Supporter Upload" class="max-w-full">
             </div>
@@ -67,154 +46,93 @@
                 </button>
               </div>
 
-              <label class="inline-flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-3 py-2 text-xs font-bold text-gray-700 hover:bg-gray-100 shadow-sm cursor-pointer">
+              <label class="inline-flex items-center gap-1.5 rounded-xl border border-gray-200 bg-white px-3.5 py-2 text-xs font-bold text-gray-700 hover:bg-gray-100 shadow-sm cursor-pointer">
                 <i data-lucide="upload" class="h-3.5 w-3.5 text-primary"></i>
-                <span>Choose Another Photo</span>
+                <span>Change Photo</span>
                 <input type="file" id="change-photo-input" accept="image/*" class="hidden">
               </label>
             </div>
           </div>
         </div>
 
-        <!-- 2. Personalization Details Form -->
-        <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
-          <div class="flex items-center justify-between">
-            <h2 class="text-lg font-black text-gray-900 flex items-center gap-2">
-              <span class="flex h-7 w-7 items-center justify-center rounded-xl bg-primary text-white text-xs font-black">2</span>
-              <span>Constituent Details</span>
-            </h2>
-            <span class="text-xs text-emerald-600 font-bold bg-emerald-50 px-2 py-0.5 rounded-md">SDP Constituency</span>
+        <!-- Form Details -->
+        <form class="space-y-6" onsubmit="return false;">
+          <!-- Local Government Area -->
+          <div class="space-y-2">
+            <label for="lga" class="text-sm font-medium text-gray-700">Local Government</label>
+            <select id="lga" name="lga" class="flex h-11 w-full rounded-md border border-gray-300 bg-white px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition">
+              <option value="">Select Local Government</option>
+              <option value="Ankpa">Ankpa</option>
+              <option value="Omala">Omala</option>
+              <option value="Olamaboro">Olamaboro</option>
+            </select>
           </div>
 
-          <div class="space-y-4">
-            <div>
-              <label for="supporter-name" class="block text-xs font-black uppercase tracking-wider text-gray-700 mb-1.5">
-                Full Name / Moniker
-              </label>
-              <input type="text" id="supporter-name" placeholder="e.g. Comrade Halidu Usman" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-900 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div>
-                <label for="lga-select" class="block text-xs font-black uppercase tracking-wider text-gray-700 mb-1.5">
-                  Local Government Area
-                </label>
-                <select id="lga-select" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-900 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white">
-                  {% for lga in lgas %}
-                  <option value="{{ lga.name }}">{{ lga.name }} LGA</option>
-                  {% endfor %}
-                </select>
-              </div>
-
-              <div>
-                <label for="ward-select" class="block text-xs font-black uppercase tracking-wider text-gray-700 mb-1.5">
-                  Electoral Ward
-                </label>
-                <select id="ward-select" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm font-semibold text-gray-900 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition bg-white">
-                  <!-- Dynamically populated -->
-                </select>
-              </div>
-            </div>
-
-            <div>
-              <label for="custom-quote" class="block text-xs font-black uppercase tracking-wider text-gray-700 mb-1.5">
-                Support Endorsement (Optional)
-              </label>
-              <input type="text" id="custom-quote" placeholder="e.g. Standing strong for youth inclusion and development!" class="w-full rounded-xl border border-gray-300 px-4 py-3 text-sm font-medium text-gray-900 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition">
-            </div>
+          <!-- Ward (Optional) -->
+          <div class="space-y-2">
+            <label for="ward" class="text-sm font-medium text-gray-700">Ward (Optional)</label>
+            <input id="ward" name="ward" placeholder="Enter your ward" class="flex h-11 w-full rounded-md border border-gray-300 bg-white px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition">
           </div>
 
-          <div class="pt-2">
-            <button type="button" id="btn-generate-poster" class="w-full inline-flex items-center justify-center gap-3 rounded-2xl bg-primary py-4 px-6 text-base font-black text-white shadow-xl shadow-primary/25 hover:bg-primary-dark transition hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:cursor-not-allowed">
-              <i data-lucide="sparkles" class="h-5 w-5"></i>
-              <span id="btn-generate-text">Generate Campaign Poster</span>
-            </button>
-            <p id="error-message" class="text-xs text-red-600 font-bold text-center mt-2 hidden"></p>
+          <!-- Full Name -->
+          <div class="space-y-2">
+            <label for="supporter-name" class="text-sm font-medium text-gray-700">Full Name</label>
+            <input id="supporter-name" name="name" placeholder="Enter your full name" class="flex h-11 w-full rounded-md border border-gray-300 bg-white px-3 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition">
           </div>
-        </div>
+
+          <!-- Submit Button -->
+          <button type="button" id="btn-generate-poster" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-primary px-4 py-3 text-sm font-medium text-white shadow hover:bg-emerald-700 transition w-full disabled:opacity-50 disabled:cursor-not-allowed">
+            <span id="btn-generate-text">Generate &amp; Download</span>
+          </button>
+          
+          <p id="error-message" class="text-xs text-red-600 font-bold text-center hidden"></p>
+        </form>
+
       </div>
 
-      <!-- Right Column: Live Poster Frame Preview -->
-      <div class="lg:col-span-5 sticky top-28">
-        <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-xl space-y-4">
-          <div class="flex items-center justify-between border-b border-gray-100 pb-3">
-            <span class="text-xs font-black uppercase tracking-wider text-primary flex items-center gap-1.5">
-              <span class="h-2 w-2 rounded-full bg-primary animate-pulse"></span>
-              Live Frame Preview
-            </span>
-            <span class="text-[11px] font-bold text-gray-400">1024x1024 HD</span>
-          </div>
-
-          <!-- Poster Live Compositing Canvas & Preview Container -->
-          <div class="relative aspect-square w-full overflow-hidden rounded-2xl bg-gray-100 shadow-inner">
+      <!-- Right Column: Live Sticky Frame Preview (Exact Wadada order-1 lg:order-2) -->
+      <div class="order-1 lg:order-2">
+        <div class="sticky top-24">
+          <div class="relative aspect-square overflow-hidden rounded-3xl border bg-gray-50 shadow-xl">
             <!-- Cutout User Photo Layer -->
             <div id="preview-user-box" class="absolute z-0 overflow-hidden" style="top: 26.07%; left: 50.88%; width: 42.48%; height: 42.0%; border-radius: 1.75rem;">
               <img id="preview-user-img" src="/static/gone_hero.jpg" alt="Preview Photo" class="h-full w-full object-cover">
             </div>
 
-            <!-- Official Campaign Frame Overlay -->
-            <img src="/static/gone_frame.png" alt="Official G-ONE Campaign Frame" class="absolute inset-0 z-10 h-full w-full pointer-events-none">
+            <!-- Official Campaign Frame Overlay (Transparent Cutout) -->
+            <img alt="Frame" class="pointer-events-none absolute inset-0 h-full w-full object-cover z-10" src="/static/gone_frame.png">
           </div>
 
-          <div class="rounded-2xl bg-emerald-50/70 p-3.5 border border-emerald-100 text-center">
-            <p class="text-xs font-black text-primary">
-              {{ candidate.name }} ({{ candidate.moniker }})
-            </p>
-            <p class="text-[11px] font-bold text-gray-500 mt-0.5">
-              Ankpa, Omala, and Olamaboro Federal Constituency · SDP
+          <div class="mt-4 text-center">
+            <p class="text-xs font-semibold text-gray-500">
+              Live Preview · Prince Gowon Enenche (G-ONE) · SDP
             </p>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- Off-screen Canvas for Poster Compositing -->
-<canvas id="poster-canvas" width="1024" height="1024" class="hidden"></canvas>
+    </div>
+  </section>
+</main>
 {% endblock %}
 
 {% block extra_scripts %}
 <script>
-  // Wards Database mapping
-  const LGA_WARDS = {
-    {% for lga in lgas %}
-    "{{ lga.name }}": {{ lga.wards|tojson }},
-    {% endfor %}
-  };
-
-  const lgaSelect = document.getElementById('lga-select');
-  const wardSelect = document.getElementById('ward-select');
   const photoInput = document.getElementById('photo-input');
   const changePhotoInput = document.getElementById('change-photo-input');
   const dropzone = document.getElementById('dropzone');
   const cropperWrapper = document.getElementById('cropper-wrapper');
   const cropperImg = document.getElementById('cropper-img');
   const previewUserImg = document.getElementById('preview-user-img');
+  const lgaSelect = document.getElementById('lga');
+  const wardInput = document.getElementById('ward');
+  const nameInput = document.getElementById('supporter-name');
   const btnGenerate = document.getElementById('btn-generate-poster');
   const btnGenerateText = document.getElementById('btn-generate-text');
   const errorMessage = document.getElementById('error-message');
 
   let cropper = null;
-  let hasUploadedPhoto = false;
 
-  // Populate wards when LGA changes
-  function updateWards() {
-    const selectedLga = lgaSelect.value;
-    const wards = LGA_WARDS[selectedLga] || [];
-    wardSelect.innerHTML = '';
-    wards.forEach(w => {
-      const opt = document.createElement('option');
-      opt.value = w;
-      opt.textContent = w;
-      wardSelect.appendChild(opt);
-    });
-  }
-
-  lgaSelect.addEventListener('change', updateWards);
-  updateWards();
-
-  // Load photo into cropper
   function handleImageFile(file) {
     if (!file || !file.type.startsWith('image/')) return;
     const reader = new FileReader();
@@ -239,7 +157,6 @@
           updateLivePreview();
         }
       });
-      hasUploadedPhoto = true;
     };
     reader.readAsDataURL(file);
   }
@@ -256,7 +173,6 @@
     }
   });
 
-  // Update live preview box
   function updateLivePreview() {
     if (!cropper) return;
     const canvas = cropper.getCroppedCanvas({ width: 435, height: 430 });
@@ -265,26 +181,22 @@
     }
   }
 
-  // Cropper Action Buttons
   document.getElementById('btn-zoom-in').addEventListener('click', () => cropper && cropper.zoom(0.1));
   document.getElementById('btn-zoom-out').addEventListener('click', () => cropper && cropper.zoom(-0.1));
   document.getElementById('btn-rotate').addEventListener('click', () => cropper && cropper.rotate(90));
   document.getElementById('btn-reset').addEventListener('click', () => cropper && cropper.reset());
 
-  // Generate Poster Submission
   btnGenerate.addEventListener('click', async () => {
     errorMessage.classList.add('hidden');
-    const name = document.getElementById('supporter-name').value.trim() || 'Constituent Supporter';
-    const lga = lgaSelect.value;
-    const ward = wardSelect.value;
-    const customQuote = document.getElementById('custom-quote').value.trim();
+    const name = nameInput.value.trim() || 'Constituent Supporter';
+    const lga = lgaSelect.value || 'Ankpa';
+    const ward = wardInput.value.trim() || 'Township';
 
     let croppedDataUrl = null;
     if (cropper) {
       const croppedCanvas = cropper.getCroppedCanvas({ width: 500, height: 500 });
       croppedDataUrl = croppedCanvas.toDataURL('image/png');
     } else {
-      // Use current preview image
       croppedDataUrl = previewUserImg.src;
     }
 
@@ -292,7 +204,6 @@
     btnGenerateText.textContent = 'Rendering High-Res Poster...';
 
     try {
-      // Send to Flask API endpoint
       const response = await fetch('/api/generate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -300,7 +211,6 @@
           name: name,
           lga: lga,
           ward: ward,
-          custom_quote: customQuote,
           image_data: croppedDataUrl,
         }),
       });
@@ -310,7 +220,6 @@
         throw new Error(res.error || 'Failed to generate poster');
       }
 
-      // Trigger Confetti Celebration!
       if (window.confetti) {
         confetti({
           particleCount: 90,
@@ -319,7 +228,7 @@
         });
       }
 
-      // Automated download trigger
+      // Download trigger
       const downloadLink = document.createElement('a');
       downloadLink.href = res.poster_url;
       downloadLink.download = `G-ONE-Campaign-Poster-${lga}.png`;
@@ -327,7 +236,6 @@
       downloadLink.click();
       document.body.removeChild(downloadLink);
 
-      // Redirect to Success page after slight delay for download to register
       setTimeout(() => {
         window.location.href = `/generate/success?uid=${res.uid}&poster=${encodeURIComponent(res.poster_url)}`;
       }, 700);
@@ -337,9 +245,8 @@
       errorMessage.textContent = err.message || 'An error occurred during poster generation.';
       errorMessage.classList.remove('hidden');
       btnGenerate.disabled = false;
-      btnGenerateText.textContent = 'Generate Campaign Poster';
+      btnGenerateText.textContent = 'Generate & Download';
     }
   });
 </script>
 {% endblock %}
-

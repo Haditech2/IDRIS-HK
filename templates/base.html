@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{% block title %}Prince Gowon Enenche (G-ONE) — House of Representatives Campaign Poster Generator{% endblock %}</title>
+  <title>{% block title %}G-ONE 2027 — Generate your personalized campaign poster{% endblock %}</title>
   <meta name="description" content="Generate and customize your official campaign support poster for Prince Gowon Enenche (G-ONE) for House of Representatives, Ankpa, Omala, and Olamaboro Federal Constituency (SDP).">
   <link rel="icon" href="/static/favicon.ico">
 
-  <!-- Tailwind CSS CDN with custom config -->
+  <!-- Tailwind CSS CDN with custom config matching Wadada theme -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -18,15 +18,22 @@
               DEFAULT: '#006C43',
               foreground: '#ffffff',
               dark: '#004d30',
-              light: '#008f58',
+              light: '#059669',
             },
-            royal: {
-              DEFAULT: '#0A6FB8',
-              dark: '#085791',
+            sdp: {
+              green: '#006C43',
+              orange: '#FF7900',
             },
-            accent: {
-              orange: '#F58220',
+            muted: {
+              DEFAULT: '#f5f5f5',
+              foreground: '#737373',
             },
+            card: {
+              DEFAULT: '#ffffff',
+              foreground: '#0a0a0a',
+            },
+            border: '#e5e5e5',
+            input: '#e5e5e5',
           },
           fontFamily: {
             sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
@@ -63,80 +70,73 @@
 </head>
 <body class="flex flex-col min-h-screen bg-white text-gray-900 antialiased font-sans">
 
-  <!-- TOP NAVIGATION BAR -->
-  <header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur-md transition-all">
-    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-      <!-- Candidate Brand -->
-      <a href="/" class="group flex items-center gap-3.5 transition-transform hover:opacity-95">
-        <div class="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm ring-1 ring-black/5 transition-transform group-hover:scale-105">
-          <img src="/static/logo.png" alt="Prince Gowon Enenche Official Logo" class="h-full w-full object-cover object-top">
-        </div>
-        <div>
-          <div class="flex items-center gap-2">
-            <span class="text-base sm:text-lg font-black tracking-tight text-gray-900 group-hover:text-primary transition-colors">
-              {{ candidate.name }}
-            </span>
-            <span class="rounded-md bg-emerald-100 px-1.5 py-0.5 text-[10px] font-black tracking-wider text-primary">
-              {{ candidate.party }}
-            </span>
+  <!-- TOP NAVIGATION BAR (Exact Wadada Structure & Styling) -->
+  <header class="sticky top-0 z-50 border-b bg-white/80 backdrop-blur-md">
+    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-20 items-center justify-between">
+        <!-- Logo & Brand -->
+        <a class="flex items-center gap-3 group" href="/">
+          <img alt="G-ONE 2027" width="48" height="48" class="h-12 w-12 rounded-xl object-contain shadow-sm border border-gray-100 p-0.5 group-hover:scale-105 transition-transform" src="/static/logo.png">
+          <div class="leading-tight">
+            <p class="font-bold text-lg text-gray-900 group-hover:text-primary transition-colors">G-ONE 2027</p>
+            <p class="text-xs text-muted-foreground text-gray-500">In God We Trust</p>
           </div>
-          <p class="text-[11px] font-semibold text-muted-foreground text-gray-500">
-            House of Reps · Ankpa, Omala, Olamaboro Constituency
-          </p>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden items-center gap-8 md:flex">
+          <a class="relative px-2 py-1 text-sm font-medium transition-colors duration-300 {% if active_page == 'home' %}text-primary font-bold{% else %}text-gray-700 hover:text-primary{% endif %}" href="/">
+            Home
+            <span class="absolute left-0 -bottom-1 h-0.5 rounded-full bg-primary transition-all duration-300 {% if active_page == 'home' %}w-full{% else %}w-0 group-hover:w-full{% endif %}"></span>
+          </a>
+          <a class="relative px-2 py-1 text-sm font-medium transition-colors duration-300 {% if active_page == 'generate' %}text-primary font-bold{% else %}text-gray-700 hover:text-primary{% endif %}" href="/generate">
+            Generate
+            <span class="absolute left-0 -bottom-1 h-0.5 rounded-full bg-primary transition-all duration-300 {% if active_page == 'generate' %}w-full{% else %}w-0 group-hover:w-full{% endif %}"></span>
+          </a>
+          <a class="relative px-2 py-1 text-sm font-medium transition-colors duration-300 {% if active_page == 'supporters' %}text-primary font-bold{% else %}text-gray-700 hover:text-primary{% endif %}" href="/supporters">
+            Supporters
+            <span class="absolute left-0 -bottom-1 h-0.5 rounded-full bg-primary transition-all duration-300 {% if active_page == 'supporters' %}w-full{% else %}w-0 group-hover:w-full{% endif %}"></span>
+          </a>
+          <a class="relative px-2 py-1 text-sm font-medium transition-colors duration-300 {% if active_page == 'statistics' %}text-primary font-bold{% else %}text-gray-700 hover:text-primary{% endif %}" href="/statistics">
+            Statistics
+            <span class="absolute left-0 -bottom-1 h-0.5 rounded-full bg-primary transition-all duration-300 {% if active_page == 'statistics' %}w-full{% else %}w-0 group-hover:w-full{% endif %}"></span>
+          </a>
+        </nav>
+
+        <!-- Right Action Button -->
+        <div class="flex items-center gap-3">
+          <a class="hidden md:flex" href="/generate">
+            <button type="button" class="group/button inline-flex shrink-0 items-center justify-center rounded-lg border border-transparent bg-primary px-5 py-2.5 text-sm font-medium text-white shadow-sm hover:bg-emerald-700 transition-all hover:scale-105 active:scale-95">
+              Generate Poster
+            </button>
+          </a>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" type="button" class="flex md:hidden rounded-lg p-2 text-gray-700 hover:bg-gray-100 focus:outline-none">
+            <i data-lucide="menu" id="menu-icon-open" class="h-6 w-6"></i>
+            <i data-lucide="x" id="menu-icon-close" class="h-6 w-6 hidden"></i>
+          </button>
         </div>
-      </a>
-
-      <!-- Desktop Navigation Links -->
-      <nav class="hidden md:flex items-center gap-1">
-        <a href="/" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'home' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
-          Home
-        </a>
-        <a href="/generate" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'generate' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
-          Generate Poster
-        </a>
-        <a href="/supporters" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'supporters' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
-          Supporters Wall
-        </a>
-        <a href="/statistics" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'statistics' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
-          Constituency Stats
-        </a>
-      </nav>
-
-      <!-- Desktop CTA -->
-      <div class="hidden md:flex items-center gap-3">
-        <a href="/generate" class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white shadow-md shadow-primary/20 transition-all hover:bg-primary-dark hover:shadow-lg hover:scale-105 active:scale-95">
-          <i data-lucide="sparkles" class="h-4 w-4"></i>
-          <span>Generate Poster</span>
-        </a>
-      </div>
-
-      <!-- Mobile Hamburger Button -->
-      <div class="flex md:hidden">
-        <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center rounded-xl p-2.5 text-gray-700 hover:bg-gray-100 focus:outline-none">
-          <i data-lucide="menu" id="menu-icon-open" class="h-6 w-6"></i>
-          <i data-lucide="x" id="menu-icon-close" class="h-6 w-6 hidden"></i>
-        </button>
       </div>
     </div>
 
-    <!-- Mobile Drawer Menu -->
+    <!-- Mobile Drawer -->
     <div id="mobile-menu" class="hidden md:hidden border-b border-gray-100 bg-white px-4 pt-2 pb-6 space-y-2">
-      <a href="/" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'home' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+      <a href="/" class="block rounded-lg px-4 py-3 text-base font-medium {% if active_page == 'home' %}bg-primary/10 text-primary font-bold{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
         Home
       </a>
-      <a href="/generate" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'generate' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
-        Generate Poster
+      <a href="/generate" class="block rounded-lg px-4 py-3 text-base font-medium {% if active_page == 'generate' %}bg-primary/10 text-primary font-bold{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Generate
       </a>
-      <a href="/supporters" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'supporters' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
-        Supporters Wall
+      <a href="/supporters" class="block rounded-lg px-4 py-3 text-base font-medium {% if active_page == 'supporters' %}bg-primary/10 text-primary font-bold{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Supporters
       </a>
-      <a href="/statistics" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'statistics' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
-        Constituency Stats
+      <a href="/statistics" class="block rounded-lg px-4 py-3 text-base font-medium {% if active_page == 'statistics' %}bg-primary/10 text-primary font-bold{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Statistics
       </a>
       <div class="pt-2">
-        <a href="/generate" class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-center text-sm font-black text-white shadow-md">
-          <i data-lucide="sparkles" class="h-4 w-4"></i>
-          <span>Generate Poster Now</span>
+        <a href="/generate" class="flex w-full items-center justify-center rounded-lg bg-primary py-3 text-sm font-medium text-white shadow-sm">
+          Generate Poster
         </a>
       </div>
     </div>
@@ -147,83 +147,23 @@
     {% block content %}{% endblock %}
   </main>
 
-  <!-- OFFICIAL CAMPAIGN FOOTER -->
-  <footer class="border-t border-gray-200 bg-white text-gray-600">
-    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
-        <!-- Candidate Identity -->
-        <div class="md:col-span-6 space-y-4">
-          <div class="flex items-center gap-3">
-            <div class="relative h-12 w-12 overflow-hidden rounded-xl border border-gray-200 shadow-sm">
-              <img src="/static/logo.png" alt="{{ candidate.name }}" class="h-full w-full object-cover object-top">
-            </div>
-            <div>
-              <p class="text-xs font-black uppercase tracking-wider text-primary">
-                {{ candidate.partyFullName }} ({{ candidate.party }})
-              </p>
-              <h3 class="text-lg font-black text-gray-900">
-                {{ candidate.name }}
-              </h3>
-            </div>
-          </div>
-          <p class="text-sm font-semibold text-gray-700">
-            {{ candidate.name }} ({{ candidate.moniker }})
-          </p>
-          <p class="text-xs text-gray-500 leading-relaxed max-w-md">
-            A transformative grassroots platform dedicated to effective, accountable, and people-centered representation for the good people of Ankpa, Omala, and Olamaboro Federal Constituency, Kogi State.
-          </p>
-          <div class="flex items-center gap-3 pt-2">
-            <a href="{{ candidate.website }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-bold text-gray-700 hover:bg-gray-100 transition">
-              <i data-lucide="globe" class="h-3.5 w-3.5 text-primary"></i>
-              <span>Visit g-one-chi.vercel.app</span>
-              <i data-lucide="external-link" class="h-3 w-3 text-gray-400"></i>
-            </a>
-          </div>
+  <!-- FOOTER (Exact Wadada Clean Minimalist Footer) -->
+  <footer class="border-t bg-white">
+    <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col justify-between gap-10 py-10 lg:flex-row lg:items-end">
+        <div>
+          <nav class="mb-4 flex flex-wrap items-center gap-6 text-sm font-medium text-gray-700">
+            <a class="transition-colors hover:text-primary" href="/">Home</a>
+            <a class="transition-colors hover:text-primary" href="/generate">Generate</a>
+            <a class="transition-colors hover:text-primary" href="/statistics">Statistics</a>
+            <a class="transition-colors hover:text-primary" href="/supporters">Supporters</a>
+          </nav>
+          <p class="text-sm text-muted-foreground text-gray-500">© 2026 G-ONE 2027. All rights reserved.</p>
         </div>
-
-        <!-- Quick Navigation -->
-        <div class="md:col-span-3 space-y-3">
-          <p class="text-xs font-black uppercase tracking-wider text-gray-900">
-            Navigation
-          </p>
-          <ul class="space-y-2 text-sm font-medium">
-            <li><a href="/" class="text-gray-600 transition hover:text-primary">Home</a></li>
-            <li><a href="/generate" class="text-gray-600 transition hover:text-primary">Generate Poster</a></li>
-            <li><a href="/supporters" class="text-gray-600 transition hover:text-primary">Supporters Wall</a></li>
-            <li><a href="/statistics" class="text-gray-600 transition hover:text-primary">Constituency Statistics</a></li>
-          </ul>
+        <div class="flex items-center gap-8">
+          <img alt="Social Democratic Party (SDP)" class="h-8 w-auto object-contain" src="/static/logo.png">
+          <img alt="G-ONE Campaign Emblem" class="h-8 w-auto object-contain rounded-full border border-gray-200" src="/static/logo_avatar.png">
         </div>
-
-        <!-- Constituency Coverage -->
-        <div class="md:col-span-3 space-y-3">
-          <p class="text-xs font-black uppercase tracking-wider text-gray-900">
-            Federal Constituency
-          </p>
-          <ul class="space-y-2 text-xs font-medium text-gray-600">
-            <li class="flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-              <span>Ankpa Local Government Area</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-              <span>Omala Local Government Area</span>
-            </li>
-            <li class="flex items-center gap-2">
-              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
-              <span>Olamaboro Local Government Area</span>
-            </li>
-            <li class="pt-2">
-              <span class="inline-block rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-bold text-primary border border-emerald-200">
-                Motto: Progress · In God We Trust
-              </span>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="mt-12 border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-gray-400">
-        <p>&copy; 2026-2027 {{ candidate.name }} ({{ candidate.moniker }}) Campaign Organization. Social Democratic Party (SDP).</p>
-        <p class="font-medium text-gray-500">I Reserved For Him My Vote</p>
       </div>
     </div>
   </footer>
@@ -258,4 +198,3 @@
   {% block extra_scripts %}{% endblock %}
 </body>
 </html>
-

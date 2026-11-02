@@ -9,3 +9,4 @@ if root_dir not in sys.path:
 from app import app
 
 # Vercel looks for 'app' in the entrypoint module
+

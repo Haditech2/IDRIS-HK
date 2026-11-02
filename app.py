@@ -36,12 +36,13 @@ def inject_global_data():
 @app.route("/")
 def index():
     stats = get_statistics()
-    recent_supporters = get_all_supporters()[:6]
+    all_supporters = get_all_supporters()
     return render_template(
         "index.html",
         active_page="home",
         stats=stats,
-        recent_supporters=recent_supporters,
+        supporters=all_supporters,
+        recent_supporters=all_supporters[:6],
     )
 
 @app.route("/generate")
