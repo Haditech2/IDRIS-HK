@@ -155,3 +155,4 @@ CANDIDATE_GALLERY = [
         "badge": "People's Movement",
     },
 ]
+

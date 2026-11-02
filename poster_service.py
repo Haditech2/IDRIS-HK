@@ -76,3 +76,4 @@ def generate_poster_image(image_input, crop_box=None):
 
     relative_url = f"/static/uploads/posters/{filename}"
     return filename, relative_url
+

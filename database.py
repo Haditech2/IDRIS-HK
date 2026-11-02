@@ -79,3 +79,4 @@ def get_statistics():
         "lga_counts": lga_counts,
         "ward_counts": ward_counts,
     }
+
