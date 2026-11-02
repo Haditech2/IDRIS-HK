@@ -16,50 +16,50 @@
   <div class="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(34,197,94,0.18),transparent_45%)]"></div>
 
   <!-- Hero Content Grid -->
-  <div class="relative z-20 flex min-h-screen items-center py-24">
+  <div class="relative z-20 flex min-h-screen items-center py-20 sm:py-24">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
-      <div class="grid items-center gap-12 md:grid-cols-2 lg:gap-20">
+      <div class="grid items-center gap-8 md:grid-cols-2 lg:gap-20">
         
         <!-- Text Column (on mobile order-2, on desktop order-1) -->
         <div class="order-2 max-w-2xl md:order-1">
           <!-- Campaign Pill Badge -->
-          <span class="mb-6 inline-flex rounded-full border border-white/20 bg-white/10 px-5 py-2 text-xs font-medium text-white backdrop-blur-md">
+          <span class="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:mb-6 sm:px-5 sm:py-2">
             Ankpa, Omala, Olamaboro 2027 · In God We Trust
           </span>
 
           <!-- Main Hero Headline -->
-          <h1 class="text-5xl font-black leading-tight tracking-tight text-white md:text-6xl lg:text-7xl">
+          <h1 class="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
             Generate Your<br>
             G-ONE Support<br>
             Poster Here
           </h1>
 
           <!-- Lead Paragraph -->
-          <p class="mt-8 max-w-xl text-lg leading-8 text-white/85 md:text-xl">
+          <p class="mt-5 max-w-xl text-base leading-7 text-white/85 sm:mt-8 sm:text-lg sm:leading-8 md:text-xl">
             Join thousands of supporters across Ankpa, Omala &amp; Olamaboro Federal Constituency. Generate your personalized campaign poster and share your support for Prince Gowon Enenche (G-ONE).
           </p>
 
           <!-- Primary CTA Button -->
-          <div class="mt-10 flex flex-wrap gap-4">
-            <a href="/generate" class="inline-flex shrink-0 items-center justify-center border text-sm font-medium h-12 rounded-full border-white/30 bg-white/10 px-8 text-white backdrop-blur-md hover:bg-white hover:text-black transition-all shadow-lg hover:scale-105 active:scale-95">
+          <div class="mt-7 flex flex-wrap gap-4 sm:mt-10">
+            <a href="/generate" class="inline-flex shrink-0 items-center justify-center border text-sm font-semibold h-12 rounded-full border-white/30 bg-white/10 px-7 text-white backdrop-blur-md hover:bg-white hover:text-black transition-all shadow-lg hover:scale-105 active:scale-95 sm:px-8">
               Generate My Poster
             </a>
           </div>
         </div>
 
         <!-- 3D Poster Stack Column (on mobile order-1, on desktop order-2) -->
-        <div class="relative order-1 mx-auto h-[520px] w-full max-w-sm md:order-2 md:max-w-md lg:h-[620px] lg:max-w-lg">
+        <div class="relative order-1 mx-auto h-64 w-full max-w-[260px] sm:h-[340px] sm:max-w-sm md:order-2 md:h-[480px] md:max-w-md lg:h-[580px] lg:max-w-lg">
           <!-- Left Floating Card -->
-          <div class="absolute left-4 top-10 w-[88%] animate-float-reverse">
-            <img alt="" class="rounded-3xl shadow-xl opacity-70" src="/static/poster_sample_gone.png">
+          <div class="absolute left-2 top-6 w-[85%] animate-float-reverse sm:left-4 sm:top-10">
+            <img alt="" class="rounded-2xl shadow-xl opacity-70 sm:rounded-3xl" src="/static/poster_sample_gone.png">
           </div>
           <!-- Right Floating Card -->
-          <div class="absolute right-4 top-8 w-[88%] animate-float">
-            <img alt="" class="rounded-3xl shadow-xl opacity-70" src="/static/poster_sample_gone.png">
+          <div class="absolute right-2 top-4 w-[85%] animate-float sm:right-4 sm:top-8">
+            <img alt="" class="rounded-2xl shadow-xl opacity-70 sm:rounded-3xl" src="/static/poster_sample_gone.png">
           </div>
           <!-- Centered Dominant Foreground Poster -->
           <div class="absolute inset-x-0 top-0 z-20 mx-auto w-full">
-            <img alt="Campaign Poster Sample" class="rounded-3xl shadow-2xl transition-all duration-300 hover:scale-[1.02]" src="/static/poster_sample_gone.png">
+            <img alt="Campaign Poster Sample" class="rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] sm:rounded-3xl" src="/static/poster_sample_gone.png">
           </div>
         </div>
 
@@ -77,16 +77,16 @@
 </section>
 
 <!-- SECTION 1: POSTERS GENERATED COUNTER (Exact Wadada Section) -->
-<section class="py-24 bg-white border-b border-gray-100">
+<section class="py-16 bg-white border-b border-gray-100 sm:py-24">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid items-start gap-16 lg:grid-cols-2">
+    <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
       <div>
-        <h2 class="mt-6 text-6xl font-black leading-none md:text-7xl lg:text-8xl text-gray-900 tracking-tight">
+        <h2 class="mt-4 text-6xl font-black leading-none tracking-tight text-gray-900 sm:mt-6 sm:text-7xl lg:text-8xl">
           <span id="counter-val">{{ (stats.total_posters if stats and stats.total_posters else 0) + 1248 }}</span>
         </h2>
-        <p class="mt-4 text-2xl font-semibold text-gray-500">Posters Generated</p>
+        <p class="mt-3 text-xl font-semibold text-gray-500 sm:mt-4 sm:text-2xl">Posters Generated</p>
       </div>
-      <div class="flex flex-col justify-center space-y-4 pt-2">
+      <div class="flex flex-col justify-center space-y-4 pt-0 lg:pt-2">
         <div class="flex items-center gap-3">
           <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-primary border border-emerald-200">
             <span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
@@ -94,18 +94,18 @@
           </span>
           <span class="text-sm font-semibold text-gray-600">Across All 3 Local Governments</span>
         </div>
-        <div class="grid grid-cols-3 gap-4">
-          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-4 text-center">
+        <div class="grid grid-cols-3 gap-3 sm:gap-4">
+          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-3 text-center sm:p-4">
             <p class="text-xs font-bold text-gray-500 uppercase">Ankpa</p>
-            <p class="text-xl font-black text-gray-900 mt-1">{{ (stats.lga_counts.get('Ankpa', 0) if stats and stats.lga_counts else 0) + 520 }}+</p>
+            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get('Ankpa', 0) if stats and stats.lga_counts else 0) + 520 }}+</p>
           </div>
-          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-4 text-center">
+          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-3 text-center sm:p-4">
             <p class="text-xs font-bold text-gray-500 uppercase">Omala</p>
-            <p class="text-xl font-black text-gray-900 mt-1">{{ (stats.lga_counts.get('Omala', 0) if stats and stats.lga_counts else 0) + 380 }}+</p>
+            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get('Omala', 0) if stats and stats.lga_counts else 0) + 380 }}+</p>
           </div>
-          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-4 text-center">
+          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-3 text-center sm:p-4">
             <p class="text-xs font-bold text-gray-500 uppercase">Olamaboro</p>
-            <p class="text-xl font-black text-gray-900 mt-1">{{ (stats.lga_counts.get('Olamaboro', 0) if stats and stats.lga_counts else 0) + 348 }}+</p>
+            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get('Olamaboro', 0) if stats and stats.lga_counts else 0) + 348 }}+</p>
           </div>
         </div>
       </div>
@@ -114,29 +114,29 @@
 </section>
 
 <!-- SECTION 2: SUPPORTER POSTER SHOWCASE (Auto-scrolling marquee) -->
-<section class="overflow-hidden bg-gray-50 py-16">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-10 text-center">
+<section class="overflow-hidden bg-gray-50 py-12 sm:py-16">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8 text-center sm:mb-10">
     <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#006C43]">Our Supporters</p>
-    <h2 class="mt-2 text-3xl font-black text-gray-900 md:text-4xl">Voices Across the Constituency</h2>
-    <p class="mt-3 text-gray-500">Join thousands of proud supporters of Prince Gowon Enenche (G-ONE)</p>
+    <h2 class="mt-2 text-2xl font-black text-gray-900 sm:text-3xl md:text-4xl">Voices Across the Constituency</h2>
+    <p class="mt-2 text-sm text-gray-500 sm:mt-3 sm:text-base">Join thousands of proud supporters of Prince Gowon Enenche (G-ONE)</p>
   </div>
 
   <!-- Row 1 — scrolls left -->
   <div class="relative flex overflow-x-hidden">
-    <div class="animate-marquee flex gap-5 py-3 whitespace-nowrap">
+    <div class="animate-marquee whitespace-nowrap">
       {% for i in range(8) %}
-      <div class="inline-block w-44 shrink-0">
-        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
           <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
         </div>
       </div>
       {% endfor %}
     </div>
     <!-- Duplicate for seamless loop -->
-    <div class="animate-marquee flex gap-5 py-3 whitespace-nowrap" aria-hidden="true">
+    <div class="animate-marquee whitespace-nowrap" aria-hidden="true">
       {% for i in range(8) %}
-      <div class="inline-block w-44 shrink-0">
-        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
           <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
         </div>
       </div>
@@ -145,20 +145,20 @@
   </div>
 
   <!-- Row 2 — scrolls right -->
-  <div class="relative mt-5 flex overflow-x-hidden">
-    <div class="animate-marquee-reverse flex gap-5 py-3 whitespace-nowrap">
+  <div class="relative mt-4 flex overflow-x-hidden sm:mt-5">
+    <div class="animate-marquee-reverse whitespace-nowrap">
       {% for i in range(8) %}
-      <div class="inline-block w-44 shrink-0">
-        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
           <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
         </div>
       </div>
       {% endfor %}
     </div>
-    <div class="animate-marquee-reverse flex gap-5 py-3 whitespace-nowrap" aria-hidden="true">
+    <div class="animate-marquee-reverse whitespace-nowrap" aria-hidden="true">
       {% for i in range(8) %}
-      <div class="inline-block w-44 shrink-0">
-        <div class="aspect-square overflow-hidden rounded-3xl border border-gray-100 bg-white shadow-lg">
+      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
           <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
         </div>
       </div>
@@ -166,8 +166,8 @@
     </div>
   </div>
 
-  <div class="mt-10 text-center">
-    <a href="/supporters" class="inline-flex items-center gap-2 rounded-full border border-[#006C43] px-6 py-2.5 text-sm font-semibold text-[#006C43] hover:bg-[#006C43] hover:text-white transition-all">
+  <div class="mt-8 text-center sm:mt-10">
+    <a href="/supporters" class="inline-flex items-center gap-2 rounded-full border border-[#006C43] px-5 py-2 text-sm font-semibold text-[#006C43] hover:bg-[#006C43] hover:text-white transition-all sm:px-6 sm:py-2.5">
       View All Supporters →
     </a>
   </div>
@@ -175,77 +175,76 @@
 
 <!-- SECTION 3: JOIN THE WINNING TEAM & 3 SIMPLE STEPS -->
 <!-- Green banner: full-width, outside any padded wrapper -->
-<div class="w-full bg-[#006C43] py-10">
+<div class="w-full bg-[#006C43] py-8 sm:py-10">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-center text-3xl font-black tracking-tight text-white md:text-5xl">
+    <h2 class="text-center text-2xl font-black tracking-tight text-white sm:text-3xl md:text-5xl">
       Join the Winning Team
     </h2>
   </div>
 </div>
 
-<section class="bg-white py-16">
+<section class="bg-white py-12 sm:py-16">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid items-center gap-12 lg:grid-cols-5">
+    <div class="grid items-center gap-10 lg:grid-cols-5 lg:gap-12">
 
       <!-- Left Steps Column -->
       <div class="lg:col-span-3">
         <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#006C43]">In 3 Simple Steps</p>
-        <h3 class="mt-2 text-4xl font-black text-gray-900">Generate Yours</h3>
+        <h3 class="mt-2 text-3xl font-black text-gray-900 sm:text-4xl">Generate Yours</h3>
 
-        <div class="mt-10 space-y-8">
+        <div class="mt-8 space-y-6 sm:mt-10 sm:space-y-8">
           <!-- Step 1 -->
-          <div class="flex gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+          <div class="flex gap-3 sm:gap-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200 sm:h-10 sm:w-10">
               <span class="text-sm font-black text-[#006C43]">1</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-gray-900">Add your image &amp; details</h4>
-              <p class="mt-1 text-gray-500">Upload your photo and enter the campaign information required for your personalized poster.</p>
+              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Add your image &amp; details</h4>
+              <p class="mt-1 text-sm text-gray-500 sm:text-base">Upload your photo and enter the campaign information required for your personalized poster.</p>
             </div>
           </div>
 
           <!-- Step 2 -->
-          <div class="flex gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+          <div class="flex gap-3 sm:gap-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200 sm:h-10 sm:w-10">
               <span class="text-sm font-black text-[#006C43]">2</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-gray-900">Preview Your Poster</h4>
-              <p class="mt-1 text-gray-500">Review your campaign poster before generating the final version.</p>
+              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Preview Your Poster</h4>
+              <p class="mt-1 text-sm text-gray-500 sm:text-base">Review your campaign poster before generating the final version.</p>
             </div>
           </div>
 
           <!-- Step 3 -->
-          <div class="flex gap-4">
-            <div class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200">
+          <div class="flex gap-3 sm:gap-4">
+            <div class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-50 border border-emerald-200 sm:h-10 sm:w-10">
               <span class="text-sm font-black text-[#006C43]">3</span>
             </div>
             <div>
-              <h4 class="text-lg font-bold text-gray-900">Generate &amp; Share</h4>
-              <p class="mt-1 text-gray-500">Generate a high-quality campaign poster, save it to your device, and share your support.</p>
+              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Generate &amp; Share</h4>
+              <p class="mt-1 text-sm text-gray-500 sm:text-base">Generate a high-quality campaign poster, save it to your device, and share your support.</p>
             </div>
           </div>
         </div>
 
-        <div class="mt-10">
-          <a href="/generate" class="inline-flex items-center justify-center rounded-lg bg-[#006C43] px-8 py-3 text-base font-semibold text-white hover:bg-emerald-700 transition shadow-md">
-            Generate My Poster
+        <div class="mt-8 sm:mt-10">
+          <a href="/generate" class="inline-flex w-full items-center justify-center rounded-lg bg-[#006C43] px-8 py-3 text-base font-semibold text-white hover:bg-emerald-700 transition shadow-md sm:w-auto">            Generate My Poster
           </a>
         </div>
       </div>
 
       <!-- Right Poster Preview Column -->
       <div class="lg:col-span-2 flex justify-center items-center">
-        <a class="group block w-full max-w-xs" href="/generate">
-          <div class="overflow-hidden rounded-3xl border border-gray-200 shadow-xl transition-all duration-300 group-hover:shadow-2xl group-hover:scale-[1.02]">
+        <a class="group block w-full max-w-[260px] sm:max-w-xs" href="/generate">
+          <div class="overflow-hidden rounded-2xl border border-gray-200 shadow-lg transition-all duration-300 group-hover:shadow-2xl group-hover:scale-[1.02] sm:rounded-3xl">
             <img
               alt="Generate Campaign Poster"
               class="w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
               src="/static/poster_sample_gone.png"
-              style="max-height: 420px;"
+              style="max-height: 320px;"
             >
           </div>
-          <p class="mt-4 text-center text-sm text-gray-500">Click to create your own →</p>
+          <p class="mt-3 text-center text-xs text-gray-500 sm:mt-4 sm:text-sm">Click to create your own →</p>
         </a>
       </div>
 
@@ -254,10 +253,10 @@
 </section>
 
 <!-- SECTION 4: SLOGAN BANNER (Exact Wadada Big Full-Width Text Banner) -->
-<section class="w-full bg-[#006C43] py-24 md:py-32">
+<section class="w-full bg-[#006C43] py-16 sm:py-24 md:py-32">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-center">
-      <h2 class="text-center text-5xl font-black uppercase tracking-wide text-white md:text-7xl lg:text-8xl">
+      <h2 class="text-center text-4xl font-black uppercase tracking-wide text-white sm:text-5xl md:text-7xl lg:text-8xl">
         IN GOD WE TRUST
       </h2>
     </div>
@@ -265,12 +264,12 @@
 </section>
 
 <!-- SECTION 5: INITIATIVE & FEATURE TRIBUTE (Exact Wadada Section 5) -->
-<section class="py-24 bg-white">
+<section class="py-16 bg-white sm:py-24">
   <div class="mx-auto max-w-5xl px-4 sm:px-6">
-    <div class="rounded-3xl border border-gray-200 bg-white p-8 shadow-sm md:p-10">
-      <div class="flex flex-col gap-8 md:flex-row md:items-center">
+    <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8 md:p-10">
+      <div class="flex flex-col gap-6 sm:gap-8 md:flex-row md:items-center">
         <!-- Avatar/Emblem -->
-        <div class="mx-auto w-full max-w-[260px] shrink-0 md:mx-0">
+        <div class="mx-auto w-full max-w-[180px] shrink-0 sm:max-w-[220px] md:mx-0 md:max-w-[260px]">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 shadow-sm bg-gray-50 flex items-center justify-center p-2">
             <img alt="G-1 Household Campaign" class="h-full w-full object-contain rounded-xl" src="/static/logo_avatar.png">
           </div>
@@ -278,16 +277,16 @@
         <!-- Bio / Purpose -->
         <div class="flex-1 text-left">
           <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#006C43]">Official Campaign Platform</p>
-          <h2 class="mt-2 text-3xl font-black md:text-4xl text-gray-900">G-1 Household Campaign</h2>
-          <p class="mt-4 text-lg font-medium text-gray-700">
+          <h2 class="mt-2 text-2xl font-black text-gray-900 sm:text-3xl md:text-4xl">G-1 Household Campaign</h2>
+          <p class="mt-3 text-base font-medium text-gray-700 sm:mt-4 sm:text-lg">
             For Hon. Prince Gowon Yakubu Enenche (G-ONE)<br>
             House of Representatives · Ankpa, Omala, Olamaboro Federal Constituency
           </p>
-          <p class="mt-6 leading-8 text-gray-500">
+          <p class="mt-4 text-sm leading-7 text-gray-500 sm:mt-6 sm:text-base sm:leading-8">
             This platform was designed and developed to empower supporters across Kogi State by making it simple to create personalized campaign posters and promote the vision of Prince Gowon Enenche.
           </p>
-          <div class="mt-6">
-            <a href="/generate" class="inline-flex shrink-0 items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition shadow">
+          <div class="mt-5 sm:mt-6">
+            <a href="/generate" class="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition shadow sm:w-auto">
               Generate My Poster
             </a>
           </div>
