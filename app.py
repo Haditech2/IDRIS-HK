@@ -3,14 +3,26 @@ import uuid
 from flask import Flask, render_template, request, jsonify, redirect, url_for, send_from_directory
 from data import G_ONE_CANDIDATE, CONSTITUENCY_LGAS, CANDIDATE_GALLERY, FRAME_CONFIG
 from database import init_db, add_supporter, get_all_supporters, get_supporter_by_uid, get_statistics
-from poster_service import generate_poster_image
+from poster_service import generate_poster_image, UPLOAD_DIR
 
-app = Flask(__name__)
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+STATIC_DIR = os.path.join(BASE_DIR, "static")
+
+app = Flask(
+    __name__,
+    template_folder=TEMPLATE_DIR,
+    static_folder=STATIC_DIR,
+    static_url_path="/static"
+)
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "g-one-campaign-secret-2027")
 app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024  # 16 MB max upload
 
-# Initialize SQLite database on startup
-init_db()
+# Safe database initialization
+try:
+    init_db()
+except Exception as err:
+    print("Warning during init_db:", err)
 
 @app.context_processor
 def inject_global_data():
@@ -82,6 +94,16 @@ def statistics():
         supporters=all_supporters,
     )
 
+# Static uploaded poster delivery (works for both local static/uploads and Vercel /tmp/posters)
+@app.route("/static/uploads/posters/<filename>")
+def serve_uploaded_poster(filename):
+    if os.path.exists(os.path.join(UPLOAD_DIR, filename)):
+        return send_from_directory(UPLOAD_DIR, filename)
+    local_path = os.path.join(STATIC_DIR, "uploads", "posters")
+    if os.path.exists(os.path.join(local_path, filename)):
+        return send_from_directory(local_path, filename)
+    return send_from_directory(STATIC_DIR, "poster_sample_gone.png")
+
 # API ENDPOINTS
 @app.route("/api/generate", methods=["POST"])
 def api_generate():
@@ -133,4 +155,3 @@ def api_statistics():
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port, debug=True)
-

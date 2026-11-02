@@ -2,14 +2,24 @@ import os
 import io
 import base64
 import uuid
+import tempfile
 from PIL import Image, ImageDraw
 from data import FRAME_CONFIG
 
-STATIC_DIR = os.path.join(os.path.dirname(__file__), "static")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_DIR = os.path.join(BASE_DIR, "static")
 FRAME_PATH = os.path.join(STATIC_DIR, "gone_frame.png")
-UPLOAD_DIR = os.path.join(STATIC_DIR, "uploads", "posters")
 
-os.makedirs(UPLOAD_DIR, exist_ok=True)
+# In serverless environments like Vercel, the system temp dir is the only writable directory
+if os.environ.get("VERCEL"):
+    UPLOAD_DIR = os.path.join(tempfile.gettempdir(), "posters")
+else:
+    UPLOAD_DIR = os.path.join(STATIC_DIR, "uploads", "posters")
+
+try:
+    os.makedirs(UPLOAD_DIR, exist_ok=True)
+except Exception:
+    pass
 
 def generate_poster_image(image_input, crop_box=None):
     """
@@ -21,7 +31,6 @@ def generate_poster_image(image_input, crop_box=None):
     # 1. Parse image input
     if isinstance(image_input, str):
         if image_input.startswith("data:"):
-            # Strip base64 header
             header, encoded = image_input.split(",", 1)
             image_bytes = base64.b64decode(encoded)
             user_img = Image.open(io.BytesIO(image_bytes)).convert("RGBA")
@@ -71,9 +80,12 @@ def generate_poster_image(image_input, crop_box=None):
 
     # 8. Save output
     filename = f"poster_{uuid.uuid4().hex[:12]}.png"
+    try:
+        os.makedirs(UPLOAD_DIR, exist_ok=True)
+    except Exception:
+        pass
     output_path = os.path.join(UPLOAD_DIR, filename)
     canvas.save(output_path, format="PNG", optimize=True)
 
     relative_url = f"/static/uploads/posters/{filename}"
     return filename, relative_url
-
