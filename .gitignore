@@ -29,3 +29,18 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+*.db
+*.sqlite3
+
+# static generated uploads
+static/uploads/posters/*.png
+!static/uploads/posters/.gitkeep

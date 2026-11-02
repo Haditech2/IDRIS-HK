@@ -1,0 +1,421 @@
+{% extends "base.html" %}
+
+{% block title %}Prince Gowon Enenche (G-ONE) — House of Representatives Campaign Poster Generator{% endblock %}
+
+{% block content %}
+<!-- HERO SECTION WITH OFFICIAL CAMPAIGN FLYER BACKGROUND -->
+<section class="relative min-h-[94vh] flex items-center overflow-hidden bg-gray-950 text-white">
+  <!-- Mobile/Vertical: Crisp vertical campaign flyer -->
+  <div class="absolute inset-0 -z-20 sm:hidden">
+    <img src="/static/gone_leader.jpg" alt="Prince Gowon Enenche - The Leader of Our Dream" class="h-full w-full object-cover object-top opacity-60">
+  </div>
+  <!-- Desktop/Tablet: Widescreen 16:9 HD Composite with Zero Head Cut-Off -->
+  <div class="absolute inset-0 -z-20 hidden sm:block">
+    <img src="/static/gone_hero_bg.jpg" alt="Prince Gowon Enenche - The Leader of Our Dream" class="h-full w-full object-cover object-center opacity-90 transition-transform duration-1000">
+  </div>
+
+  <!-- Cinematic Backdrop Overlays for crisp text readability & SDP green ambiance -->
+  <div class="absolute inset-0 z-0 bg-black/30 backdrop-blur-[0.5px]"></div>
+  <div class="absolute inset-0 z-10 bg-gradient-to-r from-gray-950/95 via-emerald-950/75 to-transparent"></div>
+  <div class="absolute inset-0 z-10 bg-gradient-to-t from-gray-950/90 via-transparent to-black/50"></div>
+  <div class="absolute inset-0 z-10 bg-[radial-gradient(circle_at_top_left,rgba(0,108,67,0.4),transparent_60%)]"></div>
+
+  <div class="relative z-20 mx-auto w-full max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+      <!-- Left Content Column -->
+      <div class="lg:col-span-7 space-y-6">
+        <!-- Campaign Tag Badge -->
+        <div class="inline-flex items-center gap-2 rounded-full border border-emerald-400/40 bg-emerald-900/50 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-emerald-300 backdrop-blur-md shadow-lg shadow-emerald-950/30">
+          <span class="h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+          <span>Ankpa, Omala, Olamaboro Federal Constituency · SDP</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-4xl font-black leading-tight tracking-tight sm:text-6xl lg:text-7xl">
+          Generate Your <br>
+          <span class="text-emerald-400">G-ONE Support</span> <br>
+          Poster Here
+        </h1>
+
+        <!-- Description -->
+        <p class="max-w-xl text-base text-gray-200 sm:text-lg lg:text-xl leading-relaxed">
+          Join thousands of proud constituents and supporters standing with
+          <strong class="text-white">{{ candidate.name }} ({{ candidate.moniker }})</strong>
+          for House of Representatives. Upload your photo, personalize your constituency details, and show your vote for progress!
+        </p>
+
+        <!-- Key Slogan Pill -->
+        <div class="inline-flex items-center gap-2 rounded-2xl bg-white/10 px-4 py-2.5 border border-white/20 backdrop-blur-md">
+          <span class="text-xs uppercase font-extrabold text-emerald-400 tracking-wider">Motto:</span>
+          <span class="text-xs sm:text-sm font-black text-white">Progress · In God We Trust — I Reserved For Him My Vote</span>
+        </div>
+
+        <!-- Call to Action Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-2">
+          <a href="/generate" class="group inline-flex items-center justify-center gap-3 rounded-2xl bg-primary px-8 py-4 text-base font-black text-white shadow-xl shadow-primary/30 transition-all hover:bg-emerald-600 hover:shadow-primary/50 hover:scale-105 active:scale-95">
+            <i data-lucide="sparkles" class="h-5 w-5 transition-transform group-hover:rotate-12"></i>
+            <span>Generate Your Poster Now</span>
+            <i data-lucide="arrow-right" class="h-5 w-5 transition-transform group-hover:translate-x-1"></i>
+          </a>
+          <a href="/supporters" class="inline-flex items-center justify-center gap-2 rounded-2xl border-2 border-white/30 bg-white/10 px-6 py-4 text-sm font-bold text-white backdrop-blur-md transition-all hover:bg-white/20 hover:border-white">
+            <i data-lucide="award" class="h-5 w-5 text-emerald-400"></i>
+            <span>View Supporters Wall</span>
+          </a>
+        </div>
+
+        <!-- Live Metrics Spotlight -->
+        <div class="flex items-center gap-6 pt-4 text-xs font-bold text-gray-300">
+          <div class="flex items-center gap-2">
+            <span class="flex h-2.5 w-2.5 rounded-full bg-emerald-400"></span>
+            <span>Live Community Mobilization</span>
+          </div>
+          <div>·</div>
+          <div>100% Free &amp; Instant Download</div>
+        </div>
+      </div>
+
+      <!-- Right Showcase Column (3D Poster Stack) -->
+      <div class="lg:col-span-5 flex justify-center">
+        <div class="relative mx-auto h-[460px] w-full max-w-[340px] sm:h-[540px] sm:max-w-[400px]">
+          <!-- Background Shadow Cards -->
+          <div class="absolute -left-3 top-8 w-[92%] opacity-40 animate-float-reverse">
+            <div class="relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-2xl">
+              <img src="/static/poster_sample_gone.png" alt="G-ONE Campaign Poster Background" class="h-full w-full object-cover">
+            </div>
+          </div>
+
+          <div class="absolute -right-3 top-5 w-[92%] opacity-60 animate-float">
+            <div class="relative aspect-square overflow-hidden rounded-3xl border border-white/10 bg-black/40 shadow-2xl">
+              <img src="/static/poster_sample_gone.png" alt="G-ONE Campaign Poster Mid" class="h-full w-full object-cover">
+            </div>
+          </div>
+
+          <!-- Main Prominent Card -->
+          <div class="relative z-20 aspect-square w-full overflow-hidden rounded-3xl border-2 border-white/25 bg-gray-900 shadow-2xl shadow-emerald-950/80 transition-all hover:scale-[1.02]">
+            <img src="/static/poster_sample_gone.png" alt="Official G-ONE Campaign Poster" class="h-full w-full object-cover">
+            <div class="absolute bottom-3 left-3 right-3 rounded-2xl bg-black/85 p-3.5 backdrop-blur-md border border-white/15 text-center">
+              <p class="text-[11px] font-black text-emerald-400 uppercase tracking-wider">
+                {{ candidate.constituency }}
+              </p>
+              <p class="text-sm font-black text-white">
+                {{ candidate.name }} · SDP
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Down Indicator -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 text-white/70 flex flex-col items-center gap-1">
+    <span class="text-[10px] font-bold uppercase tracking-widest text-white/60">Scroll Down</span>
+    <i data-lucide="chevron-down" class="h-4 w-4 animate-bounce"></i>
+  </div>
+</section>
+
+<!-- CONSTITUENCY ENGAGEMENT & STATISTICS COUNTER SECTION -->
+<section class="py-20 bg-gray-50 border-b border-gray-200">
+  <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid items-center gap-12 lg:grid-cols-2">
+      <div>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-primary">
+          <i data-lucide="trending-up" class="h-3.5 w-3.5"></i>
+          Grassroots Mobilization Tracker
+        </span>
+        <h2 class="mt-4 text-3xl font-black text-gray-900 sm:text-4xl lg:text-5xl">
+          Constituency Impact <br>
+          <span class="text-primary">Ankpa, Omala &amp; Olamaboro</span>
+        </h2>
+        <p class="mt-4 text-base text-gray-600 leading-relaxed max-w-lg">
+          Constituents across all 3 Local Government Areas and electoral wards are making their support known by creating personalized digital campaign posters.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="/generate" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-black text-white shadow-md hover:bg-primary-dark transition">
+            <i data-lucide="sparkles" class="h-4 w-4"></i>
+            <span>Add Your Support Now</span>
+          </a>
+          <a href="/statistics" class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-6 py-3 text-sm font-bold text-gray-700 hover:bg-gray-100 transition">
+            <span>Explore Constituency Statistics</span>
+            <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- LGA Stats Cards -->
+      <div class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+        {% for lga in lgas %}
+        <div class="rounded-3xl border border-gray-200 bg-white p-6 shadow-sm hover:border-emerald-300 transition-all hover:shadow-md">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-black uppercase tracking-wider text-gray-400">LGA</span>
+            <span class="h-2 w-2 rounded-full bg-primary"></span>
+          </div>
+          <h3 class="mt-3 text-2xl font-black text-gray-900">{{ lga.name }}</h3>
+          <p class="text-xs font-medium text-gray-500 mt-1">Kogi State</p>
+          <div class="mt-6 border-t border-gray-100 pt-4">
+            <p class="text-3xl font-black text-primary">{{ stats.lga_counts.get(lga.name, 0) }}</p>
+            <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wider mt-1">Posters Generated</p>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 SIMPLE STEPS TO GENERATE YOUR CAMPAIGN POSTER -->
+<section class="py-24 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-primary">
+        <i data-lucide="sparkles" class="h-3.5 w-3.5"></i>
+        Quick &amp; Easy Process
+      </span>
+      <h2 class="text-3xl font-black text-gray-900 sm:text-4xl md:text-5xl">
+        3 Steps to Create Your Official <br>
+        <span class="text-primary">G-ONE Campaign Poster</span>
+      </h2>
+      <p class="text-base text-gray-600 leading-relaxed">
+        Join the digital movement for effective representation in under 60 seconds with our optimized poster studio.
+      </p>
+    </div>
+
+    <div class="mt-16 grid grid-cols-1 gap-8 md:grid-cols-3">
+      <!-- Step 1 -->
+      <div class="relative rounded-3xl border border-gray-100 bg-gray-50/70 p-8 shadow-sm transition hover:shadow-md hover:border-emerald-200">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary text-white text-xl font-black shadow-lg shadow-primary/20">
+          1
+        </div>
+        <h3 class="mt-6 text-xl font-black text-gray-900">Upload Your Photo</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+          Select your favorite clear portrait photo from your phone or computer to feature as an official constituent supporter.
+        </p>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="relative rounded-3xl border border-gray-100 bg-gray-50/70 p-8 shadow-sm transition hover:shadow-md hover:border-emerald-200">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-royal text-white text-xl font-black shadow-lg shadow-royal/20">
+          2
+        </div>
+        <h3 class="mt-6 text-xl font-black text-gray-900">Crop &amp; Select Ward</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+          Use the interactive pan &amp; zoom crop tool to position your face perfectly inside the frame, then pick your LGA and Ward.
+        </p>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="relative rounded-3xl border border-gray-100 bg-gray-50/70 p-8 shadow-sm transition hover:shadow-md hover:border-emerald-200">
+        <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-accent-orange text-white text-xl font-black shadow-lg shadow-accent-orange/20">
+          3
+        </div>
+        <h3 class="mt-6 text-xl font-black text-gray-900">Download &amp; Share</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">
+          Your high-definition 1024x1024 poster renders automatically! Download it and share straight to WhatsApp DP and Facebook.
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/generate" class="inline-flex items-center gap-3 rounded-2xl bg-primary px-8 py-4 text-base font-black text-white shadow-lg shadow-primary/20 hover:bg-primary-dark transition hover:scale-105 active:scale-95">
+        <i data-lucide="sparkles" class="h-5 w-5"></i>
+        <span>Get Started Now — It's 100% Free</span>
+        <i data-lucide="arrow-right" class="h-5 w-5"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- "JOIN THE WINNING TEAM" CANDIDATE BACKGROUND BANNER -->
+<section class="py-20 bg-gray-50 border-t border-gray-200">
+  <div class="relative overflow-hidden bg-[#006C43] min-h-[300px] sm:min-h-[340px] flex items-center py-16 text-white shadow-xl">
+    <!-- Candidate Background Image on right - Head Intact -->
+    <div class="absolute right-0 sm:right-6 md:right-16 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
+      <div class="relative h-full w-full">
+        <img src="/static/gone_standing.jpg" alt="Prince Gowon Enenche - Join the Winning Team" class="h-full w-full object-contain object-top opacity-40 mix-blend-luminosity">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#006C43] via-[#006C43]/20 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#006C43] via-transparent to-transparent"></div>
+      </div>
+    </div>
+
+    <!-- Candidate Background Image on left (subtle symmetry) -->
+    <div class="absolute left-0 sm:left-6 md:left-16 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0 hidden lg:block">
+      <div class="relative h-full w-full">
+        <img src="/static/gone_hero.jpg" alt="Prince Gowon Enenche - G-ONE" class="h-full w-full object-contain object-top opacity-25 mix-blend-luminosity scale-x-[-1]">
+        <div class="absolute inset-0 bg-gradient-to-l from-[#006C43] via-[#006C43]/20 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-[#006C43] via-transparent to-transparent"></div>
+      </div>
+    </div>
+
+    <div class="relative z-20 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+      <h2 class="text-4xl font-black tracking-tight sm:text-6xl md:text-7xl drop-shadow-md">
+        Join the Winning Team
+      </h2>
+      <p class="mx-auto mt-4 max-w-2xl text-base sm:text-lg md:text-xl font-medium text-emerald-100 drop-shadow">
+        Show your unreserved support for G-ONE with a personalized digital campaign poster in under 60 seconds.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <a href="/generate" class="inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 text-base font-black text-primary shadow-xl hover:bg-emerald-50 transition hover:scale-105 active:scale-95">
+          <i data-lucide="sparkles" class="h-5 w-5 text-primary"></i>
+          <span>Create My Poster</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- "IN GOD WE TRUST" FULL-WIDTH BRAND BANNER -->
+<section class="relative w-full overflow-hidden bg-[#0A6FB8] py-24 md:py-32 text-white text-center shadow-xl">
+  <!-- Candidate Background Image on right - Head Intact -->
+  <div class="absolute right-0 sm:right-8 md:right-20 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
+    <div class="relative h-full w-full">
+      <img src="/static/gone_thumbs.jpg" alt="Prince Gowon Enenche - Progress" class="h-full w-full object-contain object-top opacity-40 mix-blend-luminosity">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0A6FB8] via-[#0A6FB8]/20 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A6FB8] via-transparent to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- Candidate Background Image on left - Head Intact -->
+  <div class="absolute left-0 sm:left-8 md:left-20 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0 hidden lg:block">
+    <div class="relative h-full w-full">
+      <img src="/static/gone_native.jpg" alt="Prince Gowon Enenche - In God We Trust" class="h-full w-full object-contain object-top opacity-30 mix-blend-luminosity scale-x-[-1]">
+      <div class="absolute inset-0 bg-gradient-to-l from-[#0A6FB8] via-[#0A6FB8]/20 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-[#0A6FB8] via-transparent to-transparent"></div>
+    </div>
+  </div>
+
+  <div class="relative z-20 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-6">
+    <span class="inline-flex items-center gap-2 rounded-full bg-blue-800/60 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-blue-200 border border-blue-700/50 backdrop-blur-md">
+      <span class="h-2 w-2 rounded-full bg-blue-400"></span>
+      PROGRESS · UNITY · INTEGRITY
+    </span>
+    <h2 class="text-5xl font-black tracking-tight sm:text-7xl md:text-8xl drop-shadow-lg">
+      IN GOD WE TRUST
+    </h2>
+    <p class="mx-auto max-w-2xl text-base sm:text-xl font-semibold text-blue-100 drop-shadow">
+      Dedicated to the peace, progress, and prosperity of the good people of Ankpa, Omala, and Olamaboro Federal Constituency.
+    </p>
+  </div>
+</section>
+
+<!-- CANDIDATE PROFILE & STRATEGIC PILLARS -->
+<section class="py-24 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="rounded-3xl border border-gray-200 bg-gray-50/50 p-8 shadow-sm md:p-12">
+      <div class="flex flex-col gap-8 md:flex-row md:items-center">
+        <div class="mx-auto w-full max-w-[280px] shrink-0 md:mx-0">
+          <div class="relative aspect-square overflow-hidden rounded-3xl border border-gray-200 shadow-md">
+            <img src="/static/candidate_gone.png" alt="Prince Gowon Enenche" class="h-full w-full object-cover object-top">
+          </div>
+        </div>
+        <div class="flex-1 text-left space-y-4">
+          <div class="inline-flex items-center gap-1.5 rounded-full bg-emerald-100 px-3.5 py-1 text-xs font-bold text-primary">
+            <i data-lucide="shield-check" class="h-4 w-4"></i>
+            House of Representatives Candidate · SDP
+          </div>
+          <h3 class="text-3xl font-black text-gray-900 md:text-4xl">
+            {{ candidate.name }} ({{ candidate.moniker }})
+          </h3>
+          <p class="text-sm font-bold uppercase tracking-wider text-primary">
+            {{ candidate.constituency }} · {{ candidate.party }}
+          </p>
+          <p class="text-sm text-gray-600 leading-relaxed">
+            A dynamic youth leader, renowned philanthropist, and entrepreneur. Prince Gowon Enenche represents a new dawn of vibrant, accountable, and result-oriented representation in the National Assembly for Ankpa, Omala, and Olamaboro.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-4">
+            <a href="/generate" class="inline-flex items-center gap-2 rounded-xl bg-primary px-6 py-2.5 text-sm font-bold text-white shadow hover:bg-primary-dark transition">
+              <i data-lucide="sparkles" class="h-4 w-4"></i>
+              <span>Generate G-ONE Poster</span>
+            </a>
+            <a href="/supporters" class="inline-flex items-center gap-2 rounded-xl border border-gray-300 bg-white px-6 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-100 transition">
+              <span>Constituency Supporters</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Strategic Pillars Grid -->
+    <div class="mt-16">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <span class="text-xs font-black uppercase tracking-wider text-primary">Legislative Agenda</span>
+        <h3 class="text-3xl font-black text-gray-900 sm:text-4xl">Pillars of Representation</h3>
+      </div>
+
+      <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {% for pillar in candidate.pillars %}
+        <div class="rounded-3xl border border-gray-100 bg-white p-6 shadow-sm hover:border-emerald-200 hover:shadow-md transition">
+          <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-50 text-primary">
+            <i data-lucide="{{ pillar.icon|lower }}" class="h-6 w-6"></i>
+          </div>
+          <h4 class="mt-5 text-lg font-black text-gray-900">{{ pillar.title }}</h4>
+          <p class="mt-2 text-xs text-gray-600 leading-relaxed">{{ pillar.description }}</p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CANDIDATE PHOTO GALLERY -->
+<section class="py-20 bg-gray-50 border-t border-gray-200">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-10">
+      <div>
+        <span class="text-xs font-black uppercase tracking-wider text-primary">Moments &amp; Trail</span>
+        <h3 class="text-3xl font-black text-gray-900">Campaign Gallery</h3>
+      </div>
+      <a href="/generate" class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-bold text-white shadow hover:bg-primary-dark">
+        <i data-lucide="sparkles" class="h-4 w-4"></i>
+        <span>Create My Support Poster</span>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+      {% for item in gallery %}
+      <div class="group relative aspect-[3/4] overflow-hidden rounded-2xl border border-gray-200 bg-gray-900 shadow-sm cursor-pointer" onclick="openPhotoModal('{{ item.src }}', '{{ item.title }}', '{{ item.subtitle }}')">
+        <img src="{{ item.src }}" alt="{{ item.title }}" class="h-full w-full object-cover object-top transition duration-500 group-hover:scale-105">
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent opacity-80 group-hover:opacity-100 transition"></div>
+        <div class="absolute bottom-3 left-3 right-3 text-white">
+          <span class="inline-block rounded-md bg-emerald-500/80 px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wider backdrop-blur-sm">
+            {{ item.badge }}
+          </span>
+          <p class="mt-1 text-xs font-black text-white leading-snug">{{ item.title }}</p>
+          <p class="text-[10px] text-gray-300 truncate">{{ item.subtitle }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO LIGHTBOX MODAL -->
+<div id="photo-modal" class="fixed inset-0 z-50 hidden bg-black/90 backdrop-blur-md flex items-center justify-center p-4" onclick="closePhotoModal()">
+  <div class="relative max-w-3xl w-full bg-gray-950 rounded-3xl overflow-hidden shadow-2xl border border-white/10" onclick="event.stopPropagation()">
+    <button onclick="closePhotoModal()" class="absolute top-4 right-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/20 text-white hover:bg-white/40 transition">
+      <i data-lucide="x" class="h-5 w-5"></i>
+    </button>
+    <div class="relative max-h-[75vh] w-full flex items-center justify-center bg-black">
+      <img id="modal-img" src="" alt="" class="max-h-[75vh] w-auto object-contain">
+    </div>
+    <div class="p-6 text-white border-t border-white/10">
+      <h4 id="modal-title" class="text-xl font-black"></h4>
+      <p id="modal-subtitle" class="text-sm text-gray-400 mt-1"></p>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  function openPhotoModal(src, title, subtitle) {
+    document.getElementById('modal-img').src = src;
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-subtitle').textContent = subtitle;
+    document.getElementById('photo-modal').classList.remove('hidden');
+    lucide.createIcons();
+  }
+  function closePhotoModal() {
+    document.getElementById('photo-modal').classList.add('hidden');
+  }
+</script>
+{% endblock %}

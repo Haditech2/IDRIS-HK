@@ -1,4 +1,4 @@
-# G-ONE 2027 — Official Campaign Poster Generator Studio
+# G-ONE 2027 — Official Campaign Poster Generator Studio (Flask)
 
 An official digital grassroots mobilization platform for **Prince Gowon Enenche (G-ONE)**, candidate for the Federal House of Representatives representing **Ankpa, Omala, and Olamaboro Federal Constituency**, Kogi State, under the **Social Democratic Party (SDP)**.
 
@@ -29,10 +29,10 @@ An official digital grassroots mobilization platform for **Prince Gowon Enenche 
 
 - **Interactive Poster Studio (`/generate`)**:
   - Upload photo (JPG, PNG, WEBP).
-  - Drag-and-drop crop with zoom (1x – 3x) using `react-easy-crop`.
-  - Live sticky preview matching the exact 1024×1024 official G-ONE SDP campaign frame.
-  - LGA selector for Ankpa, Omala, and Olamaboro with ward attribution.
-  - High-res HTML5 Canvas rendering and instant download.
+  - High-precision cropping with zoom & pan using `Cropper.js`.
+  - Live preview matching the exact 1024×1024 official G-ONE SDP campaign frame.
+  - LGA selector for Ankpa, Omala, and Olamaboro with dynamic electoral ward attribution.
+  - Server-side and client-side high-resolution Pillow compositing with instant automated download.
   - Confetti celebration upon poster creation.
 
 - **Success & Social Mobilization (`/generate/success`)**:
@@ -41,22 +41,28 @@ An official digital grassroots mobilization platform for **Prince Gowon Enenche 
 
 - **Constituency Supporters Wall (`/supporters`)**:
   - Public gallery of generated supporter posters filterable by Ankpa, Omala, and Olamaboro.
+  - Real-time search by supporter name.
 
 - **Campaign Analytics (`/statistics`)**:
   - Live counts, percentages, and ward breakdown across the Federal Constituency.
 
 ---
 
-## 💻 Development & Deployment
+## 💻 Tech Stack & Architecture
+
+- **Backend:** Python 3.12+, Flask 3.1+
+- **Image Processing Engine:** Pillow (PIL)
+- **Database:** SQLite3 (`gone.db`)
+- **Frontend / Styling:** Jinja2 templates, Tailwind CSS, Lucide Icons, Canvas Confetti, Cropper.js
+- **WSGI / Production:** Gunicorn, Vercel Python Runtime (`@vercel/python`)
+
+### Running Locally
 
 ```bash
-# Install dependencies
-npm install
+# 1. Install dependencies
+pip install -r requirements.txt
 
-# Run development server
-npm run dev
-
-# Build production bundle
-npm run build
-npm start
+# 2. Run Flask application
+python app.py
 ```
+Open [http://localhost:5000](http://localhost:5000) in your browser.

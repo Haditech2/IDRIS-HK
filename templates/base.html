@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Prince Gowon Enenche (G-ONE) — House of Representatives Campaign Poster Generator{% endblock %}</title>
+  <meta name="description" content="Generate and customize your official campaign support poster for Prince Gowon Enenche (G-ONE) for House of Representatives, Ankpa, Omala, and Olamaboro Federal Constituency (SDP).">
+  <link rel="icon" href="/static/favicon.ico">
+
+  <!-- Tailwind CSS CDN with custom config -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: {
+              DEFAULT: '#006C43',
+              foreground: '#ffffff',
+              dark: '#004d30',
+              light: '#008f58',
+            },
+            royal: {
+              DEFAULT: '#0A6FB8',
+              dark: '#085791',
+            },
+            accent: {
+              orange: '#F58220',
+            },
+          },
+          fontFamily: {
+            sans: ['system-ui', '-apple-system', 'BlinkMacSystemFont', '"Segoe UI"', 'Roboto', '"Helvetica Neue"', 'Arial', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.4/dist/confetti.browser.min.js"></script>
+
+  <!-- Cropper.js CSS & JS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+    }
+    @keyframes float-reverse {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(8px) rotate(-1deg); }
+    }
+    .animate-float { animation: float 6s ease-in-out infinite; }
+    .animate-float-reverse { animation: float-reverse 7s ease-in-out infinite; }
+  </style>
+
+  {% block extra_head %}{% endblock %}
+</head>
+<body class="flex flex-col min-h-screen bg-white text-gray-900 antialiased font-sans">
+
+  <!-- TOP NAVIGATION BAR -->
+  <header class="sticky top-0 z-50 w-full border-b border-gray-100 bg-white/95 backdrop-blur-md transition-all">
+    <div class="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <!-- Candidate Brand -->
+      <a href="/" class="group flex items-center gap-3.5 transition-transform hover:opacity-95">
+        <div class="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm ring-1 ring-black/5 transition-transform group-hover:scale-105">
+          <img src="/static/logo.png" alt="Prince Gowon Enenche Official Logo" class="h-full w-full object-cover object-top">
+        </div>
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-base sm:text-lg font-black tracking-tight text-gray-900 group-hover:text-primary transition-colors">
+              {{ candidate.name }}
+            </span>
+            <span class="rounded-md bg-emerald-100 px-1.5 py-0.5 text-[10px] font-black tracking-wider text-primary">
+              {{ candidate.party }}
+            </span>
+          </div>
+          <p class="text-[11px] font-semibold text-muted-foreground text-gray-500">
+            House of Reps · Ankpa, Omala, Olamaboro Constituency
+          </p>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden md:flex items-center gap-1">
+        <a href="/" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'home' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
+          Home
+        </a>
+        <a href="/generate" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'generate' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
+          Generate Poster
+        </a>
+        <a href="/supporters" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'supporters' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
+          Supporters Wall
+        </a>
+        <a href="/statistics" class="rounded-xl px-4 py-2 text-sm font-bold transition-all {% if active_page == 'statistics' %}bg-primary/10 text-primary font-black{% else %}text-gray-600 hover:bg-gray-100 hover:text-gray-900{% endif %}">
+          Constituency Stats
+        </a>
+      </nav>
+
+      <!-- Desktop CTA -->
+      <div class="hidden md:flex items-center gap-3">
+        <a href="/generate" class="inline-flex items-center gap-2 rounded-xl bg-primary px-5 py-2.5 text-xs font-black uppercase tracking-wider text-white shadow-md shadow-primary/20 transition-all hover:bg-primary-dark hover:shadow-lg hover:scale-105 active:scale-95">
+          <i data-lucide="sparkles" class="h-4 w-4"></i>
+          <span>Generate Poster</span>
+        </a>
+      </div>
+
+      <!-- Mobile Hamburger Button -->
+      <div class="flex md:hidden">
+        <button id="mobile-menu-btn" type="button" class="inline-flex items-center justify-center rounded-xl p-2.5 text-gray-700 hover:bg-gray-100 focus:outline-none">
+          <i data-lucide="menu" id="menu-icon-open" class="h-6 w-6"></i>
+          <i data-lucide="x" id="menu-icon-close" class="h-6 w-6 hidden"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden border-b border-gray-100 bg-white px-4 pt-2 pb-6 space-y-2">
+      <a href="/" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'home' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Home
+      </a>
+      <a href="/generate" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'generate' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Generate Poster
+      </a>
+      <a href="/supporters" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'supporters' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Supporters Wall
+      </a>
+      <a href="/statistics" class="block rounded-xl px-4 py-3 text-base font-bold {% if active_page == 'statistics' %}bg-primary/10 text-primary{% else %}text-gray-700 hover:bg-gray-50{% endif %}">
+        Constituency Stats
+      </a>
+      <div class="pt-2">
+        <a href="/generate" class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3 text-center text-sm font-black text-white shadow-md">
+          <i data-lucide="sparkles" class="h-4 w-4"></i>
+          <span>Generate Poster Now</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN BODY CONTENT -->
+  <main class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- OFFICIAL CAMPAIGN FOOTER -->
+  <footer class="border-t border-gray-200 bg-white text-gray-600">
+    <div class="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 gap-10 md:grid-cols-12">
+        <!-- Candidate Identity -->
+        <div class="md:col-span-6 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="relative h-12 w-12 overflow-hidden rounded-xl border border-gray-200 shadow-sm">
+              <img src="/static/logo.png" alt="{{ candidate.name }}" class="h-full w-full object-cover object-top">
+            </div>
+            <div>
+              <p class="text-xs font-black uppercase tracking-wider text-primary">
+                {{ candidate.partyFullName }} ({{ candidate.party }})
+              </p>
+              <h3 class="text-lg font-black text-gray-900">
+                {{ candidate.name }}
+              </h3>
+            </div>
+          </div>
+          <p class="text-sm font-semibold text-gray-700">
+            {{ candidate.name }} ({{ candidate.moniker }})
+          </p>
+          <p class="text-xs text-gray-500 leading-relaxed max-w-md">
+            A transformative grassroots platform dedicated to effective, accountable, and people-centered representation for the good people of Ankpa, Omala, and Olamaboro Federal Constituency, Kogi State.
+          </p>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="{{ candidate.website }}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-xs font-bold text-gray-700 hover:bg-gray-100 transition">
+              <i data-lucide="globe" class="h-3.5 w-3.5 text-primary"></i>
+              <span>Visit g-one-chi.vercel.app</span>
+              <i data-lucide="external-link" class="h-3 w-3 text-gray-400"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="md:col-span-3 space-y-3">
+          <p class="text-xs font-black uppercase tracking-wider text-gray-900">
+            Navigation
+          </p>
+          <ul class="space-y-2 text-sm font-medium">
+            <li><a href="/" class="text-gray-600 transition hover:text-primary">Home</a></li>
+            <li><a href="/generate" class="text-gray-600 transition hover:text-primary">Generate Poster</a></li>
+            <li><a href="/supporters" class="text-gray-600 transition hover:text-primary">Supporters Wall</a></li>
+            <li><a href="/statistics" class="text-gray-600 transition hover:text-primary">Constituency Statistics</a></li>
+          </ul>
+        </div>
+
+        <!-- Constituency Coverage -->
+        <div class="md:col-span-3 space-y-3">
+          <p class="text-xs font-black uppercase tracking-wider text-gray-900">
+            Federal Constituency
+          </p>
+          <ul class="space-y-2 text-xs font-medium text-gray-600">
+            <li class="flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span>Ankpa Local Government Area</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span>Omala Local Government Area</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="h-1.5 w-1.5 rounded-full bg-primary"></span>
+              <span>Olamaboro Local Government Area</span>
+            </li>
+            <li class="pt-2">
+              <span class="inline-block rounded-md bg-emerald-50 px-2 py-1 text-[11px] font-bold text-primary border border-emerald-200">
+                Motto: Progress · In God We Trust
+              </span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="mt-12 border-t border-gray-100 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left text-xs text-gray-400">
+        <p>&copy; 2026-2027 {{ candidate.name }} ({{ candidate.moniker }}) Campaign Organization. Social Democratic Party (SDP).</p>
+        <p class="font-medium text-gray-500">I Reserved For Him My Vote</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Core Scripts -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
+    if (mobileBtn && mobileMenu) {
+      mobileBtn.addEventListener('click', () => {
+        const isHidden = mobileMenu.classList.contains('hidden');
+        if (isHidden) {
+          mobileMenu.classList.remove('hidden');
+          iconOpen.classList.add('hidden');
+          iconClose.classList.remove('hidden');
+        } else {
+          mobileMenu.classList.add('hidden');
+          iconOpen.classList.remove('hidden');
+          iconClose.classList.add('hidden');
+        }
+      });
+    }
+  </script>
+
+  {% block extra_scripts %}{% endblock %}
+</body>
+</html>

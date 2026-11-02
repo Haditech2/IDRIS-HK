@@ -1,0 +1,161 @@
+{% extends "base.html" %}
+
+{% block title %}Your G-ONE Campaign Poster is Ready! — Prince Gowon Enenche{% endblock %}
+
+{% block content %}
+<div class="min-h-screen bg-gray-50/50 py-12 sm:py-16">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+    <!-- Header -->
+    <div class="text-center max-w-2xl mx-auto space-y-3 mb-10">
+      <div class="inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-1.5 text-xs font-black uppercase tracking-wider text-primary">
+        <i data-lucide="check-circle-2" class="h-4 w-4"></i>
+        <span>Poster Created Successfully!</span>
+      </div>
+      <h1 class="text-3xl font-black text-gray-900 sm:text-4xl">
+        Share Your Voice For <br>
+        <span class="text-primary">{{ candidate.name }} ({{ candidate.moniker }})</span>
+      </h1>
+      <p class="text-sm text-gray-600">
+        Your personalized official campaign poster has been generated in high definition. Set it as your WhatsApp DP, Facebook profile, and status!
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+      <!-- Left Column: Poster Display -->
+      <div class="lg:col-span-6 space-y-4">
+        <div class="relative aspect-square w-full overflow-hidden rounded-3xl border-2 border-gray-200 bg-white shadow-2xl shadow-emerald-950/20">
+          <img id="poster-display" src="{{ poster_url }}" alt="Generated G-ONE Campaign Poster" class="h-full w-full object-cover">
+        </div>
+
+        {% if supporter %}
+        <div class="rounded-2xl border border-gray-200 bg-white p-4 shadow-sm flex items-center justify-between">
+          <div>
+            <p class="text-xs font-black uppercase tracking-wider text-gray-400">Attributed Supporter</p>
+            <h4 class="text-base font-black text-gray-900">{{ supporter.name }}</h4>
+            <p class="text-xs text-primary font-bold mt-0.5">{{ supporter.lga }} LGA · {{ supporter.ward }}</p>
+          </div>
+          <span class="rounded-xl bg-emerald-50 px-3 py-1.5 text-xs font-black text-primary border border-emerald-200">
+            Verified DP
+          </span>
+        </div>
+        {% endif %}
+
+        <div class="flex gap-3">
+          <a id="btn-download" href="{{ poster_url }}" download="G-ONE-Campaign-Poster.png" class="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary py-4 px-6 text-sm font-black text-white shadow-lg shadow-primary/25 hover:bg-primary-dark transition hover:scale-105 active:scale-95">
+            <i data-lucide="download" class="h-4 w-4"></i>
+            <span>Download Poster</span>
+          </a>
+          <a href="/generate" class="inline-flex items-center justify-center gap-2 rounded-2xl border border-gray-300 bg-white py-4 px-5 text-sm font-bold text-gray-700 hover:bg-gray-100 transition">
+            <i data-lucide="plus" class="h-4 w-4"></i>
+            <span>Create Another</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Column: Social Share & Action Hub -->
+      <div class="lg:col-span-6 space-y-6">
+        <!-- 1-Click Share Box -->
+        <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm space-y-6">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-primary">1-Click Mobilization</span>
+            <h3 class="text-xl font-black text-gray-900 mt-1">Share Everywhere</h3>
+            <p class="text-xs text-gray-500 mt-1">Spread the movement across WhatsApp, Facebook, and Twitter to inspire more constituents.</p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- WhatsApp -->
+            <a id="share-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2.5 rounded-xl bg-[#25D366] py-3.5 px-4 text-xs font-black text-white shadow hover:opacity-95 transition">
+              <i data-lucide="message-circle" class="h-4 w-4"></i>
+              <span>Share to WhatsApp</span>
+            </a>
+
+            <!-- Facebook -->
+            <a id="share-facebook" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2.5 rounded-xl bg-[#1877F2] py-3.5 px-4 text-xs font-black text-white shadow hover:opacity-95 transition">
+              <i data-lucide="share-2" class="h-4 w-4"></i>
+              <span>Share on Facebook</span>
+            </a>
+
+            <!-- X (Twitter) -->
+            <a id="share-twitter" href="#" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2.5 rounded-xl bg-black py-3.5 px-4 text-xs font-black text-white shadow hover:opacity-95 transition">
+              <i data-lucide="twitter" class="h-4 w-4"></i>
+              <span>Share on X (Twitter)</span>
+            </a>
+
+            <!-- Copy Link -->
+            <button id="btn-copy-link" type="button" class="flex items-center justify-center gap-2.5 rounded-xl border border-gray-200 bg-gray-50 py-3.5 px-4 text-xs font-black text-gray-800 shadow-sm hover:bg-gray-100 transition">
+              <i data-lucide="copy" class="h-4 w-4 text-primary"></i>
+              <span id="copy-btn-text">Copy Portal Link</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Next Steps Guide -->
+        <div class="rounded-3xl border border-gray-200 bg-white p-6 sm:p-8 shadow-sm space-y-4">
+          <h3 class="text-base font-black text-gray-900 flex items-center gap-2">
+            <i data-lucide="award" class="h-5 w-5 text-primary"></i>
+            <span>Recommended Next Steps</span>
+          </h3>
+
+          <ul class="space-y-3 text-xs text-gray-600 font-medium">
+            <li class="flex items-start gap-2.5">
+              <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-black text-primary">1</span>
+              <span><strong>Set as WhatsApp Profile Picture (DP):</strong> Let all your contacts see your support for G-ONE 2027.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-black text-primary">2</span>
+              <span><strong>Post to WhatsApp Status &amp; Stories:</strong> Include the portal link so your community can generate their own.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-black text-primary">3</span>
+              <span><strong>Share in Ward &amp; Youth Group Chats:</strong> Mobilize grassroot voters across Ankpa, Omala, and Olamaboro!</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="text-center pt-2">
+          <a href="/supporters" class="text-xs font-bold text-primary hover:underline">
+            &larr; View all posters on the Constituency Supporters Wall
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+  const websiteUrl = window.location.origin || "{{ candidate.website }}";
+  const shareText = `I just created my official campaign support poster for Prince Gowon Enenche (G-ONE) for House of Representatives (Ankpa, Omala, Olamaboro Federal Constituency - SDP)! Create yours here: ${websiteUrl}`;
+
+  // WhatsApp
+  document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
+
+  // Facebook
+  document.getElementById('share-facebook').href = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(websiteUrl)}`;
+
+  // X / Twitter
+  document.getElementById('share-twitter').href = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`;
+
+  // Copy link
+  const btnCopy = document.getElementById('btn-copy-link');
+  const copyText = document.getElementById('copy-btn-text');
+  btnCopy.addEventListener('click', () => {
+    navigator.clipboard.writeText(websiteUrl).then(() => {
+      copyText.textContent = 'Link Copied!';
+      setTimeout(() => {
+        copyText.textContent = 'Copy Portal Link';
+      }, 2500);
+    });
+  });
+
+  // Confetti celebration on initial load
+  if (window.confetti) {
+    confetti({
+      particleCount: 70,
+      spread: 60,
+      origin: { y: 0.5 }
+    });
+  }
+</script>
+{% endblock %}
