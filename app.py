@@ -60,7 +60,7 @@ def success():
             poster_url = supporter["poster_url"]
             
     if not poster_url:
-        poster_url = "/static/poster_sample_gone.png"
+        poster_url = "/static/idrisima_sample_poster.png"
         
     return render_template(
         "success.html",
@@ -108,7 +108,7 @@ def serve_uploaded_poster(filename):
     local_path = os.path.join(STATIC_DIR, "uploads", "posters")
     if os.path.exists(os.path.join(local_path, filename)):
         return send_from_directory(local_path, filename)
-    return send_from_directory(STATIC_DIR, "poster_sample_gone.png")
+    return send_from_directory(STATIC_DIR, "idrisima_sample_poster.png")
 
 # API ENDPOINTS
 @app.route("/api/generate", methods=["POST"])

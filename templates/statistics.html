@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 
-{% block title %}Constituency Engagement & Statistics — Prince Gowon Enenche (G-ONE){% endblock %}
+{% block title %}Constituency Engagement & Statistics — Alhaji Idris HK Idrisima (IDRISIMA){% endblock %}
 
 {% block content %}
-<!-- Hero Header with Corporate Candidate Background -->
+<!-- Hero Header with Candidate Background -->
 <section class="relative overflow-hidden bg-gradient-to-r from-emerald-950 via-primary to-emerald-900 min-h-[260px] flex items-center py-16 text-white shadow-lg">
-  <!-- Candidate Background Image on right - Head Never Cut -->
+  <!-- Candidate Background Image on right -->
   <div class="absolute right-0 sm:right-8 md:right-16 top-0 bottom-0 w-3/4 sm:w-1/2 md:w-5/12 lg:w-1/3 pointer-events-none z-0">
     <div class="relative h-full w-full">
-      <img src="/static/gone_corporate.jpg" alt="Prince Gowon Enenche Corporate Background" class="h-full w-full object-contain object-top opacity-30 mix-blend-luminosity">
+      <img src="/static/idrisima_candidate.png" alt="Alhaji Idris HK Idrisima" class="h-full w-full object-contain object-top opacity-35">
       <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-950/20 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-t from-emerald-950 via-transparent to-transparent"></div>
     </div>
@@ -23,10 +23,10 @@
           Grassroots Mobilization Metrics
         </span>
         <h1 class="mt-3 text-3xl font-black text-white sm:text-4xl md:text-5xl">
-          Constituency Statistics
+          Kogi East Statistics
         </h1>
         <p class="mt-2 text-sm text-emerald-100 max-w-xl">
-          Real-time metrics tracking digital poster creation and voter mobilization across Ankpa, Omala, and Olamaboro Federal Constituency.
+          Real-time metrics tracking digital poster creation and voter mobilization across all 9 Local Government Areas of Kogi East Senatorial District.
         </p>
       </div>
 
@@ -57,21 +57,21 @@
 
       <!-- Constituencies Covered -->
       <div class="rounded-3xl border border-gray-200 bg-gray-50/50 p-6 shadow-sm">
-        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-royal mb-4">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blue-100 text-blue-700 mb-4">
           <i data-lucide="globe" class="h-6 w-6"></i>
         </div>
-        <p class="text-xs font-black uppercase tracking-wider text-gray-400">Constituency LGAs</p>
-        <p class="text-4xl font-black text-gray-900 mt-2">3 / 3</p>
-        <p class="text-xs text-blue-600 font-bold mt-2">100% Coverage (Ankpa, Omala, Olamaboro)</p>
+        <p class="text-xs font-black uppercase tracking-wider text-gray-400">Senatorial District LGAs</p>
+        <p class="text-4xl font-black text-gray-900 mt-2">9 / 9</p>
+        <p class="text-xs text-blue-600 font-bold mt-2">100% Coverage (All 9 LGAs)</p>
       </div>
 
       <!-- Total Wards -->
       <div class="rounded-3xl border border-gray-200 bg-gray-50/50 p-6 shadow-sm">
-        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-accent-orange mb-4">
+        <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-orange-100 text-orange-600 mb-4">
           <i data-lucide="award" class="h-6 w-6"></i>
         </div>
         <p class="text-xs font-black uppercase tracking-wider text-gray-400">Electoral Wards</p>
-        <p class="text-4xl font-black text-gray-900 mt-2">31</p>
+        <p class="text-4xl font-black text-gray-900 mt-2">100+</p>
         <p class="text-xs text-orange-600 font-bold mt-2">Grassroots Representation</p>
       </div>
 
@@ -88,15 +88,15 @@
   </div>
 </section>
 
-<!-- LGA-by-LGA Detailed Breakdown -->
+<!-- LGA-by-LGA Detailed Breakdown (9 LGAs) -->
 <section class="py-16 bg-gray-50/60">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="text-center max-w-2xl mx-auto space-y-2 mb-12">
       <h2 class="text-3xl font-black text-gray-900">Local Government Engagement</h2>
-      <p class="text-sm text-gray-600">Distribution of grassroots posters across the three LGAs of our federal constituency.</p>
+      <p class="text-sm text-gray-600">Distribution of grassroots posters across the nine LGAs of Kogi East Senatorial District.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
       {% for lga in lgas %}
       {% set count = stats.lga_counts.get(lga.name, 0) %}
       {% set percent = (count / stats.total_posters * 100) if stats.total_posters > 0 else 0 %}
@@ -104,7 +104,7 @@
         <div class="flex items-center justify-between">
           <div>
             <h3 class="text-2xl font-black text-gray-900">{{ lga.name }} LGA</h3>
-            <p class="text-xs font-medium text-gray-500 mt-0.5">Kogi State · {{ lga.wards|length }} Wards</p>
+            <p class="text-xs font-medium text-gray-500 mt-0.5">Kogi East · {{ lga.wards|length }} Wards</p>
           </div>
           <span class="rounded-full bg-emerald-100 p-2 text-primary">
             <i data-lucide="check-circle-2" class="h-5 w-5"></i>
@@ -118,9 +118,9 @@
           </div>
           <!-- Progress Bar -->
           <div class="h-3 w-full rounded-full bg-gray-100 overflow-hidden">
-            <div class="h-full rounded-full bg-primary transition-all duration-1000" style="width: {{ [percent, 5]|max }}%;"></div>
+            <div class="h-full rounded-full bg-primary transition-all duration-1000" style="width: {{ [percent, 8]|max }}%;"></div>
           </div>
-          <p class="text-right text-[11px] font-bold text-gray-400 mt-1.5">{{ "%.1f"|format(percent) }}% of constituency total</p>
+          <p class="text-right text-[11px] font-bold text-gray-400 mt-1.5">{{ "%.1f"|format(percent) }}% of district total</p>
         </div>
 
         <!-- Wards Snapshot -->

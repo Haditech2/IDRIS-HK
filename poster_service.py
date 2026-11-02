@@ -8,7 +8,7 @@ from data import FRAME_CONFIG
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_DIR = os.path.join(BASE_DIR, "static")
-FRAME_PATH = os.path.join(STATIC_DIR, "gone_frame.png")
+FRAME_PATH = os.path.join(STATIC_DIR, "idrisima_frame.png")
 
 # In serverless environments like Vercel, the system temp dir is the only writable directory
 if os.environ.get("VERCEL"):

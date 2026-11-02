@@ -1,62 +1,71 @@
-# Configuration and Data for Prince Gowon Enenche (G-ONE) Campaign Platform
+# Configuration and Data for Idris HK Idrisima (IDRISIMA) Campaign Platform
+# For Senate — Kogi East Senatorial District, Kogi State (SDP)
 
-G_ONE_CANDIDATE = {
-    "name": "Prince Gowon Enenche",
-    "moniker": "G-ONE (G1)",
-    "office": "House of Representatives",
-    "constituency": "Ankpa, Omala, and Olamaboro Federal Constituency",
+IDRISIMA_CANDIDATE = {
+    "name": "Idris HK Idrisima",
+    "moniker": "IDRISIMA",
+    "title": "Alhaji Idris HK Idrisima",
+    "office": "Senate",
+    "officeTitle": "Distinguished Senator",
+    "constituency": "Kogi East Senatorial District",
     "state": "Kogi State",
     "party": "SDP",
     "partyFullName": "Social Democratic Party",
-    "slogan": "Progress · In God We Trust",
-    "subSlogan": "I Reserved For Him My Vote",
-    "origin": "Imane, Olamaboro Local Government Area, Kogi State",
-    "education": "B.Sc. Political Science, Kogi State University",
-    "business": "Chairman & CEO, G1 Group of Companies & G-One Luxury Homes",
-    "movementName": "The G-1 Movement",
+    "slogan": "Standing For The People",
+    "subSlogan": "Your Voice, Your Representation · In God We Trust",
+    "callToAction": "I Reserved For Him My Vote",
     "website": "https://g-one-chi.vercel.app",
+    "photo": "/static/idrisima_candidate.png",
+    "frameSrc": "/static/idrisima_frame.png",
+    "samplePoster": "/static/idrisima_sample_poster.png",
     "pillars": [
         {
-            "title": "Economic Empowerment & Tech Hubs",
-            "description": "Micro-grant schemes for SMEs, artisan tools empowerment, and establishing digital innovation bootcamps for youths across Ankpa, Omala, and Olamaboro.",
-            "icon": "Cpu",
+            "title": "True & Accountable Representation",
+            "description": "Giving Kogi East a fearless, vocal, and impactful presence in the Senate of the Federal Republic of Nigeria.",
+            "icon": "ShieldCheck",
         },
         {
-            "title": "Agrarian Revolution & Rural Roads",
-            "description": "Direct investment in connecting farming communities to commercial markets, providing subsidized inputs, and rehabilitating feeder roads to curb post-harvest losses.",
+            "title": "Agrarian Prosperity & Feeder Roads",
+            "description": "Revitalizing agricultural infrastructure across all 9 LGAs, connecting rural farmers to commercial markets, and modernizing agro-processing.",
             "icon": "Tractor",
         },
         {
-            "title": "Quality Education & Youth Capital",
-            "description": "Comprehensive scholarship schemes for tertiary students, renovation of primary and secondary schools, and vocational training centers.",
+            "title": "Youth Tech Hubs & Education Grants",
+            "description": "Empowering young people across Igala/Bassa land with high-demand digital skills, tertiary scholarship endowments, and artisan equipment grants.",
             "icon": "GraduationCap",
         },
         {
-            "title": "Accessible Healthcare & Social Safety Nets",
-            "description": "Equipping primary healthcare centers, routine medical outreach programs, and welfare support for elderly, widows, and vulnerable households.",
+            "title": "Healthcare Access & Social Safety Nets",
+            "description": "Equipping rural health clinics, facilitating federal health programs, and supporting vulnerable households, widows, and elders.",
             "icon": "HeartPulse",
         },
     ],
 }
 
+# Alias for backwards-compatibility in templates
+G_ONE_CANDIDATE = IDRISIMA_CANDIDATE
+
 FRAME_CONFIG = {
-    "frameSrc": "/static/gone_frame.png",
+    "frameSrc": "/static/idrisima_frame.png",
     "dimensions": {"width": 1024, "height": 1024},
     "cutout": {
-        "top": 267,      # 26.07% * 1024
-        "left": 521,     # 50.88% * 1024
-        "right": 68,     # 6.64% * 1024
-        "bottom": 327,   # 31.93% * 1024
-        "width": 435,    # 1024 - 521 - 68
-        "height": 430,   # 1024 - 267 - 327
+        "top": 266,
+        "left": 518,
+        "width": 442,
+        "height": 430,
         "borderRadius": 28,
+        "topPercent": "25.98%",
+        "leftPercent": "50.58%",
+        "widthPercent": "43.16%",
+        "heightPercent": "42.0%",
     },
 }
 
+# The 9 Local Government Areas of Kogi East Senatorial District
 CONSTITUENCY_LGAS = [
     {
         "name": "Ankpa",
-        "constituency": "Ankpa/Omala/Olamaboro",
+        "constituency": "Kogi East Senatorial District",
         "state": "Kogi",
         "count": 0,
         "wards": [
@@ -74,8 +83,135 @@ CONSTITUENCY_LGAS = [
         ],
     },
     {
+        "name": "Bassa",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Oguma",
+            "Akuba I",
+            "Akuba II",
+            "Kpata",
+            "Mozum",
+            "Bassa Central",
+            "Ikende",
+            "Gboloko",
+            "Koro",
+            "Ozugbe",
+        ],
+    },
+    {
+        "name": "Dekina",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Dekina Township",
+            "Anyigba",
+            "Egume",
+            "Abocho",
+            "Odu I",
+            "Odu II",
+            "Iyale",
+            "Okura",
+            "Emewe",
+            "Ojikpadala",
+            "Ogane-Inugu",
+        ],
+    },
+    {
+        "name": "Ibaji",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Onyedega",
+            "Odeke",
+            "Ejule-Ojebe",
+            "Analo",
+            "Ujeh",
+            "Ojila",
+            "Iyano",
+            "Unale",
+            "Akpanyo",
+            "Ayeke",
+        ],
+    },
+    {
+        "name": "Idah",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Idah Township",
+            "Sabon Gari",
+            "Ede",
+            "Igalaogba",
+            "Ukwaja",
+            "Ichemaba",
+            "Ogegele",
+            "Ichala",
+            "Alugbe",
+            "Inachalo",
+        ],
+    },
+    {
+        "name": "Igalamela-Odolu",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Ajaka I",
+            "Ajaka II",
+            "Odolu",
+            "Akpanya",
+            "Ofuloko",
+            "Avrugo",
+            "Ubele",
+            "Etemahi",
+            "Oforachi",
+            "Imere",
+        ],
+    },
+    {
+        "name": "Ofu",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Ugwolawo I",
+            "Ugwolawo II",
+            "Itobe",
+            "Aloji",
+            "Ejule",
+            "Ochadamu",
+            "Igo",
+            "Aloma",
+            "Iboko-Eke",
+            "Gwalawo",
+        ],
+    },
+    {
+        "name": "Olamaboro",
+        "constituency": "Kogi East Senatorial District",
+        "state": "Kogi",
+        "count": 0,
+        "wards": [
+            "Imane I",
+            "Imane II",
+            "Okpo",
+            "Ogugu I",
+            "Ogugu II",
+            "Ogugu III",
+            "Adeh",
+            "Inele",
+            "Ugo",
+            "Ochadamu-Olamaboro",
+        ],
+    },
+    {
         "name": "Omala",
-        "constituency": "Ankpa/Omala/Olamaboro",
+        "constituency": "Kogi East Senatorial District",
         "state": "Kogi",
         "count": 0,
         "wards": [
@@ -91,68 +227,20 @@ CONSTITUENCY_LGAS = [
             "Ife",
         ],
     },
-    {
-        "name": "Olamaboro",
-        "constituency": "Ankpa/Omala/Olamaboro",
-        "state": "Kogi",
-        "count": 0,
-        "wards": [
-            "Imane I",
-            "Imane II",
-            "Okpo",
-            "Ogugu I",
-            "Ogugu II",
-            "Ogugu III",
-            "Adeh",
-            "Inele",
-            "Ugo",
-            "Ochadamu",
-        ],
-    },
 ]
 
 CANDIDATE_GALLERY = [
     {
-        "src": "/static/gone_hero.jpg",
-        "title": "Grassroots Mobilizer",
-        "subtitle": "G-ONE 2027 Official Campaign",
-        "badge": "Campaign Trail",
+        "src": "/static/idrisima_sample_poster.png",
+        "title": "Official Campaign Poster",
+        "subtitle": "Idris HK Idrisima for Senate · Kogi East 2027",
+        "badge": "Official Poster",
     },
     {
-        "src": "/static/gone_leader.jpg",
-        "title": "The Leader of Our Dream",
-        "subtitle": "Official SDP Campaign Flyer · House of Reps",
-        "badge": "Official Flyer",
-    },
-    {
-        "src": "/static/gone_thumbs.jpg",
-        "title": "The People's Choice",
-        "subtitle": "Double Thumbs Up for Progress",
-        "badge": "SDP Official",
-    },
-    {
-        "src": "/static/gone_native.jpg",
-        "title": "Cultural Heritage & Leadership",
-        "subtitle": "Rooted in Imane, Olamaboro",
-        "badge": "Community Leader",
-    },
-    {
-        "src": "/static/gone_corporate.jpg",
-        "title": "Visionary Business Leader",
-        "subtitle": "CEO, G-One Luxury Homes & G1 Group",
-        "badge": "Private Sector",
-    },
-    {
-        "src": "/static/gone_standing.jpg",
-        "title": "Ready to Serve",
-        "subtitle": "House of Representatives 2027",
-        "badge": "Legislative Mission",
-    },
-    {
-        "src": "/static/gone_rally.jpg",
-        "title": "Massive Constituency Rally",
-        "subtitle": "Uniting Ankpa, Omala & Olamaboro for G-ONE",
-        "badge": "People's Movement",
+        "src": "/static/idrisima_candidate.png",
+        "title": "Idris HK Idrisima",
+        "subtitle": "Standing For The People · SDP",
+        "badge": "Candidate Portrait",
     },
 ]
 

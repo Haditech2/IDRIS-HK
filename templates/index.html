@@ -1,19 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}G-ONE 2027 — Generate your personalized campaign poster{% endblock %}
+{% block title %}IDRISIMA 2027 — Standing For The People · Kogi East Senate{% endblock %}
 
 {% block content %}
 <!-- SECTION 0: HERO -->
 <section
   class="relative min-h-screen hero-bg"
-  style="background-image: url('/static/gone_hero_bg.jpg');"
+  style="background-image: url('/static/idrisima_hero.jpg');"
 >
   <!-- Dark base overlay -->
-  <div class="absolute inset-0 bg-black/50"></div>
+  <div class="absolute inset-0 bg-black/60"></div>
   <!-- Green gradient left-to-right -->
-  <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/90 via-emerald-900/50 to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-to-r from-emerald-950/95 via-emerald-900/60 to-transparent"></div>
   <!-- Dark vignette bottom -->
-  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
 
   <!-- Hero Content Grid -->
   <div class="relative z-10 flex min-h-screen items-center py-20 sm:py-24">
@@ -23,26 +23,30 @@
         <!-- Text Column (on mobile order-2, on desktop order-1) -->
         <div class="order-2 max-w-2xl md:order-1">
           <!-- Campaign Pill Badge -->
-          <span class="mb-4 inline-flex rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-medium text-white backdrop-blur-md sm:mb-6 sm:px-5 sm:py-2">
-            Ankpa, Omala, Olamaboro 2027 · In God We Trust
+          <span class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-xs font-semibold text-white backdrop-blur-md sm:mb-6 sm:px-5 sm:py-2">
+            <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Kogi East Senatorial District 2027 · SDP
           </span>
 
           <!-- Main Hero Headline -->
           <h1 class="text-4xl font-black leading-tight tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl">
-            Generate Your<br>
-            G-ONE Support<br>
-            Poster Here
+            Standing For<br>
+            The People.<br>
+            <span class="text-emerald-400">IDRISIMA</span> 2027
           </h1>
 
           <!-- Lead Paragraph -->
           <p class="mt-5 max-w-xl text-base leading-7 text-white/85 sm:mt-8 sm:text-lg sm:leading-8 md:text-xl">
-            Join thousands of supporters across Ankpa, Omala &amp; Olamaboro Federal Constituency. Generate your personalized campaign poster and share your support for Prince Gowon Enenche (G-ONE).
+            Join thousands of supporters across the 9 LGAs of Kogi East. Generate your official personalized campaign poster and stand with <strong>Alhaji Idris HK Idrisima</strong> for Senate.
           </p>
 
           <!-- Primary CTA Button -->
           <div class="mt-7 flex flex-wrap gap-4 sm:mt-10">
-            <a href="/generate" class="inline-flex shrink-0 items-center justify-center border text-sm font-semibold h-12 rounded-full border-white/30 bg-white/10 px-7 text-white backdrop-blur-md hover:bg-white hover:text-black transition-all shadow-lg hover:scale-105 active:scale-95 sm:px-8">
+            <a href="/generate" class="inline-flex shrink-0 items-center justify-center border text-sm font-semibold h-12 rounded-full border-white/30 bg-emerald-600 px-8 text-white backdrop-blur-md hover:bg-white hover:text-black transition-all shadow-lg hover:scale-105 active:scale-95 sm:px-9">
               Generate My Poster
+            </a>
+            <a href="/supporters" class="inline-flex shrink-0 items-center justify-center border text-sm font-semibold h-12 rounded-full border-white/30 bg-white/10 px-7 text-white backdrop-blur-md hover:bg-white/20 transition-all shadow-lg hover:scale-105 active:scale-95">
+              View Supporters
             </a>
           </div>
         </div>
@@ -51,15 +55,15 @@
         <div class="relative order-1 mx-auto h-64 w-full max-w-[260px] sm:h-[340px] sm:max-w-sm md:order-2 md:h-[480px] md:max-w-md lg:h-[580px] lg:max-w-lg">
           <!-- Left Floating Card -->
           <div class="absolute left-2 top-6 w-[85%] animate-float-reverse sm:left-4 sm:top-10">
-            <img alt="" class="rounded-2xl shadow-xl opacity-70 sm:rounded-3xl" src="/static/poster_sample_gone.png">
+            <img alt="" class="rounded-2xl shadow-xl opacity-70 sm:rounded-3xl" src="/static/idrisima_sample_poster.png">
           </div>
           <!-- Right Floating Card -->
           <div class="absolute right-2 top-4 w-[85%] animate-float sm:right-4 sm:top-8">
-            <img alt="" class="rounded-2xl shadow-xl opacity-70 sm:rounded-3xl" src="/static/poster_sample_gone.png">
+            <img alt="" class="rounded-2xl shadow-xl opacity-70 sm:rounded-3xl" src="/static/idrisima_sample_poster.png">
           </div>
           <!-- Centered Dominant Foreground Poster -->
           <div class="absolute inset-x-0 top-0 z-20 mx-auto w-full">
-            <img alt="Campaign Poster Sample" class="rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] sm:rounded-3xl" src="/static/poster_sample_gone.png">
+            <img alt="Official Idrisima Campaign Poster" class="rounded-2xl shadow-2xl transition-all duration-300 hover:scale-[1.02] sm:rounded-3xl" src="/static/idrisima_sample_poster.png">
           </div>
         </div>
 
@@ -76,37 +80,30 @@
   </div>
 </section>
 
-<!-- SECTION 1: POSTERS GENERATED COUNTER (Exact Wadada Section) -->
+<!-- SECTION 1: POSTERS GENERATED COUNTER (9 LGAs of Kogi East) -->
 <section class="py-16 bg-white border-b border-gray-100 sm:py-24">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-16">
       <div>
+        <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3.5 py-1 text-xs font-bold text-primary border border-emerald-200">
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
+          Grassroots Mobilization
+        </span>
         <h2 class="mt-4 text-6xl font-black leading-none tracking-tight text-gray-900 sm:mt-6 sm:text-7xl lg:text-8xl">
-          <span id="counter-val">{{ (stats.total_posters if stats and stats.total_posters else 0) + 1248 }}</span>
+          <span id="counter-val">{{ (stats.total_posters if stats and stats.total_posters else 0) + 3480 }}</span>
         </h2>
-        <p class="mt-3 text-xl font-semibold text-gray-500 sm:mt-4 sm:text-2xl">Posters Generated</p>
+        <p class="mt-3 text-xl font-semibold text-gray-500 sm:mt-4 sm:text-2xl">Posters Generated Across Kogi East</p>
+        <p class="mt-2 text-sm text-gray-400">Mobilizing voter support across all 9 LGAs and 100+ wards.</p>
       </div>
+
       <div class="flex flex-col justify-center space-y-4 pt-0 lg:pt-2">
-        <div class="flex items-center gap-3">
-          <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-primary border border-emerald-200">
-            <span class="h-2 w-2 rounded-full bg-emerald-500 animate-ping"></span>
-            Grassroots Mobilization
-          </span>
-          <span class="text-sm font-semibold text-gray-600">Across All 3 Local Governments</span>
-        </div>
-        <div class="grid grid-cols-3 gap-3 sm:gap-4">
+        <div class="grid grid-cols-3 gap-3">
+          {% for lga in lgas %}
           <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-3 text-center sm:p-4">
-            <p class="text-xs font-bold text-gray-500 uppercase">Ankpa</p>
-            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get('Ankpa', 0) if stats and stats.lga_counts else 0) + 520 }}+</p>
+            <p class="text-[11px] font-bold text-gray-500 uppercase tracking-wider">{{ lga.name }}</p>
+            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get(lga.name, 0) if stats and stats.lga_counts else 0) + 380 }}+</p>
           </div>
-          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-3 text-center sm:p-4">
-            <p class="text-xs font-bold text-gray-500 uppercase">Omala</p>
-            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get('Omala', 0) if stats and stats.lga_counts else 0) + 380 }}+</p>
-          </div>
-          <div class="rounded-2xl border border-gray-100 bg-gray-50/80 p-3 text-center sm:p-4">
-            <p class="text-xs font-bold text-gray-500 uppercase">Olamaboro</p>
-            <p class="text-lg font-black text-gray-900 mt-1 sm:text-xl">{{ (stats.lga_counts.get('Olamaboro', 0) if stats and stats.lga_counts else 0) + 348 }}+</p>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
@@ -117,19 +114,19 @@
 <section class="overflow-hidden bg-gray-50 py-12 sm:py-16">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 mb-8 text-center sm:mb-10">
     <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#006C43]">Our Supporters</p>
-    <h2 class="mt-2 text-2xl font-black text-gray-900 sm:text-3xl md:text-4xl">Voices Across the Constituency</h2>
-    <p class="mt-2 text-sm text-gray-500 sm:mt-3 sm:text-base">Join thousands of proud supporters of Prince Gowon Enenche (G-ONE)</p>
+    <h2 class="mt-2 text-2xl font-black text-gray-900 sm:text-3xl md:text-4xl">Voices Across Kogi East</h2>
+    <p class="mt-2 text-sm text-gray-500 sm:mt-3 sm:text-base">Standing firmly with Alhaji Idris HK Idrisima (IDRISIMA) for Senate</p>
   </div>
 
   <!-- Row 1 — scrolls left -->
   <div class="relative flex overflow-x-hidden">
-    {% set row1 = supporters[:8] if supporters and supporters|length >= 8 else [] %}
+    {% set row1 = supporters[:10] if supporters and supporters|length >= 10 else supporters %}
     <div class="animate-marquee whitespace-nowrap">
       {% if row1 %}
         {% for s in row1 %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/idrisima_sample_poster.png'">
           </div>
         </div>
         {% endfor %}
@@ -137,7 +134,7 @@
         {% for i in range(8) %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+            <img src="/static/idrisima_sample_poster.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
           </div>
         </div>
         {% endfor %}
@@ -149,7 +146,7 @@
         {% for s in row1 %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/idrisima_sample_poster.png'">
           </div>
         </div>
         {% endfor %}
@@ -157,7 +154,7 @@
         {% for i in range(8) %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+            <img src="/static/idrisima_sample_poster.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
           </div>
         </div>
         {% endfor %}
@@ -167,13 +164,13 @@
 
   <!-- Row 2 — scrolls right -->
   <div class="relative mt-4 flex overflow-x-hidden sm:mt-5">
-    {% set row2 = supporters[8:16] if supporters and supporters|length >= 16 else (supporters[:8] if supporters else []) %}
+    {% set row2 = supporters[10:20] if supporters and supporters|length >= 20 else (supporters[:10] if supporters else []) %}
     <div class="animate-marquee-reverse whitespace-nowrap">
       {% if row2 %}
         {% for s in row2 %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/idrisima_sample_poster.png'">
           </div>
         </div>
         {% endfor %}
@@ -181,7 +178,7 @@
         {% for i in range(8) %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+            <img src="/static/idrisima_sample_poster.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
           </div>
         </div>
         {% endfor %}
@@ -192,7 +189,7 @@
         {% for s in row2 %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/idrisima_sample_poster.png'">
           </div>
         </div>
         {% endfor %}
@@ -200,7 +197,7 @@
         {% for i in range(8) %}
         <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+            <img src="/static/idrisima_sample_poster.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
           </div>
         </div>
         {% endfor %}
@@ -220,7 +217,7 @@
 <div class="w-full bg-[#006C43] py-8 sm:py-10">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
     <h2 class="text-center text-2xl font-black tracking-tight text-white sm:text-3xl md:text-5xl">
-      Join the Winning Team
+      Standing For The People · Join The Movement
     </h2>
   </div>
 </div>
@@ -232,7 +229,7 @@
       <!-- Left Steps Column -->
       <div class="lg:col-span-3">
         <p class="text-sm font-bold uppercase tracking-[0.2em] text-[#006C43]">In 3 Simple Steps</p>
-        <h3 class="mt-2 text-3xl font-black text-gray-900 sm:text-4xl">Generate Yours</h3>
+        <h3 class="mt-2 text-3xl font-black text-gray-900 sm:text-4xl">Generate Your Official Poster</h3>
 
         <div class="mt-8 space-y-6 sm:mt-10 sm:space-y-8">
           <!-- Step 1 -->
@@ -241,8 +238,8 @@
               <span class="text-sm font-black text-[#006C43]">1</span>
             </div>
             <div>
-              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Add your image &amp; details</h4>
-              <p class="mt-1 text-sm text-gray-500 sm:text-base">Upload your photo and enter the campaign information required for your personalized poster.</p>
+              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Upload Your Photo</h4>
+              <p class="mt-1 text-sm text-gray-500 sm:text-base">Upload your portrait from your phone or device. You can crop, zoom, and adjust it cleanly.</p>
             </div>
           </div>
 
@@ -252,8 +249,8 @@
               <span class="text-sm font-black text-[#006C43]">2</span>
             </div>
             <div>
-              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Preview Your Poster</h4>
-              <p class="mt-1 text-sm text-gray-500 sm:text-base">Review your campaign poster before generating the final version.</p>
+              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Select Your LGA &amp; Ward</h4>
+              <p class="mt-1 text-sm text-gray-500 sm:text-base">Choose your Local Government Area among the 9 LGAs of Kogi East and enter your name.</p>
             </div>
           </div>
 
@@ -263,14 +260,15 @@
               <span class="text-sm font-black text-[#006C43]">3</span>
             </div>
             <div>
-              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Generate &amp; Share</h4>
-              <p class="mt-1 text-sm text-gray-500 sm:text-base">Generate a high-quality campaign poster, save it to your device, and share your support.</p>
+              <h4 class="text-base font-bold text-gray-900 sm:text-lg">Generate, Download &amp; Share</h4>
+              <p class="mt-1 text-sm text-gray-500 sm:text-base">Download your high-resolution poster instantly and share across WhatsApp, Facebook, and Twitter.</p>
             </div>
           </div>
         </div>
 
         <div class="mt-8 sm:mt-10">
-          <a href="/generate" class="inline-flex w-full items-center justify-center rounded-lg bg-[#006C43] px-8 py-3 text-base font-semibold text-white hover:bg-emerald-700 transition shadow-md sm:w-auto">            Generate My Poster
+          <a href="/generate" class="inline-flex w-full items-center justify-center rounded-lg bg-[#006C43] px-8 py-3 text-base font-semibold text-white hover:bg-emerald-700 transition shadow-md sm:w-auto">
+            Generate My Poster Now
           </a>
         </div>
       </div>
@@ -282,11 +280,11 @@
             <img
               alt="Generate Campaign Poster"
               class="w-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
-              src="/static/poster_sample_gone.png"
-              style="max-height: 320px;"
+              src="/static/idrisima_sample_poster.png"
+              style="max-height: 340px;"
             >
           </div>
-          <p class="mt-3 text-center text-xs text-gray-500 sm:mt-4 sm:text-sm">Click to create your own →</p>
+          <p class="mt-3 text-center text-xs text-gray-500 sm:mt-4 sm:text-sm">Click to create your custom poster →</p>
         </a>
       </div>
 
@@ -294,18 +292,20 @@
   </div>
 </section>
 
-<!-- SECTION 4: SLOGAN BANNER (Exact Wadada Big Full-Width Text Banner) -->
+<!-- SECTION 4: SLOGAN BANNER -->
 <section class="w-full bg-[#006C43] py-16 sm:py-24 md:py-32">
   <div class="mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex items-center justify-center">
-      <h2 class="text-center text-4xl font-black uppercase tracking-wide text-white sm:text-5xl md:text-7xl lg:text-8xl">
+    <div class="flex flex-col items-center justify-center text-center">
+      <p class="text-sm font-bold uppercase tracking-[0.3em] text-emerald-200 sm:text-base">Your Voice, Your Representation</p>
+      <h2 class="mt-4 text-4xl font-black uppercase tracking-wide text-white sm:text-5xl md:text-7xl lg:text-8xl">
         IN GOD WE TRUST
       </h2>
+      <p class="mt-4 text-lg font-bold text-emerald-100 sm:text-xl">Progress · Social Democratic Party (SDP)</p>
     </div>
   </div>
 </section>
 
-<!-- SECTION 5: INITIATIVE & FEATURE TRIBUTE (Exact Wadada Section 5) -->
+<!-- SECTION 5: CANDIDATE PROFILE -->
 <section class="py-16 bg-white sm:py-24">
   <div class="mx-auto max-w-5xl px-4 sm:px-6">
     <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:rounded-3xl sm:p-8 md:p-10">
@@ -313,23 +313,23 @@
         <!-- Avatar/Emblem -->
         <div class="mx-auto w-full max-w-[180px] shrink-0 sm:max-w-[220px] md:mx-0 md:max-w-[260px]">
           <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 shadow-sm bg-gray-50 flex items-center justify-center p-2">
-            <img alt="G-1 Household Campaign" class="h-full w-full object-contain rounded-xl" src="/static/logo_avatar.png">
+            <img alt="Alhaji Idris HK Idrisima" class="h-full w-full object-contain rounded-xl" src="/static/idrisima_candidate.png">
           </div>
         </div>
         <!-- Bio / Purpose -->
         <div class="flex-1 text-left">
-          <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#006C43]">Official Campaign Platform</p>
-          <h2 class="mt-2 text-2xl font-black text-gray-900 sm:text-3xl md:text-4xl">G-1 Household Campaign</h2>
+          <p class="text-sm font-semibold uppercase tracking-[0.25em] text-[#006C43]">Official Senatorial Campaign</p>
+          <h2 class="mt-2 text-2xl font-black text-gray-900 sm:text-3xl md:text-4xl">Alhaji Idris HK Idrisima</h2>
           <p class="mt-3 text-base font-medium text-gray-700 sm:mt-4 sm:text-lg">
-            For Hon. Prince Gowon Yakubu Enenche (G-ONE)<br>
-            House of Representatives · Ankpa, Omala, Olamaboro Federal Constituency
+            For Senate · Kogi East Senatorial District<br>
+            <span class="text-[#006C43] font-bold">Social Democratic Party (SDP) — Progress!</span>
           </p>
           <p class="mt-4 text-sm leading-7 text-gray-500 sm:mt-6 sm:text-base sm:leading-8">
-            This platform was designed and developed to empower supporters across Kogi State by making it simple to create personalized campaign posters and promote the vision of Prince Gowon Enenche.
+            Standing for the people of Ankpa, Bassa, Dekina, Ibaji, Idah, Igalamela-Odolu, Ofu, Olamaboro, and Omala. Dedicated to true federal advocacy, youth innovation, agrarian revitalisation, and inclusive governance for all sons and daughters of Kogi East.
           </p>
           <div class="mt-5 sm:mt-6">
             <a href="/generate" class="inline-flex w-full shrink-0 items-center justify-center rounded-lg bg-primary px-6 py-3 text-sm font-semibold text-white hover:bg-emerald-700 transition shadow sm:w-auto">
-              Generate My Poster
+              Generate My Support Poster
             </a>
           </div>
         </div>

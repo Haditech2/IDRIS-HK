@@ -14,6 +14,7 @@ ENV/
 static/uploads/posters/*.png
 !static/uploads/posters/.gitkeep
 !static/uploads/posters/mock_poster_*.png
+!static/uploads/posters/idrisima_mock_*.png
 
 # System & IDE
 .DS_Store

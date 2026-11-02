@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Your G-ONE Campaign Poster is Ready! — Prince Gowon Enenche{% endblock %}
+{% block title %}Your IDRISIMA Campaign Poster is Ready! — Idris HK Idrisima{% endblock %}
 
 {% block content %}
 <div class="min-h-screen bg-gray-50/50 py-12 sm:py-16">
@@ -12,11 +12,11 @@
         <span>Poster Created Successfully!</span>
       </div>
       <h1 class="text-3xl font-black text-gray-900 sm:text-4xl">
-        Share Your Voice For <br>
+        Standing For The People <br>
         <span class="text-primary">{{ candidate.name }} ({{ candidate.moniker }})</span>
       </h1>
       <p class="text-sm text-gray-600">
-        Your personalized official campaign poster has been generated in high definition. Set it as your WhatsApp DP, Facebook profile, and status!
+        Your personalized official campaign poster for Senate (Kogi East Senatorial District) has been generated in high definition. Set it as your WhatsApp DP, Facebook profile, and status!
       </p>
     </div>
 
@@ -24,7 +24,7 @@
       <!-- Left Column: Poster Display -->
       <div class="lg:col-span-6 space-y-4">
         <div class="relative aspect-square w-full overflow-hidden rounded-3xl border-2 border-gray-200 bg-white shadow-2xl shadow-emerald-950/20">
-          <img id="poster-display" src="{{ poster_url }}" alt="Generated G-ONE Campaign Poster" class="h-full w-full object-cover">
+          <img id="poster-display" src="{{ poster_url }}" alt="Generated IDRISIMA Campaign Poster" class="h-full w-full object-cover">
         </div>
 
         {% if supporter %}
@@ -41,7 +41,7 @@
         {% endif %}
 
         <div class="flex gap-3">
-          <a id="btn-download" href="{{ poster_url }}" download="G-ONE-Campaign-Poster.png" class="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary py-4 px-6 text-sm font-black text-white shadow-lg shadow-primary/25 hover:bg-primary-dark transition hover:scale-105 active:scale-95">
+          <a id="btn-download" href="{{ poster_url }}" download="IDRISIMA-Campaign-Poster.png" class="flex-1 inline-flex items-center justify-center gap-2 rounded-2xl bg-primary py-4 px-6 text-sm font-black text-white shadow-lg shadow-primary/25 hover:bg-emerald-700 transition hover:scale-105 active:scale-95">
             <i data-lucide="download" class="h-4 w-4"></i>
             <span>Download Poster</span>
           </a>
@@ -59,7 +59,7 @@
           <div>
             <span class="text-xs font-black uppercase tracking-wider text-primary">1-Click Mobilization</span>
             <h3 class="text-xl font-black text-gray-900 mt-1">Share Everywhere</h3>
-            <p class="text-xs text-gray-500 mt-1">Spread the movement across WhatsApp, Facebook, and Twitter to inspire more constituents.</p>
+            <p class="text-xs text-gray-500 mt-1">Spread the movement across WhatsApp, Facebook, and Twitter to inspire more constituents across Kogi East.</p>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -99,7 +99,7 @@
           <ul class="space-y-3 text-xs text-gray-600 font-medium">
             <li class="flex items-start gap-2.5">
               <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-black text-primary">1</span>
-              <span><strong>Set as WhatsApp Profile Picture (DP):</strong> Let all your contacts see your support for G-ONE 2027.</span>
+              <span><strong>Set as WhatsApp Profile Picture (DP):</strong> Let all your contacts see your support for IDRISIMA 2027.</span>
             </li>
             <li class="flex items-start gap-2.5">
               <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-black text-primary">2</span>
@@ -107,14 +107,14 @@
             </li>
             <li class="flex items-start gap-2.5">
               <span class="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 text-[10px] font-black text-primary">3</span>
-              <span><strong>Share in Ward &amp; Youth Group Chats:</strong> Mobilize grassroot voters across Ankpa, Omala, and Olamaboro!</span>
+              <span><strong>Share in Ward &amp; Community Group Chats:</strong> Mobilize grassroots voters across all 9 LGAs of Kogi East!</span>
             </li>
           </ul>
         </div>
 
         <div class="text-center pt-2">
           <a href="/supporters" class="text-xs font-bold text-primary hover:underline">
-            &larr; View all posters on the Constituency Supporters Wall
+            &larr; View all posters on the Kogi East Supporters Wall
           </a>
         </div>
       </div>
@@ -126,7 +126,7 @@
 {% block extra_scripts %}
 <script>
   const websiteUrl = window.location.origin || "{{ candidate.website }}";
-  const shareText = `I just created my official campaign support poster for Prince Gowon Enenche (G-ONE) for House of Representatives (Ankpa, Omala, Olamaboro Federal Constituency - SDP)! Create yours here: ${websiteUrl}`;
+  const shareText = `I just created my official campaign support poster for Alhaji Idris HK Idrisima (IDRISIMA) for Senate (Kogi East Senatorial District - SDP)! Create yours here: ${websiteUrl}`;
 
   // WhatsApp
   document.getElementById('share-whatsapp').href = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareText)}`;
