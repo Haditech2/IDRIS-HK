@@ -13,6 +13,7 @@ ENV/
 # Static generated uploads
 static/uploads/posters/*.png
 !static/uploads/posters/.gitkeep
+!static/uploads/posters/mock_poster_*.png
 
 # System & IDE
 .DS_Store

@@ -123,46 +123,88 @@
 
   <!-- Row 1 — scrolls left -->
   <div class="relative flex overflow-x-hidden">
+    {% set row1 = supporters[:8] if supporters and supporters|length >= 8 else [] %}
     <div class="animate-marquee whitespace-nowrap">
-      {% for i in range(8) %}
-      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
-        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+      {% if row1 %}
+        {% for s in row1 %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+          </div>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        {% for i in range(8) %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
     </div>
     <!-- Duplicate for seamless loop -->
     <div class="animate-marquee whitespace-nowrap" aria-hidden="true">
-      {% for i in range(8) %}
-      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
-        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+      {% if row1 %}
+        {% for s in row1 %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+          </div>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        {% for i in range(8) %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 
   <!-- Row 2 — scrolls right -->
   <div class="relative mt-4 flex overflow-x-hidden sm:mt-5">
+    {% set row2 = supporters[8:16] if supporters and supporters|length >= 16 else (supporters[:8] if supporters else []) %}
     <div class="animate-marquee-reverse whitespace-nowrap">
-      {% for i in range(8) %}
-      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
-        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+      {% if row2 %}
+        {% for s in row2 %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+          </div>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        {% for i in range(8) %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
     </div>
     <div class="animate-marquee-reverse whitespace-nowrap" aria-hidden="true">
-      {% for i in range(8) %}
-      <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
-        <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
-          <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+      {% if row2 %}
+        {% for s in row2 %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="{{ s.poster_url }}" alt="{{ s.name }}" class="h-full w-full object-cover object-top" onerror="this.src='/static/poster_sample_gone.png'">
+          </div>
         </div>
-      </div>
-      {% endfor %}
+        {% endfor %}
+      {% else %}
+        {% for i in range(8) %}
+        <div class="inline-block w-36 shrink-0 px-2.5 sm:w-44">
+          <div class="aspect-square overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-md sm:rounded-3xl sm:shadow-lg">
+            <img src="/static/poster_sample_gone.png" alt="Supporter Poster" class="h-full w-full object-cover object-top">
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
     </div>
   </div>
 
