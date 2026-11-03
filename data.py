@@ -17,7 +17,7 @@ IDRISIMA_CANDIDATE = {
     "subSlogan": "Together For A Better Tomorrow · In God We Trust",
     "secondarySlogan": "Standing For The People · Your Voice, Your Representation",
     "callToAction": "I Reserved For Him My Vote",
-    "website": "https://g-one-chi.vercel.app",
+    "website": "https://idris-hk.vercel.app",
     "photo": "/static/idris_kashim_cap.jpg",
     "portraitSuit": "/static/idris_kashim_suit.jpg",
     "portraitAgbada": "/static/idris_kashim_agbada.jpg",
