@@ -2,20 +2,26 @@
 # For Senate — Kogi East Senatorial District, Kogi State (SDP)
 
 IDRISIMA_CANDIDATE = {
-    "name": "Idris HK Idrisima",
-    "moniker": "IDRISIMA",
-    "title": "Alhaji Idris HK Idrisima",
+    "name": "Hon. Idris Hussein Kashim",
+    "moniker": "IDRIS HK",
+    "popularName": "IDRISIMA",
+    "title": "Hon. Idris Hussein Kashim (IDRIS HK)",
     "office": "Senate",
     "officeTitle": "Distinguished Senator",
     "constituency": "Kogi East Senatorial District",
     "state": "Kogi State",
     "party": "SDP",
     "partyFullName": "Social Democratic Party",
-    "slogan": "Standing For The People",
-    "subSlogan": "Your Voice, Your Representation · In God We Trust",
+    "project": "God's Own Project 2027",
+    "slogan": "I Win, U Win",
+    "subSlogan": "Together For A Better Tomorrow · In God We Trust",
+    "secondarySlogan": "Standing For The People · Your Voice, Your Representation",
     "callToAction": "I Reserved For Him My Vote",
     "website": "https://g-one-chi.vercel.app",
-    "photo": "/static/idrisima_candidate.png",
+    "photo": "/static/idris_kashim_cap.jpg",
+    "portraitSuit": "/static/idris_kashim_suit.jpg",
+    "portraitAgbada": "/static/idris_kashim_agbada.jpg",
+    "rallyPhoto": "/static/idris_kashim_rally.jpg",
     "frameSrc": "/static/idrisima_frame.png",
     "samplePoster": "/static/idrisima_sample_poster.png",
     "pillars": [
@@ -231,16 +237,34 @@ CONSTITUENCY_LGAS = [
 
 CANDIDATE_GALLERY = [
     {
-        "src": "/static/idrisima_sample_poster.png",
-        "title": "Official Campaign Poster",
-        "subtitle": "Idris HK Idrisima for Senate · Kogi East 2027",
-        "badge": "Official Poster",
+        "src": "/static/idris_kashim_cap.jpg",
+        "title": "God's Own Project 2027",
+        "subtitle": "Together For A Better Tomorrow · SDP",
+        "badge": "Movement Banner",
     },
     {
-        "src": "/static/idrisima_candidate.png",
-        "title": "Idris HK Idrisima",
-        "subtitle": "Standing For The People · SDP",
-        "badge": "Candidate Portrait",
+        "src": "/static/idris_kashim_agbada.jpg",
+        "title": "I Win, U Win",
+        "subtitle": "Hon. Idris Hussein Kashim (IDRIS HK) for Senate",
+        "badge": "Constituency Mandate",
+    },
+    {
+        "src": "/static/idris_kashim_suit.jpg",
+        "title": "Kogi East SDP Candidate",
+        "subtitle": "Distinguished Senatorial Mission 2027",
+        "badge": "Official Portrait",
+    },
+    {
+        "src": "/static/idris_kashim_rally.jpg",
+        "title": "Grassroots Mobilization Rally",
+        "subtitle": "Uniting All 9 LGAs across Igala & Bassa Land",
+        "badge": "Constituency Rally",
+    },
+    {
+        "src": "/static/idrisima_sample_poster.png",
+        "title": "Personalized Support Poster",
+        "subtitle": "Standing For The People · In God We Trust",
+        "badge": "Official Poster",
     },
 ]
 

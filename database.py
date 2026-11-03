@@ -30,8 +30,8 @@ MOCK_SUPPORTERS = [
         "name": "Hon. Ibrahim Alfa",
         "lga": "Ankpa",
         "ward": "Ankpa Township",
-        "custom_quote": "Idris HK Idrisima represents true legislative courage. Kogi East will speak with one voice in the Senate.",
-        "poster_url": "/static/uploads/posters/idrisima_mock_1.png",
+        "custom_quote": "God's Own Project 2027! Hon. Idris Hussein Kashim represents true legislative courage.",
+        "poster_url": "/static/uploads/posters/idrisima_mock_10.png",
         "created_at": "2026-11-01T08:15:00Z",
     },
     {
@@ -39,8 +39,8 @@ MOCK_SUPPORTERS = [
         "name": "Hajia Halimat Usman",
         "lga": "Ankpa",
         "ward": "Enjema I",
-        "custom_quote": "Standing For The People! Idrisima has always championed grassroots economic empowerment.",
-        "poster_url": "/static/uploads/posters/idrisima_mock_2.png",
+        "custom_quote": "I Win, U Win! Together For A Better Tomorrow. IDRIS HK has our full backing.",
+        "poster_url": "/static/uploads/posters/idrisima_mock_11.png",
         "created_at": "2026-11-01T09:20:00Z",
     },
     {
@@ -49,7 +49,7 @@ MOCK_SUPPORTERS = [
         "lga": "Ankpa",
         "ward": "Ojoku I",
         "custom_quote": "Ankpa is 100% SDP. Progress and purposeful representation at the Red Chamber.",
-        "poster_url": "/static/uploads/posters/idrisima_mock_3.png",
+        "poster_url": "/static/uploads/posters/idrisima_mock_12.png",
         "created_at": "2026-11-01T10:45:00Z",
     },
 
@@ -59,8 +59,8 @@ MOCK_SUPPORTERS = [
         "name": "Elder Daniel Kpata",
         "lga": "Bassa",
         "ward": "Oguma",
-        "custom_quote": "Bassa land is solidly behind Idris HK Idrisima. He is a tested unifier.",
-        "poster_url": "/static/uploads/posters/idrisima_mock_4.png",
+        "custom_quote": "Bassa land is solidly behind Hon. Idris Hussein Kashim. A tested unifier.",
+        "poster_url": "/static/uploads/posters/idrisima_mock_13.png",
         "created_at": "2026-11-01T11:10:00Z",
     },
     {
